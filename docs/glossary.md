@@ -13,6 +13,8 @@ Externe voorraad waarvan leveranciers periodiek Excel- of CSV-bestanden
 aanleveren. Het aanleverritme verschilt per leverancier, bijvoorbeeld wekelijks
 of tweewekelijks.
 
+De bronvermelding "inkoop aanbieding" duidt op deze fictieve voorraad.
+
 ## Eigen voorraad
 
 <a id="term-eigen-voorraad"></a>

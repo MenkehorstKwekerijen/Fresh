@@ -36,9 +36,11 @@ Dat is op zichzelf geen dubbele aanlevering van dezelfde voorraad.
 
 De gebruiker heeft geen overlap bevestigd tussen eigen voorraad, eigen externe
 voorraad en de andere voorraadsoorten. Wel kan één leverancier in theorie zowel
-via een fictief voorraadbestand als via TCM worden ingelezen. Daar kan dezelfde
-voorraad dus via twee routes binnenkomen. Of de twee lijsten dan hetzelfde
-volledige aanbod bevatten en welke bron moet worden gebruikt, is nog niet bepaald.
+via een fictief voorraadbestand als via TCM worden ingelezen. Daar komt hetzelfde
+aanbod via twee routes binnen. De aanlevering vermeldt expliciet of het om TCM of
+"inkoop aanbieding" (fictief) gaat. Welke bron bij deze samenloop moet worden
+gebruikt, is nog niet besloten. De exacte veldnamen en herkenning van dezelfde
+leverancier tussen de routes moeten nog aan de bestanden worden getoetst.
 
 ## Keten en herstel
 
