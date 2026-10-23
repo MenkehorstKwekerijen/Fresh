@@ -9,6 +9,7 @@ in [de glossary](../glossary.md).
 
 | Bron | Bekende aanlevering | Nog te bepalen grens |
 | --- | --- | --- |
+| [WinTree-basisstam](../glossary.md#term-wintree-basisstam) | Referentie met naamcodes en maatcodes | Aanlevering aan Fresh, omschrijvingen en actualisering |
 | [Externe fictieve voorraad](../glossary.md#term-externe-fictieve-voorraad) | Excel of CSV, ritme verschilt per leverancier | Bestandsinhoud en vervanging of aanvulling van vorige gegevens |
 | [Eigen voorraad](../glossary.md#term-eigen-voorraad) | Periodiek vanuit WinTree via Excel of CSV | Bestandsinhoud, actualiteit en vervanging of aanvulling |
 | [Eigen externe voorraad](../glossary.md#term-eigen-externe-voorraad) | Periodiek vanuit WinTree via Excel of CSV | Bestandsinhoud, actualiteit en vervanging of aanvulling |
@@ -21,10 +22,28 @@ van WinTree naar Fresh gebruikt periodieke bestanden, net als de andere hierbove
 genoemde WinTree-bronnen. Frequentie en handmatige of automatische bediening van
 die bestandsoverdracht zijn nog niet bepaald.
 
+## Omzetting naar WinTree-codes
+
+De catalogus en de overige voorraadbronnen gebruiken de naamcodes en maatcodes uit de
+[WinTree-basisstam](../glossary.md#term-wintree-basisstam). Externe fictieve
+voorraad wordt aangeleverd met plantnamen, maten en pot-/kluitgegevens. Fresh moet
+deze gegevens omzetten naar de bijbehorende WinTree-naamcodes en -maatcodes voor
+de latere import in het ERP.
+
+De basisstam is daarmee een noodzakelijke referentie voor deze omzetting.
+Hoe Fresh de basisstam ontvangt en actueel houdt, is nog te bepalen. De regels
+voor herkenning, meerdere mogelijke codes, ontbrekende codes en hergebruik van
+menselijke keuzes horen in de eerste relevante productspecificatie.
+
+Het gebruik van naamcodes en maatcodes bepaalt nog niet of hun combinatie een
+volledige productidentiteit vormt. De precieze rol van pot-/kluitgegevens en het
+gebruik van codes in historische verkopen moeten nog worden bevestigd.
+
 ## Verwerking en afnemers
 
-De operationele route omvat voorraad inlezen, marges bepalen en exporteren naar
-WinTree. De inkoper controleert marges en de import in WinTree. Exportformaat,
+De operationele route omvat voorraad inlezen, fictieve voorraad naar WinTree-codes
+omzetten, marges bepalen en exporteren naar WinTree. De inkoper controleert marges
+en de import in WinTree. Exportformaat,
 controlepunten en bevestiging van verwerking in het ERP zijn nog te specificeren.
 
 De commerciële route gebruikt voorraadbronnen en historische verkoopgegevens

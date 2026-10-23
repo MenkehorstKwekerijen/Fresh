@@ -37,6 +37,9 @@ werkzaamheden leggen nog geen accounts, autorisaties of goedkeuringsstappen vast
 De gebruiker heeft de volgende werkzaamheden genoemd:
 
 - Leveranciersbestanden en overige voorraadbronnen inlezen.
+- Externe fictieve voorraad omzetten naar de naamcodes en maatcodes uit de
+  [WinTree-basisstam](glossary.md#term-wintree-basisstam), zodat deze voorraad
+  later snel in WinTree kan worden ingelezen.
 - Leveranciersvoorkeuren en marges vastleggen.
 - [Catalogusbeheer](glossary.md#term-catalogusbeheer): producten en hun gegevens
   beheren, inclusief hun weergave op de website, hoofdstukken, Duitse en Engelse

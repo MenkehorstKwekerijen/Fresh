@@ -42,6 +42,27 @@ Voorraad die automatisch via WinTree wordt ontvangen met TreeCommerce Messenger
 Het ERP van de organisatie. WinTree is de bestemming voor de beoogde
 voorraadexport en het systeem waarlangs TCM-voorraad wordt ontvangen.
 
+## WinTree-basisstam
+
+<a id="term-wintree-basisstam"></a>
+
+De referentiegegevens in WinTree met naamcodes en maatcodes. Deze codes worden
+ook gebruikt door de catalogus en de overige voorraadbronnen naast externe
+fictieve voorraad.
+
+## Naamcode
+
+<a id="term-naamcode"></a>
+
+Een code uit de WinTree-basisstam voor een plantnaam.
+
+## Maatcode
+
+<a id="term-maatcode"></a>
+
+Een code uit de WinTree-basisstam voor een maat. Welke kenmerken de maatcode
+precies omvat, is nog niet uitgewerkt.
+
 ## Catalogusbeheer
 
 <a id="term-catalogusbeheer"></a>
