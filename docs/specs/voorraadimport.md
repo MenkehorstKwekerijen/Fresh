@@ -45,13 +45,16 @@ per bron als volgt bepaald:
 | Bron | Datum voor de vergelijking |
 | --- | --- |
 | Fictief | De [importdatum](../glossary.md#term-importdatum): het bestand inlezen via de importeerfunctie in Fresh |
-| TCM | De datum die in het TCM-Excelbestand staat |
+| TCM | De datum per leverancier die in het TCM-Excelbestand staat; diens regels worden in één keer naar WinTree overgedragen |
 
 Het moment waarop het TCM-bestand in Fresh wordt ingelezen vervangt de datum
-uit dat bestand niet. De overlappende voorraad wordt niet opgeteld.
+uit dat bestand niet. De keuze tussen fictief en TCM geldt voor de volledige
+voorraadlijst van dezelfde leverancier, niet afzonderlijk per productregel.
+De overlappende voorraad wordt niet opgeteld en regels uit de oudere lijst
+worden niet bijgemengd in de gekozen nieuwere lijst.
 
-De exacte veldnamen, het niveau waarop de TCM-datum geldt en de herkenning van
-dezelfde leverancier tussen de routes moeten nog worden uitgewerkt en aan de
+De exacte veldnamen en de herkenning van dezelfde leverancier tussen de routes
+moeten nog worden uitgewerkt en aan de
 bestanden getoetst. Gedrag bij gelijke, ontbrekende of ongeldige datums is nog
 niet besloten. Dit besluit gaat over samenloop van fictief en TCM, niet over
 de verwerking van een ouder bestand binnen dezelfde bron. Ook het opnieuw
@@ -97,8 +100,17 @@ gebruikte voorraad 12, ook als het TCM-bestand op 23 oktober wordt ingelezen.
 Staat bij dezelfde TCM-voorraad in het Excelbestand 23 oktober, dan is TCM
 leidend en is de gebruikte voorraad 20.
 
+<a id="ac-voorraadimport-004"></a>
+
+### Bronkeuze geldt voor de volledige leverancierslijst
+
+Gegeven een oudere TCM-lijst met regels A en B en een nieuwere fictieve lijst
+met alleen A voor dezelfde leverancier, wordt de fictieve lijst gebruikt.
+B wordt niet aangevuld vanuit de oudere TCM-lijst. Bij een nieuwere TCM-lijst
+geldt dezelfde regel met TCM als gekozen bron.
+
 ## Open keuzes
 
-Verdere afbakening, het niveau en uitzonderingsgedrag van de voorraaddatum en
+Verdere afbakening, het uitzonderingsgedrag van de voorraaddatum en
 de hierboven genoemde import- en herstelvragen worden behandeld in
 [issue #4](https://github.com/MenkehorstKwekerijen/Fresh/issues/4).
