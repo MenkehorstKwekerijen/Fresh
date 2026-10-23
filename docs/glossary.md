@@ -69,7 +69,7 @@ Het importgedrag staat in de
 De bewuste keuze om een regel alleen uit de WinTree-export weg te laten,
 met behoud van de interne beschikbaarheid in Fresh voor catalogusbeheer,
 verkoop en assortimentsanalyse. De toepassing staat in de
-[voorraadimportspecificatie](specs/voorraadimport.md#uitsluiten-vanuit-voor-controle).
+[exportspecificatie](specs/wintree-export.md).
 
 ## Wachtlijst voor stamcodes
 
@@ -79,6 +79,14 @@ Bewaarde leveranciersregels die wachten op een ontbrekende naamcode of maatcode
 in de actuele WinTree-basisstam, zodat ze na actualisering van die stam verwerkt
 kunnen worden. Dit is geen bewuste uitsluiting van WinTree-export.
 Het gedrag staat in de [voorraadimportspecificatie](specs/voorraadimport.md#wachtlijst-voor-stamcodes).
+
+## Inkoperscontrole
+
+<a id="term-inkoperscontrole"></a>
+
+De beoordeling door de inkoper vóór vrijgave van de WinTree-export, waarbij
+de inkoper ook regels kan uitsluiten. Het gedrag staat in de
+[exportspecificatie](specs/wintree-export.md).
 
 ## WinTree
 

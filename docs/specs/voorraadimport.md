@@ -202,8 +202,8 @@ het concrete interne gebruik zonder productmatch staat nog open.
 
 Gegeven een nog niet gematchte regel A en een al gematchte regel B in 'Voor controle', kan de
 gebruiker zowel A als B direct uitsluiten van de WinTree-export. Een geslaagde match is geen
-belemmering om B uit te sluiten. Uitgesloten regels komen niet in de WinTree-export; verdere
-exportafspraken staan in [issue #13](https://github.com/MenkehorstKwekerijen/Fresh/issues/13).
+belemmering om B uit te sluiten. De [exportspecificatie](wintree-export.md#ac-wintree-export-002) bepaalt het
+resultaat in het exportbestand.
 
 <a id="ac-voorraadimport-013"></a>
 
@@ -294,5 +294,6 @@ Nog te bepalen in [issue #12](https://github.com/MenkehorstKwekerijen/Fresh/issu
   open bronkeuze en bewaren/herbeoordelen van die keuze bij een volgende import.
 - Historische bewaring, herstel, gelijktijdigheid en behoud van menselijke keuzes.
 
-Exportvrijgave en hergebruik van exportuitsluitingen horen bij
+Exportvrijgave en hergebruik van exportuitsluitingen horen bij de
+[exportspecificatie](wintree-export.md) en
 [issue #13](https://github.com/MenkehorstKwekerijen/Fresh/issues/13).
