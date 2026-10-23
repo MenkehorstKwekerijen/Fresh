@@ -41,9 +41,15 @@ Voorraad die automatisch via WinTree wordt ontvangen met TreeCommerce Messenger
 
 <a id="term-voorraaddatum"></a>
 
-De in het aangeleverde Excel-bestand vermelde datum van de voorraad. Deze datum
-beschrijft de actualiteit van de voorraad, niet het moment waarop Fresh het
-bestand ontvangt. Het niveau waarop de datum geldt, moet nog worden vastgesteld.
+De datum waarmee Fresh de actualiteit van een voorraadbron vergelijkt. De
+herkomst verschilt tussen fictief en TCM en is vastgelegd in de
+[specificatie voorraadimport](specs/voorraadimport.md#leveranciers-en-mogelijke-dubbele-aanlevering).
+
+## Importdatum
+
+<a id="term-importdatum"></a>
+
+De datum waarop een bestand via de importeerfunctie van Fresh wordt ingelezen.
 
 ## WinTree
 

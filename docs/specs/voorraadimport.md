@@ -39,16 +39,23 @@ voorraad en de andere voorraadsoorten. Wel kan één leverancier in theorie zowe
 via een fictief voorraadbestand als via TCM worden ingelezen. Daar komt hetzelfde
 aanbod via twee routes binnen. De aanlevering vermeldt expliciet of het om TCM of
 "inkoop aanbieding" (fictief) gaat. Bij deze samenloop is de bron met de meest
-recente [voorraaddatum](../glossary.md#term-voorraaddatum) leidend. De gebruiker
-heeft bevestigd dat deze datum in het Excel-bestand staat. De uploadvolgorde
-bepaalt dus niet welke bron voorrang krijgt; de overlappende voorraad wordt
-niet opgeteld.
+recente [voorraaddatum](../glossary.md#term-voorraaddatum) leidend. De datum wordt
+per bron als volgt bepaald:
 
-De exacte veldnamen, het niveau waarop de datum geldt en de herkenning van
+| Bron | Datum voor de vergelijking |
+| --- | --- |
+| Fictief | De [importdatum](../glossary.md#term-importdatum): het bestand inlezen via de importeerfunctie in Fresh |
+| TCM | De datum die in het TCM-Excelbestand staat |
+
+Het moment waarop het TCM-bestand in Fresh wordt ingelezen vervangt de datum
+uit dat bestand niet. De overlappende voorraad wordt niet opgeteld.
+
+De exacte veldnamen, het niveau waarop de TCM-datum geldt en de herkenning van
 dezelfde leverancier tussen de routes moeten nog worden uitgewerkt en aan de
 bestanden getoetst. Gedrag bij gelijke, ontbrekende of ongeldige datums is nog
 niet besloten. Dit besluit gaat over samenloop van fictief en TCM, niet over
-de verwerking van een ouder bestand binnen dezelfde bron.
+de verwerking van een ouder bestand binnen dezelfde bron. Ook het opnieuw
+inlezen van hetzelfde fictieve bestand vraagt nog een expliciete afspraak.
 
 ## Keten en herstel
 
@@ -84,10 +91,11 @@ of bron. Dit bepaalt niet of historische gegevens worden bewaard.
 ### De voorraaddatum bepaalt de bronvoorrang
 
 Gegeven hetzelfde aanbod van één leverancier via beide routes, met één regel
-van 20 planten in TCM met voorraaddatum 20 oktober 2026 en 12 planten in fictief
-met voorraaddatum 22 oktober 2026, is fictief leidend en is de gebruikte voorraad
-12, ook als het TCM-bestand later is geüpload. Wanneer in dit voorbeeld de
-bronlabels worden verwisseld, is TCM met de datum van 22 oktober leidend.
+van 20 planten in TCM met datum 20 oktober 2026 in het Excelbestand en 12 planten
+in fictief ingelezen in Fresh op 22 oktober 2026, is fictief leidend en is de
+gebruikte voorraad 12, ook als het TCM-bestand op 23 oktober wordt ingelezen.
+Staat bij dezelfde TCM-voorraad in het Excelbestand 23 oktober, dan is TCM
+leidend en is de gebruikte voorraad 20.
 
 ## Open keuzes
 
