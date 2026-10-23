@@ -93,8 +93,9 @@ staan in de [prijsspecificatie](specs/prijzen.md).
 
 <a id="term-vaste-verkoopprijs"></a>
 
-Een expliciet ingesteld verkoopbedrag, in plaats van een verkoopprijs die met
-een opslagpercentage wordt berekend. Het toepassingsgedrag staat in de
+Een afzonderlijk ingesteld verkoopbedrag voor een product bij een leverancier,
+in plaats van een verkoopprijs die met een opslagpercentage wordt berekend.
+Het toepassingsgedrag staat in de
 [prijsspecificatie](specs/prijzen.md).
 
 ## Standaardmarge van een leverancier
@@ -117,7 +118,7 @@ van die leverancier staat in de [prijsspecificatie](specs/prijzen.md).
 
 <a id="term-margegroep"></a>
 
-Een groep voor prijsinstellingen die aan een product bij een leverancier wordt
+Een groep met een opslagpercentage die aan een product bij een leverancier wordt
 gekoppeld. De actieve margegroep is de gekozen groep voor die combinatie. De inhoud en werking
 van de toewijzing worden vastgelegd in de
 [prijsspecificatie](specs/prijzen.md).

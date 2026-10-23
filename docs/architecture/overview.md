@@ -53,7 +53,9 @@ De gekozen prijswijzen en open vragen over margegroepen staan in de
 [conceptspecificatie prijzen](../specs/prijzen.md). Ingelezen leveranciersvoorraad
 krijgt de standaardmarge van die leverancier op diens inkoopprijs. Afzonderlijke
 margegroeptoewijzingen gelden per product en leverancier en vervangen voor die
-combinatie de standaardmarge, zonder stapeling. Hoe leveranciersprijzen naar een catalogusprijs
+combinatie de standaardmarge, zonder stapeling. Een afzonderlijk ingestelde vaste
+verkoopprijs per product en leverancier vervangt de procentuele berekening en
+blijft gelijk bij gewijzigde inkoopprijzen. Hoe leveranciersprijzen naar een catalogusprijs
 leiden en welke prijzen naar afnemers gaan, moet nog worden uitgewerkt.
 
 Voor margegroeptoewijzing selecteert de gebruiker producten binnen een leverancier

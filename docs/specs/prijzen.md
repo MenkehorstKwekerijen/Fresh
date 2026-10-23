@@ -29,10 +29,22 @@ Bij procentuele opslag geldt:
 
 `verkoopprijs = inkoopprijs × (1 + opslagpercentage / 100)`
 
-Bij een vaste verkoopprijs is het expliciet ingestelde bedrag de verkoopprijs.
-Een brutomargepercentage over de verkoopprijs is niet als prijswijze gekozen.
-Hoe beide gekozen prijswijzen in de margegroep of op het product worden
-vastgelegd, is nog te bepalen; de wens voor een vaste verkoopprijs blijft gelden.
+Margegroepen bepalen de procentuele opslag. Een vaste verkoopprijs wordt
+afzonderlijk ingesteld voor een product bij een leverancier. Dat bedrag vervangt
+de procentuele berekening: er wordt geen groeps- of leveranciersopslag bovenop
+toegepast. Een brutomargepercentage over de verkoopprijs is niet als prijswijze gekozen.
+
+| Toepasselijke instelling voor product en leverancier | Verkoopprijs |
+| --- | --- |
+| Vaste verkoopprijs ingesteld | Het ingestelde bedrag |
+| Geen vaste prijs, wel een toegewezen margegroep | Inkoopprijs met het groepspercentage |
+| Geen vaste prijs of toegewezen groep | Inkoopprijs met de leveranciersstandaard |
+
+Bij een vaste verkoopprijs van EUR 15,00 blijft de verkoopprijs EUR 15,00 als
+de inkoopprijs van EUR 10,00 naar EUR 11,00 verandert. Deze instelling geldt
+alleen bij die leverancier. Het bewaren of verwijderen van een groepskoppeling
+bij omschakelen naar een vaste prijs en het terugschakelen naar procentuele
+berekening moeten nog worden uitgewerkt.
 
 ### Standaardmarge per leverancier
 
@@ -45,8 +57,9 @@ EUR 14,00. De leveranciersinstelling van A geldt niet voor B.
 
 Een [individuele margeregel](../glossary.md#term-individuele-margeregel) voor
 een product bij een leverancier gaat voor de standaardmarge van die leverancier.
-Een expliciet toegewezen productgroep vervangt daarmee de standaardmarge voor
-die combinatie. Zonder individuele regel geldt de standaardmarge.
+Bij procentuele berekening vervangt een expliciet toegewezen productgroep
+daarmee de standaardmarge voor die combinatie. Zonder individuele regel geldt
+de standaardmarge.
 De marges worden niet opgeteld en niet na elkaar toegepast. Standaard 30 procent
 en een individuele regel van 40 procent bij EUR 10,00 inkoop geeft EUR 14,00.
 Dit geldt ook als de individuele opslag lager is dan de standaardmarge.
@@ -100,7 +113,8 @@ margegroep wijzigen, is nog open.
 
 ## Keten en herstel
 
-De leveranciersberekening gebruikt de inkoopprijs van de betreffende leverancier.
+De procentuele leveranciersberekening gebruikt de inkoopprijs van de betreffende
+leverancier; een vaste verkoopprijs blijft het ingestelde bedrag.
 Hoe meerdere leveranciersprijzen leiden tot een catalogusprijs en of deze keuze
 samenhangt met de leveranciersvoorkeur moet nog worden besloten.
 
@@ -228,7 +242,7 @@ aan dat product bij A de margegroeptoewijzing bij B niet.
 ### Een individuele margeregel vervangt de leveranciersstandaard
 
 Gegeven leverancier A met standaardmarge 30 procent en een product bij A met
-inkoopprijs EUR 10,00 en een toegewezen margegroep van 40 procent, berekent
+inkoopprijs EUR 10,00, geen vaste verkoopprijs en een toegewezen margegroep van 40 procent, berekent
 Fresh EUR 14,00. Fresh stapelt de marges niet en vraagt geen conflictkeuze
 tussen de productregel en de leveranciersstandaard.
 
@@ -237,8 +251,33 @@ tussen de productregel en de leveranciersstandaard.
 ### Een lagere individuele marge gaat ook voor
 
 Gegeven leverancier A met standaardmarge 30 procent en een product bij A met
-inkoopprijs EUR 10,00 en een toegewezen margegroep van 20 procent, berekent
+inkoopprijs EUR 10,00, geen vaste verkoopprijs en een toegewezen margegroep van 20 procent, berekent
 Fresh EUR 12,00. De hogere leveranciersstandaard verdringt de productregel niet.
+
+<a id="ac-prijzen-021"></a>
+
+### Een vaste verkoopprijs vervangt de procentuele berekening
+
+Gegeven een product bij A met inkoopprijs EUR 10,00, standaardmarge 30 procent,
+een groepspercentage van 40 procent en een ingestelde vaste verkoopprijs
+EUR 15,00, is de verkoopprijs EUR 15,00. De percentages worden niet toegepast.
+
+<a id="ac-prijzen-022"></a>
+
+### Een vaste verkoopprijs blijft gelijk bij gewijzigde inkoopprijs
+
+Gegeven een product bij A met vaste verkoopprijs EUR 15,00, blijft de
+verkoopprijs EUR 15,00 wanneer diens inkoopprijs van EUR 10,00 naar EUR 11,00
+verandert.
+
+<a id="ac-prijzen-023"></a>
+
+### Een vaste verkoopprijs geldt alleen bij de gekozen leverancier
+
+Gegeven hetzelfde product bij A en B, beide met inkoopprijs EUR 10,00,
+waarbij B zonder individuele regel een standaardmarge van 30 procent gebruikt,
+geeft het instellen van vaste verkoopprijs EUR 15,00 bij A een verkoopprijs
+van EUR 15,00 bij A. De verkoopprijs bij B blijft EUR 13,00.
 
 ## Open keuzes
 
@@ -249,8 +288,8 @@ hoofdstukactie blijven open. Automatische uitbreiding van een handmatige
 selectie is niet gekozen; voorraad zonder individuele regel valt onder de
 leveranciersstandaard. Herkenning van bestaande productinstellingen bij nieuwe
 imports vraagt nog uitwerking.
-Inhoud van margegroepen en de plaats van vaste verkoopprijzen, gedrag bij geen
-kandidaat of een nog open keuze, gevolgen van gewijzigde groepsinhoud, afronding,
+Omschakelen tussen vaste prijs en procentuele berekening, gedrag bij geen
+kandidaat of een nog open keuze, gevolgen van gewijzigde groepspercentages, afronding,
 de basis van bedragen (zoals belasting en bijkomende kosten), ontbrekende
 inkoopprijzen en de hierboven genoemde ketengevolgen worden uitgewerkt in
 [issue #6](https://github.com/MenkehorstKwekerijen/Fresh/issues/6).

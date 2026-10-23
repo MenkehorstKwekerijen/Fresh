@@ -42,7 +42,8 @@ De gebruiker heeft de volgende werkzaamheden genoemd:
   later snel in WinTree kan worden ingelezen.
 - Leveranciersvoorkeuren vastleggen.
 - [Prijsinstellingen](specs/prijzen.md) voor opslag op inkoop en vaste
-  verkoopprijzen vastleggen; margegroepen aanmaken en toewijzen voor individuele
+  verkoopprijzen vastleggen. Vaste verkoopprijzen worden afzonderlijk per product
+  en leverancier ingesteld; margegroepen bepalen percentages. Margegroepen aanmaken en toewijzen voor individuele
   producten, zelf geselecteerde producten binnen een leverancier en hele
   catalogushoofdstukken, ook met een bulkactie. Bij de leveranciersselectie
   gebruikt de gebruiker filters op actueel fictief/TCM-aanbod en verkoopgeschiedenis.
