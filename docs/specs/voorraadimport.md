@@ -47,15 +47,18 @@ De gebruiker heeft de volgende volgorde gekozen:
 | Stap | Handeling |
 | --- | --- |
 | 1 | Bestand en leverancier selecteren |
-| 2 | Kolomtoewijzing |
-| 3 | Verwerken |
-| 4 | Niet-gematchte regels matchen met naamcodes en maatcodes |
-| 5 | Bestand verwerken |
+| 2 | Kolommen toewijzen, met vooringevulde leveranciersinstellingen en waarschuwingen |
+| 3 | Bestand uitlezen, controleren en automatisch proberen te matchen |
+| 4 | Resterende regels handmatig matchen met naamcodes en maatcodes |
+| 5 | Import definitief verwerken: nieuwe voorraad opslaan en vorige stand vervangen |
 
-Het onderscheid tussen de verwerking in stap 3 en stap 5, inclusief het moment
-waarop actuele voorraad wordt vervangen, moet nog worden verduidelijkt. Deze
-volgorde bepaalt nog niet de automatische matchregels of het gedrag wanneer
-regels na stap 4 ongematcht blijven.
+Tot en met stap 4 blijft de actuele voorraad ongewijzigd. Ook controles,
+prijscorrecties en handmatige matches in de importvoorbereiding vervangen de
+vorige voorraad niet. Alleen de definitieve verwerking in stap 5 actualiseert
+de voorraad volgens de vervangingsregel. De eerder vastgelegde prijsblokkades
+blijven gelden.
+De automatische matchregels en het gedrag wanneer regels na stap 4 ongematcht
+blijven, moeten nog worden uitgewerkt.
 
 ### Kolomtoewijzing in stap 2
 
@@ -218,9 +221,20 @@ De gebruiker kan haar controleren en aanpassen. Fresh controleert de inhoud
 van dit nieuwe bestand opnieuw; de toewijzing van A wordt niet als instelling
 voor een andere leverancier gebruikt.
 
+<a id="ac-voorraadimport-011"></a>
+
+### Alleen stap 5 vervangt de actuele voorraad
+
+Gegeven een actuele leverancierslijst met 20 planten en een nieuw bestand met
+12 planten voor dezelfde regel, leest en controleert stap 3 het nieuwe bestand
+en probeert Fresh automatisch naam- en maatcodes te matchen. Stap 4 laat de
+gebruiker resterende matches oplossen. De actuele voorraad blijft tijdens deze
+voorbereiding 20. Na succesvolle definitieve verwerking in stap 5 is de actuele
+voorraad 12; het nieuwe bestand vervangt dan de vorige stand.
+
 ## Open keuzes
 
-Gedrag bij gewijzigde bestandsstructuur, het onderscheid tussen stap 3 en 5,
+Gedrag bij gewijzigde bestandsstructuur,
 automatische matching en resterende ongematchte regels na stap 4,
 verdere afbakening, de vergelijking van inhoud, het gedrag zolang een bronkeuze
 openstaat en het bewaren en opnieuw beoordelen van die keuze bij nieuwe import,
