@@ -49,6 +49,11 @@ omzetten, marges bepalen en exporteren naar WinTree. De inkoper controleert marg
 en de import in WinTree. Exportformaat,
 controlepunten en bevestiging van verwerking in het ERP zijn nog te specificeren.
 
+De gekozen prijswijzen en open vragen over margegroepen staan in de
+[conceptspecificatie prijzen](../specs/prijzen.md). De keuze van de gebruikte
+inkoopprijs en de overdracht van berekende prijzen naar afnemers zijn nog uit
+te werken.
+
 De commerciële route gebruikt voorraadbronnen en historische verkoopgegevens
 voor leveranciersvoorkeuren en assortimentskeuzes. Catalogusbeheer omvat de
 productgegevens en websiteweergave uit de projectbasis. De website leest nu

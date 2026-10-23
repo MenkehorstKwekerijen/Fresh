@@ -40,7 +40,9 @@ De gebruiker heeft de volgende werkzaamheden genoemd:
 - Externe fictieve voorraad omzetten naar de naamcodes en maatcodes uit de
   [WinTree-basisstam](glossary.md#term-wintree-basisstam), zodat deze voorraad
   later snel in WinTree kan worden ingelezen.
-- Leveranciersvoorkeuren en marges vastleggen.
+- Leveranciersvoorkeuren vastleggen.
+- [Prijsinstellingen](specs/prijzen.md) voor opslag op inkoop en vaste
+  verkoopprijzen vastleggen; margegroepen aanmaken en toewijzen.
 - [Catalogusbeheer](glossary.md#term-catalogusbeheer): producten en hun gegevens
   beheren, inclusief hun weergave op de website, hoofdstukken, Duitse en Engelse
   vertalingen en filters.

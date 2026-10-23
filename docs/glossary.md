@@ -79,6 +79,22 @@ Een code uit de WinTree-basisstam voor een plantnaam.
 Een code uit de WinTree-basisstam voor een maat. Welke kenmerken de maatcode
 precies omvat, is nog niet uitgewerkt.
 
+## Opslag op inkoop
+
+<a id="term-opslag-op-inkoop"></a>
+
+Een procentuele verhoging van de inkoopprijs om de verkoopprijs te bepalen.
+Het percentage heeft de inkoopprijs als grondslag. Berekening en voorbeelden
+staan in de [prijsspecificatie](specs/prijzen.md).
+
+## Vaste verkoopprijs
+
+<a id="term-vaste-verkoopprijs"></a>
+
+Een expliciet ingesteld verkoopbedrag, in plaats van een verkoopprijs die met
+een opslagpercentage wordt berekend. Het toepassingsgedrag staat in de
+[prijsspecificatie](specs/prijzen.md).
+
 ## Catalogusbeheer
 
 <a id="term-catalogusbeheer"></a>
