@@ -53,6 +53,33 @@ herkomst verschilt tussen fictief en TCM en is vastgelegd in de
 
 De datum waarop een bestand via de importeerfunctie van Fresh wordt ingelezen.
 
+## Kolomtoewijzing
+
+<a id="term-kolomtoewijzing"></a>
+
+Het koppelen van kolommen uit een importbestand aan de gegevens die Fresh
+verwacht, zoals plantnaam, maat en inkoopprijs. Ook kolommapping genoemd.
+Het importgedrag staat in de
+[voorraadimportspecificatie](specs/voorraadimport.md#kolomtoewijzing-in-stap-2).
+
+## Uitsluiten van WinTree-export
+
+<a id="term-uitsluiten-wintree-export"></a>
+
+De bewuste keuze om een regel alleen uit de WinTree-export weg te laten,
+met behoud van de interne beschikbaarheid in Fresh voor catalogusbeheer,
+verkoop en assortimentsanalyse. De toepassing staat in de
+[voorraadimportspecificatie](specs/voorraadimport.md#uitsluiten-vanuit-voor-controle).
+
+## Wachtlijst voor stamcodes
+
+<a id="term-wachtlijst-stamcodes"></a>
+
+Bewaarde leveranciersregels die wachten op een ontbrekende naamcode of maatcode
+in de actuele WinTree-basisstam, zodat ze na actualisering van die stam verwerkt
+kunnen worden. Dit is geen bewuste uitsluiting van WinTree-export.
+Het gedrag staat in de [voorraadimportspecificatie](specs/voorraadimport.md#wachtlijst-voor-stamcodes).
+
 ## WinTree
 
 <a id="term-wintree"></a>

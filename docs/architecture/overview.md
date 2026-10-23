@@ -38,6 +38,10 @@ deze referentie actueel houdt en gewijzigde codes verwerkt, is nog te bepalen. D
 voor herkenning, meerdere mogelijke codes, ontbrekende codes en hergebruik van
 menselijke keuzes horen in de eerste relevante productspecificatie.
 
+Een [wachtlijst voor stamcodes](../specs/voorraadimport.md#wachtlijst-voor-stamcodes)
+verbindt leveranciersregels met latere basisstamupdates. De voorraadimportspecificatie
+bezit matching, vervanging en behoud van de actuele wachtlijst.
+
 Het gebruik van naamcodes en maatcodes bepaalt nog niet of hun combinatie een
 volledige productidentiteit vormt. De precieze rol van pot-/kluitgegevens en het
 gebruik van codes in historische verkopen moeten nog worden bevestigd.
