@@ -1,0 +1,51 @@
+# Bedrijfsbegrippen
+
+Deze glossary bezit de besloten betekenis van bedrijfsbegrippen in Fresh.
+De eerste definities komen uit de gebruikersantwoorden vastgelegd in
+[issue #4](https://github.com/MenkehorstKwekerijen/Fresh/issues/4).
+Verwerkingsregels en berekeningen horen in productspecificaties.
+
+## Externe fictieve voorraad
+
+<a id="term-externe-fictieve-voorraad"></a>
+
+Externe voorraad waarvan leveranciers periodiek Excel- of CSV-bestanden
+aanleveren. Het aanleverritme verschilt per leverancier, bijvoorbeeld wekelijks
+of tweewekelijks.
+
+## Eigen voorraad
+
+<a id="term-eigen-voorraad"></a>
+
+Bomen of struiken in pot van de eigen containervelden en kluitplanten van de
+eigen percelen.
+
+## Eigen externe voorraad
+
+<a id="term-eigen-externe-voorraad"></a>
+
+Voorraad die al is ingekocht maar nog bij een leverancier staat, bijvoorbeeld
+reeds gekochte bomen.
+
+## TCM-voorraad
+
+<a id="term-tcm-voorraad"></a>
+
+Voorraad die automatisch via WinTree wordt ontvangen met TreeCommerce Messenger
+(TCM). Deze definitie bepaalt nog niet hoe Fresh die gegevens uit WinTree krijgt.
+
+## WinTree
+
+<a id="term-wintree"></a>
+
+Het ERP van de organisatie. WinTree is de bestemming voor de beoogde
+voorraadexport en het systeem waarlangs TCM-voorraad wordt ontvangen.
+
+## Catalogusbeheer
+
+<a id="term-catalogusbeheer"></a>
+
+Het beheren van producten, hun gegevens en hun weergave op de website, inclusief
+hoofdstukken, Duitse en Engelse vertalingen en filters. Dit omvat productupdates
+via Excel-lijsten en afzonderlijke producten toevoegen. De overdracht naar de
+website is een afzonderlijk uit te werken systeemgrens.

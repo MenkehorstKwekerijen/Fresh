@@ -1,0 +1,62 @@
+# Productbasis van Fresh
+
+Dit document bezit productdoel, gebruikers, scope en algemene kwaliteitseisen.
+Het bevat de eerste gebruikersbesluiten uit [issue #4](https://github.com/MenkehorstKwekerijen/Fresh/issues/4).
+Open keuzes zijn nog geen productregels of bouwopdrachten.
+
+## Doel
+
+Fresh moet [externe fictieve voorraad](glossary.md#term-externe-fictieve-voorraad)
+efficiënt en snel kunnen inlezen, marges laten bepalen en uitvoer leveren voor
+[WinTree](glossary.md#term-wintree).
+
+Daarnaast moet Fresh voorraadgegevens en historische verkoopgegevens gebruiken
+om leveranciersvoorkeuren te bepalen en keuzes en analyses voor het assortiment
+van de online catalogus te ondersteunen. De gegevensbronnen en afnemers staan
+in het [ketenoverzicht](architecture/overview.md).
+
+Herhaaldelijke menselijke keuzes moeten slim worden geautomatiseerd. De aandacht
+van de gebruiker moet uitgaan naar aandachtspunten en noodzakelijke controles.
+Welke keuzes automatisch mogen worden uitgevoerd, vraagt concrete afspraken;
+er is nog geen algoritme of leertechniek gekozen.
+
+## Gebruikers en gebruik
+
+| Werkzaamheid | Gebruiker |
+| --- | --- |
+| Voorraad inlezen | De persoon die voorraadbestanden verwerkt |
+| Marges en import in WinTree controleren | De inkoper |
+| Commerciële keuzes voor het websiteassortiment maken | De assortimentsbeheerder |
+
+Meerdere mensen moeten gelijktijdig acties kunnen uitvoeren: ongeveer drie tot
+vier wijzigende gebruikers, met daarnaast gebruikers die alleen lezen. Deze
+werkzaamheden leggen nog geen accounts, autorisaties of goedkeuringsstappen vast.
+
+## Eerste bruikbare versie
+
+De gebruiker heeft de volgende werkzaamheden genoemd:
+
+- Leveranciersbestanden en overige voorraadbronnen inlezen.
+- Leveranciersvoorkeuren en marges vastleggen.
+- [Catalogusbeheer](glossary.md#term-catalogusbeheer): producten en hun gegevens
+  beheren, inclusief hun weergave op de website, hoofdstukken, Duitse en Engelse
+  vertalingen en filters.
+- Productupdates via Excel-lijsten verwerken en afzonderlijke producten toevoegen.
+
+Export naar WinTree hoort bij het productdoel. De exacte exportafspraak en de
+grens tussen catalogusbeheer en daadwerkelijke websitepublicatie moeten nog
+worden uitgewerkt. Ook de eerste oplevering van verkoopanalyse en automatisering
+en expliciet uitgestelde functies zijn nog niet afgebakend.
+
+## Algemene kwaliteitseisen
+
+- Inlezen en dagelijks werk moeten efficiënt en snel verlopen. Aantallen en
+  meetbare responstijden worden bepaald met representatieve werkvoorbeelden.
+- Gelijktijdig werken moet worden ondersteund; conflictgedrag wordt gespecificeerd
+  voordat gedeelde gegevens kunnen worden gewijzigd.
+- Terugkerend handwerk moet afnemen, met gerichte aandacht voor noodzakelijke
+  menselijke keuzes en controles.
+
+Technische voorstellen staan bij de [architectuurkeuzes](architecture/overview.md#technische-richting).
+Open productvragen en besluiten worden behandeld in
+[issue #4](https://github.com/MenkehorstKwekerijen/Fresh/issues/4).

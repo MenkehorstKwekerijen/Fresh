@@ -1,8 +1,12 @@
 # Fresh
 
-Fresh begint met een compacte, spec driven ontwikkelwerkwijze. Dit repository bevat
-de procesbasis; productregels en de applicatiestack zijn nog niet vastgesteld.
+Fresh ondersteunt voorraadverwerking, marges en commerciële assortimentskeuzes.
+Dit repository bevat de ontwikkelwerkwijze en de eerste productafspraken;
+de applicatie is nog niet gebouwd.
 
+- **Productdoel en scope:** lees [de projectbasis](docs/project.md).
+- **Bedrijfsbegrippen:** zie [de glossary](docs/glossary.md).
+- **Gegevensketen:** zie [het architectuuroverzicht](docs/architecture/overview.md).
 - **Bijdragen:** lees [de werkwijze](docs/workflow.md).
 - **Als agent:** begin bij [AGENTS.md](AGENTS.md).
 - **Document maken:** gebruik de [documentafspraken](docs/documentation.md).
