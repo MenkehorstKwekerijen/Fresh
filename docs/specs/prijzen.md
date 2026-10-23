@@ -26,15 +26,26 @@ Een brutomargepercentage over de verkoopprijs is niet als prijswijze gekozen.
 
 Margegroepen kunnen worden aangemaakt. Toewijzing is beschikbaar voor individuele
 producten, leveranciers en catalogushoofdstukken, ook als bulkactie op een
-selectie. De inhoud van een groep en de voorrang tussen groepsinstellingen en
-afzonderlijke instellingen zijn nog niet bepaald.
+selectie. De inhoud van een groep en de verhouding tussen een groepsinstelling
+en een afzonderlijke instelling op hetzelfde niveau zijn nog niet bepaald.
 
 De toewijzing aan een leverancier of hoofdstuk is blijvend. Ook later toegevoegde
 producten vallen automatisch onder de toepasselijke margegroep, zonder een
-nieuwe bulkactie. Welke instelling uiteindelijk geldt bij meerdere toepasselijke
-toewijzingen, wordt bepaald door nog vast te stellen voorrangsregels.
+nieuwe bulkactie.
 
-Als die regels geen eenduidige prijsinstelling opleveren, toont Fresh een duidelijk
+### Voorrang tussen niveaus
+
+De vaste volgorde is **product, leverancier, hoofdstuk**. Een toepasselijke
+productinstelling gaat voor een leveranciersinstelling; een leveranciersinstelling
+gaat voor een hoofdstukinstelling. Alleen als op het hogere niveau geen
+toepasselijke instelling is vastgelegd, wordt het volgende niveau gebruikt.
+Normale overlap tussen deze niveaus vraagt geen handmatige keuze.
+
+Er is nog geen standaardinstelling besloten voor het geval alle drie ontbreken.
+Meerdere instellingen op hetzelfde niveau en een ongeldige instelling zijn ook
+nog uit te werken; die situaties zijn niet automatisch gelijk aan ontbreken.
+
+Als de regels geen eenduidige prijsinstelling opleveren, toont Fresh een duidelijk
 aandachtspunt met de betrokken instellingen en hun herkomst. Fresh kiest in dat
 geval niet stilzwijgend een instelling. Wat vóór oplossing gebeurt met een reeds
 bestaande prijs of een export, moet nog worden bepaald.
@@ -88,7 +99,7 @@ toewijzen. De directe toewijzing van het niet-geselecteerde onderdeel C verander
 Gegeven een leverancier of hoofdstuk met toegewezen margegroep G, valt een later
 toegevoegd product dat bij die leverancier of dat hoofdstuk hoort automatisch
 onder G, zonder een nieuwe toewijzingsactie. Eventuele andere toepasselijke
-instellingen worden volgens de nog vast te stellen voorrangsregels beoordeeld.
+instellingen worden volgens de [vaste niveauvolgorde](#voorrang-tussen-niveaus) beoordeeld.
 
 <a id="ac-prijzen-006"></a>
 
@@ -99,9 +110,25 @@ waarvoor de vastgestelde voorrangsregels geen eenduidige keuze opleveren, toont
 Fresh een aandachtspunt met de betrokken instellingen en hun herkomst. Er wordt
 niet stilzwijgend één van die instellingen gekozen.
 
+<a id="ac-prijzen-007"></a>
+
+### Product gaat voor leverancier en leverancier voor hoofdstuk
+
+Gegeven een inkoopprijs van EUR 10,00 gelden de volgende uitkomsten bij
+eenduidige, geldige instellingen op de genoemde niveaus:
+
+| Product | Leverancier | Hoofdstuk | Toegepaste instelling | Verkoopprijs |
+| --- | --- | --- | --- | --- |
+| 40% opslag | 30% opslag | 20% opslag | Product | EUR 14,00 |
+| Geen | 30% opslag | 20% opslag | Leverancier | EUR 13,00 |
+| Geen | Geen | 20% opslag | Hoofdstuk | EUR 12,00 |
+
+Deze gevallen vragen geen handmatige keuze vanwege de overlap tussen niveaus.
+
 ## Open keuzes
 
-Inhoud van margegroepen, voorrangsregels, gedrag zolang een prijskeuze openstaat,
+Inhoud van margegroepen, meerdere instellingen op hetzelfde niveau, het ontbreken
+van alle instellingen, gedrag zolang een prijskeuze openstaat,
 afronding, de basis van
 bedragen (zoals belasting en bijkomende kosten), ontbrekende inkoopprijzen en
 de hierboven genoemde ketengevolgen worden uitgewerkt in
