@@ -30,6 +30,15 @@ geldt ook voor handmatig ingestelde vaste verkoopprijzen, afronding,
 vergelijkingsprijzen en getoonde prijsverschillen. Alle prijsvoorbeelden in deze
 specificatie gebruiken bedragen exclusief btw.
 
+### Inkoopprijs en bijkomende kosten
+
+In de eerste versie is de inkoopprijs uit het leveranciersbestand de rekenbasis
+voor de procentuele opslag. Fresh telt geen afzonderlijke transportkosten of
+andere bijkomende kosten bij deze rekenbasis op. De gebruiker houdt met die
+kosten rekening bij het kiezen van de leveranciersstandaard of het percentage
+van een individuele margegroep. Deze afspraak geldt ook voor de procentuele
+vergelijkingsprijs achter een vaste verkoopprijs.
+
 ### Prijswijzen
 
 Bij procentuele opslag geldt:
@@ -624,6 +633,17 @@ blijft die vaste prijs gelden en is het verschil met de berekende prijs
 EUR 0,93 exclusief btw. Er wordt voor deze berekening of vergelijking geen btw
 aan de bedragen toegevoegd.
 
+<a id="ac-prijzen-048"></a>
+
+### Overige kosten worden via het opslagpercentage verwerkt
+
+Gegeven een inkoopprijs van EUR 10,00 exclusief btw uit het leveranciersbestand
+en 30 procent opslag, is de berekende verkoopprijs EUR 13,00 exclusief btw.
+Ook als de gebruiker daarnaast EUR 1,00 transportkosten verwacht, voegt Fresh
+die niet afzonderlijk aan de rekenbasis toe. De gebruiker kan voor dekking van
+die kosten het toepasselijke opslagpercentage aanpassen; Fresh blijft rekenen
+vanaf de inkoopprijs uit het bestand.
+
 ## Open keuzes
 
 Het achteraf verwijderen van een standaardmarge bij bestaande voorraad en de
@@ -635,7 +655,7 @@ leveranciersstandaard. Herkenning van bestaande productinstellingen bij nieuwe
 imports vraagt nog uitwerking.
 Gedrag bij geen
 kandidaat of een nog open keuze, behoudkeuzes na wijzigingen van vaste prijs of prijswijze,
-de verwerking van bijkomende kosten, bronbestanden met bedragen inclusief btw,
+bronbestanden met bedragen inclusief btw,
 ontbrekende
 inkoopprijzen en de hierboven genoemde ketengevolgen worden uitgewerkt in
 [issue #6](https://github.com/MenkehorstKwekerijen/Fresh/issues/6).
