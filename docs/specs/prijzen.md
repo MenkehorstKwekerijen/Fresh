@@ -100,6 +100,14 @@ of aangemaakt. Het percentage wordt per leverancier beheerd: een wijziging bij
 leverancier A wijzigt de standaardmarge van leverancier B niet, ook niet als zij
 voorheen hetzelfde percentage hadden.
 
+Vóór het inlezen van een leveranciersvoorraadlijst controleert Fresh of voor
+die leverancier een standaardmarge is ingesteld. Ontbreekt die, dan wordt het
+inlezen geblokkeerd met de melding: "Stel eerst een standaardmarge in voor
+leverancier [naam] voordat je voorraad inleest." De vorige voorraadstand wordt
+door deze geblokkeerde import niet vervangen. Fresh vult geen percentage in.
+Na het instellen van de standaardmarge vervalt deze blokkade; de overige
+importcontroles blijven gelden.
+
 Bij het inlezen van voorraadlijsten in Fresh wordt de ingestelde standaardmarge
 van de betreffende leverancier toegepast op diens inkoopprijzen. Bijvoorbeeld:
 zonder afwijkende productinstellingen geeft EUR 10,00 inkoop bij leverancier A
@@ -117,8 +125,6 @@ en een individuele regel van 40 procent bij EUR 10,00 inkoop geeft EUR 14,00.
 Dit geldt ook als de individuele opslag lager is dan de standaardmarge.
 De berekening geeft voorrang aan de individuele regel zonder een conflictkeuze
 tussen die regel en de standaardmarge te vragen.
-
-Of de standaardmarge zelf als margegroep wordt beheerd, moet nog worden besloten.
 
 ### Producten selecteren en toewijzen
 
@@ -198,8 +204,9 @@ bedrag geven geen nieuwe melding. Opnieuw behouden neemt de dan beoordeelde
 berekende prijs als nieuwe grens.
 
 Wat prijswijze- of vaste-prijswijzigingen met een eerdere behoudkeuze doen,
-moet nog worden bepaald. Ook gedrag bij een ontbrekende leveranciersstandaard
-zonder groepskoppeling blijft open; Fresh neemt daarvoor geen percentage aan.
+moet nog worden bepaald. Gedrag bij het achteraf verwijderen van een
+leveranciersstandaard bij bestaande voorraad blijft open; Fresh neemt daarvoor
+geen percentage aan. Voor nieuwe imports geldt de hierboven beschreven blokkade.
 
 ## Keten en herstel
 
@@ -589,9 +596,21 @@ de standaard gebruiken worden volgens de bestaande herberekeningsregels
 bijgewerkt; een individueel toegewezen groep blijft voorgaan en een vaste
 verkoopprijs blijft exact staan.
 
+<a id="ac-prijzen-046"></a>
+
+### Een ontbrekende standaardmarge blokkeert het inlezen
+
+Gegeven een voorraadlijst voor leverancier A zonder ingestelde standaardmarge,
+blokkeert Fresh het inlezen en vermeldt dat eerst een standaardmarge voor A moet
+worden ingesteld. Er wordt geen percentage aangenomen en een eventuele vorige
+voorraadstand van A blijft behouden. Na het instellen van de standaardmarge
+blokkeert deze ontbrekende instelling de import niet meer; andere importfouten
+worden daardoor niet overgeslagen.
+
 ## Open keuzes
 
-Gedrag bij een ontbrekende standaardmarge moet nog worden bepaald. Concrete
+Het achteraf verwijderen van een standaardmarge bij bestaande voorraad en de
+afhandeling van een bestand met meerdere leveranciers moeten nog worden bepaald. Concrete
 verkoopfilters, combinatie met actueel aanbod en leveranciersbereik van een
 hoofdstukactie blijven open. Automatische uitbreiding van een handmatige
 selectie is niet gekozen; voorraad zonder individuele regel valt onder de

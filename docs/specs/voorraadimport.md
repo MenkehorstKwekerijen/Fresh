@@ -29,6 +29,11 @@ Deze afspraak bepaalt geen vervangingsgedrag voor historische verkoopgegevens,
 de WinTree-basisstam of catalogusupdates. De bestandsvelden die bepalen bij welke
 leverancier of bron een bestand hoort, moeten nog worden uitgewerkt.
 
+Voor leveranciersvoorraadlijsten geldt vóór het inlezen de
+[controle op een ingestelde standaardmarge](prijzen.md#ac-prijzen-046).
+Bij deze blokkade vindt geen vervanging van de bestaande voorraad plaats.
+De afhandeling van een bestand met meerdere leveranciers wordt nog uitgewerkt.
+
 ### Leveranciers en mogelijke dubbele aanlevering
 
 Dezelfde soort en maat kunnen bij verschillende leveranciers beschikbaar zijn.
