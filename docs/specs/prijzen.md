@@ -43,10 +43,17 @@ met 30 procent opslag een berekende verkoopprijs van EUR 13,00. Hetzelfde
 product met EUR 10,00 inkoop bij leverancier B met 40 procent opslag geeft
 EUR 14,00. De leveranciersinstelling van A geldt niet voor B.
 
-De standaardmarge en een expliciet gekozen margegroep zijn onderscheiden
-instellingen. Of een productgroep de standaardmarge vervangt, en of de
-standaardmarge zelf als margegroep wordt beheerd, moet nog worden besloten.
-Er wordt geen optelling of andere combinatie van marges aangenomen.
+Een [individuele margeregel](../glossary.md#term-individuele-margeregel) voor
+een product bij een leverancier gaat voor de standaardmarge van die leverancier.
+Een expliciet toegewezen productgroep vervangt daarmee de standaardmarge voor
+die combinatie. Zonder individuele regel geldt de standaardmarge.
+De marges worden niet opgeteld en niet na elkaar toegepast. Standaard 30 procent
+en een individuele regel van 40 procent bij EUR 10,00 inkoop geeft EUR 14,00.
+Dit geldt ook als de individuele opslag lager is dan de standaardmarge.
+De berekening geeft voorrang aan de individuele regel zonder een conflictkeuze
+tussen die regel en de standaardmarge te vragen.
+
+Of de standaardmarge zelf als margegroep wordt beheerd, moet nog worden besloten.
 
 ### Producten selecteren en toewijzen
 
@@ -67,9 +74,9 @@ verkoopfilters, periode en combinatie met actueel aanbod zijn nog te bepalen.
 Margegroepen kunnen worden aangemaakt en aan producten toegewezen. Verschillende
 toewijzingen kunnen [kandidaat-margegroepen](../glossary.md#term-kandidaat-margegroep)
 voor hetzelfde product bij dezelfde leverancier opleveren. Verschillende
-groepen bij verschillende leveranciers zijn geen conflict. De eerdere
-voorrangsvolgorde product, leverancier, hoofdstuk geldt niet. De verhouding
-tot de standaardmarge moet nog worden bepaald.
+groepen bij verschillende leveranciers zijn geen conflict. De voorrang van
+een individuele regel op de leveranciersstandaard staat hierboven. Een
+hoofdstuk is een route voor groepstoewijzing en vormt geen extra prijsniveau.
 
 Wanneer toewijzingen dezelfde groep opleveren, is dat één kandidaat. Bij
 verschillende kandidaten krijgt de gebruiker een duidelijk aandachtspunt en
@@ -216,15 +223,32 @@ niet gebruikt voor het aanbod van B.
 Gegeven hetzelfde product bij A en B, verandert het toewijzen van groep G
 aan dat product bij A de margegroeptoewijzing bij B niet.
 
+<a id="ac-prijzen-019"></a>
+
+### Een individuele margeregel vervangt de leveranciersstandaard
+
+Gegeven leverancier A met standaardmarge 30 procent en een product bij A met
+inkoopprijs EUR 10,00 en een toegewezen margegroep van 40 procent, berekent
+Fresh EUR 14,00. Fresh stapelt de marges niet en vraagt geen conflictkeuze
+tussen de productregel en de leveranciersstandaard.
+
+<a id="ac-prijzen-020"></a>
+
+### Een lagere individuele marge gaat ook voor
+
+Gegeven leverancier A met standaardmarge 30 procent en een product bij A met
+inkoopprijs EUR 10,00 en een toegewezen margegroep van 20 procent, berekent
+Fresh EUR 12,00. De hogere leveranciersstandaard verdringt de productregel niet.
+
 ## Open keuzes
 
-De verhouding tussen standaardmarge en expliciete margegroep, beheer van de
-standaardmarge (los percentage of margegroep), herberekening na wijzigingen en
+Beheer van de standaardmarge (los percentage of margegroep), herberekening na wijzigingen en
 gedrag bij ontbrekende standaardmarge moeten nog worden bepaald. Concrete
 verkoopfilters, combinatie met actueel aanbod en leveranciersbereik van een
 hoofdstukactie blijven open. Automatische uitbreiding van een handmatige
-selectie is niet gekozen; nieuwe voorraad valt onder de leveranciersstandaard,
-waarbij samenloop met bestaande productinstellingen nog uitwerking vraagt.
+selectie is niet gekozen; voorraad zonder individuele regel valt onder de
+leveranciersstandaard. Herkenning van bestaande productinstellingen bij nieuwe
+imports vraagt nog uitwerking.
 Inhoud van margegroepen en de plaats van vaste verkoopprijzen, gedrag bij geen
 kandidaat of een nog open keuze, gevolgen van gewijzigde groepsinhoud, afronding,
 de basis van bedragen (zoals belasting en bijkomende kosten), ontbrekende

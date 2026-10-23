@@ -105,6 +105,14 @@ De per leverancier ingestelde opslag op de inkoopprijs voor diens ingelezen
 voorraad. De verhouding tot afzonderlijk toegewezen margegroepen staat in de
 [prijsspecificatie](specs/prijzen.md).
 
+## Individuele margeregel
+
+<a id="term-individuele-margeregel"></a>
+
+Een expliciete prijsinstelling voor een product bij een bepaalde leverancier,
+bijvoorbeeld via een toegewezen margegroep. De voorrang op de standaardmarge
+van die leverancier staat in de [prijsspecificatie](specs/prijzen.md).
+
 ## Margegroep
 
 <a id="term-margegroep"></a>

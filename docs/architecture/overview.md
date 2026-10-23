@@ -52,8 +52,8 @@ controlepunten en bevestiging van verwerking in het ERP zijn nog te specificeren
 De gekozen prijswijzen en open vragen over margegroepen staan in de
 [conceptspecificatie prijzen](../specs/prijzen.md). Ingelezen leveranciersvoorraad
 krijgt de standaardmarge van die leverancier op diens inkoopprijs. Afzonderlijke
-margegroeptoewijzingen gelden per product en leverancier; hun verhouding tot
-de standaardmarge staat nog open. Hoe leveranciersprijzen naar een catalogusprijs
+margegroeptoewijzingen gelden per product en leverancier en vervangen voor die
+combinatie de standaardmarge, zonder stapeling. Hoe leveranciersprijzen naar een catalogusprijs
 leiden en welke prijzen naar afnemers gaan, moet nog worden uitgewerkt.
 
 Voor margegroeptoewijzing selecteert de gebruiker producten binnen een leverancier

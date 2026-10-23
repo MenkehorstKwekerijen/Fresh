@@ -47,7 +47,9 @@ De gebruiker heeft de volgende werkzaamheden genoemd:
   catalogushoofdstukken, ook met een bulkactie. Bij de leveranciersselectie
   gebruikt de gebruiker filters op actueel fictief/TCM-aanbod en verkoopgeschiedenis.
   Elke leverancier heeft een [standaardmarge](glossary.md#term-standaardmarge-leverancier)
-  die op diens ingelezen voorraad wordt toegepast. Na groepstoewijzing geldt
+  die op diens ingelezen voorraad wordt toegepast. Een individuele margeregel
+  voor een product bij die leverancier vervangt deze standaardmarge, zonder
+  stapeling. Na groepstoewijzing geldt
   één actieve margegroep per product en leverancier. Hetzelfde product kan
   daardoor verschillende marges hebben bij verschillende leveranciers.
   Verschillende kandidaten vragen een eenmalige keuze. Een gekozen groep blijft
