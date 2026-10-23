@@ -1,0 +1,64 @@
+{
+  "format": 1,
+  "profile": "docs/skills.md",
+  "sources": [
+    {
+      "repository": "obra/superpowers",
+      "revision": "2ce8aa15d05bd57213e6f746f953aafb7ded7a8b",
+      "paths": [
+        "skills/brainstorming/SKILL.md",
+        "skills/writing-plans/SKILL.md",
+        "skills/systematic-debugging/SKILL.md",
+        "skills/verification-before-completion/SKILL.md",
+        "skills/requesting-code-review/SKILL.md"
+      ],
+      "used_by": [
+        "fresh-spec",
+        "fresh-deliver"
+      ]
+    },
+    {
+      "repository": "mattpocock/skills",
+      "revision": "5beb35b040e3de97e54fa9e386d7e42d15c295c2",
+      "paths": [
+        "skills/engineering/domain-modeling/SKILL.md",
+        "skills/engineering/to-spec/SKILL.md",
+        "skills/engineering/to-tickets/SKILL.md",
+        "skills/engineering/tdd/SKILL.md"
+      ],
+      "used_by": [
+        "fresh-spec",
+        "fresh-deliver"
+      ]
+    },
+    {
+      "repository": "l-gevity/l-gevity-skills",
+      "revision": "809ab3974c27e74ab2a66486a955bf02d0dde3fe",
+      "paths": [
+        ".agents/skills/requirements-topology/SKILL.md",
+        ".agents/skills/implementation-readiness/SKILL.md",
+        ".agents/skills/zero-copy-requirements/SKILL.md",
+        ".agents/skills/test-strategy/SKILL.md"
+      ],
+      "used_by": [
+        "fresh-spec",
+        "fresh-deliver"
+      ]
+    },
+    {
+      "repository": "cursor/plugins",
+      "revision": "8b3326d99fd4b993cb33a24dad8af03175c642c5",
+      "paths": [
+        "pstack/skills/technical-writing/SKILL.md",
+        "pstack/skills/blast-radius/SKILL.md",
+        "pstack/skills/principle-encode-lessons-in-structure/SKILL.md",
+        "pstack/skills/create-verification-skill/SKILL.md",
+        "pstack/skills/maintain-verification-skill/SKILL.md"
+      ],
+      "used_by": [
+        "fresh-spec",
+        "fresh-deliver"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,4 @@
+interface:
+  display_name: "Fresh opleveren"
+  short_description: "Een kleine wijziging bouwen en verifiëren"
+  default_prompt: "Gebruik $fresh-deliver voor deze uitvoeringsopdracht."
