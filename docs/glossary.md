@@ -110,8 +110,9 @@ van de toewijzing worden vastgelegd in de
 
 <a id="term-kandidaat-margegroep"></a>
 
-Een margegroep die op basis van leverancier of catalogushoofdstuk in aanmerking
-komt voor toewijzing aan een product. Een kandidaat is nog geen actieve koppeling.
+Een margegroep die bij een toewijzing in aanmerking komt voor een product,
+bijvoorbeeld vanuit een leveranciersselectie of een catalogushoofdstuk.
+Een kandidaat is nog geen actieve koppeling.
 
 ## Bulkactie
 

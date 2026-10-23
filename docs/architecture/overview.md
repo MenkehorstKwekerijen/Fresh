@@ -54,6 +54,11 @@ De gekozen prijswijzen en open vragen over margegroepen staan in de
 inkoopprijs en de overdracht van berekende prijzen naar afnemers zijn nog uit
 te werken.
 
+Voor margegroeptoewijzing selecteert de gebruiker producten binnen een leverancier
+met filters op actueel fictief/TCM-aanbod en verkoopgeschiedenis. Deze route
+vereist betrouwbare koppeling van verkoopgegevens aan producten en waar nodig
+leveranciers; de beschikbare velden en filterbetekenis moeten nog worden bepaald.
+
 De commerciële route gebruikt voorraadbronnen en historische verkoopgegevens
 voor leveranciersvoorkeuren en assortimentskeuzes. Catalogusbeheer omvat de
 productgegevens en websiteweergave uit de projectbasis. De website leest nu

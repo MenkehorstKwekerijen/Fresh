@@ -43,8 +43,11 @@ De gebruiker heeft de volgende werkzaamheden genoemd:
 - Leveranciersvoorkeuren vastleggen.
 - [Prijsinstellingen](specs/prijzen.md) voor opslag op inkoop en vaste
   verkoopprijzen vastleggen; margegroepen aanmaken en toewijzen voor individuele
-  producten, ook met een bulkactie. Leverancier en catalogushoofdstuk helpen
-  bij de automatische toewijzing van één actieve margegroep per product.
+  producten, zelf geselecteerde producten binnen een leverancier en hele
+  catalogushoofdstukken, ook met een bulkactie. Bij de leveranciersselectie
+  gebruikt de gebruiker filters op actueel fictief/TCM-aanbod en verkoopgeschiedenis.
+  Uitgangspunt is één actieve margegroep per product; de reikwijdte bij hetzelfde
+  product van meerdere leveranciers vraagt nog verduidelijking.
   Verschillende kandidaten vragen een eenmalige keuze. Een gekozen groep blijft
   gekoppeld; gewijzigde toewijzingsregels vragen expliciete herbeoordeling van
   bestaande producten.
