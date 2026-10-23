@@ -34,6 +34,10 @@ Voor leveranciersvoorraadlijsten geldt vóór het inlezen de
 Bij deze blokkade vindt geen vervanging van de bestaande voorraad plaats.
 De afhandeling van een bestand met meerdere leveranciers wordt nog uitgewerkt.
 
+Een ontbrekende of ongeldige inkoopprijs blokkeert eveneens de volledige
+leverancierslijst volgens de [prijsvalidatie](prijzen.md#ac-prijzen-049).
+De foutmelding biedt een [directe herstelactie per foutregel](prijzen.md#ac-prijzen-050).
+
 ### Leveranciers en mogelijke dubbele aanlevering
 
 Dezelfde soort en maat kunnen bij verschillende leveranciers beschikbaar zijn.
@@ -78,7 +82,8 @@ Leveranciersvoorkeuren, assortimentsanalyses en uitvoer naar WinTree of website
 kunnen door de nieuwe voorraadstand worden geraakt. Wanneer deze afnemers
 worden bijgewerkt, is nog niet besloten.
 
-De vervangingsregel bepaalt evenmin het gedrag bij een ongeldig of leeg bestand,
+Naast de hierboven vastgelegde prijsblokkades is het gedrag bij andere fouten
+in een bestand of een leeg bestand nog open, evenals bij
 onbekende codes, een onderbroken import of gelijktijdige wijzigingen. Dat moet
 worden gespecificeerd vóór implementatie, inclusief herstel en de gevolgen voor
 eerder vastgelegde menselijke keuzes.

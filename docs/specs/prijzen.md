@@ -39,6 +39,18 @@ kosten rekening bij het kiezen van de leveranciersstandaard of het percentage
 van een individuele margegroep. Deze afspraak geldt ook voor de procentuele
 vergelijkingsprijs achter een vaste verkoopprijs.
 
+### Prijsfouten bij import
+
+Een ontbrekende of ongeldige inkoopprijs in een leveranciersvoorraadlijst
+blokkeert de volledige import van die lijst. Fresh leest niet alsnog de overige
+regels in en vervangt de vorige voorraadstand niet. De foutmelding noemt de
+leverancier, de betreffende bestandsregel en het prijsveld met de foutreden.
+Iedere fout heeft een directe link naar de betreffende regel en herstelactie,
+zodat de gebruiker het probleem niet zelf in een algemeen overzicht hoeft te
+zoeken. Na herstel worden de importcontroles opnieuw uitgevoerd; pas als de
+blokkerende fouten zijn opgelost kan de import doorgaan.
+De precieze correctieroute (binnen Fresh of via het bronbestand) wordt nog bepaald.
+
 ### Prijswijzen
 
 Bij procentuele opslag geldt:
@@ -644,6 +656,27 @@ die niet afzonderlijk aan de rekenbasis toe. De gebruiker kan voor dekking van
 die kosten het toepasselijke opslagpercentage aanpassen; Fresh blijft rekenen
 vanaf de inkoopprijs uit het bestand.
 
+<a id="ac-prijzen-049"></a>
+
+### Een ontbrekende of ongeldige inkoopprijs blokkeert de volledige lijst
+
+Gegeven een leverancierslijst met geldige regels en een regel waarvan de
+inkoopprijs ontbreekt of geen leesbaar bedrag is, blokkeert Fresh de volledige
+import van die lijst. Geen van de nieuwe regels vervangt de vorige voorraad.
+Fresh toont de foutregels en neemt geen nulprijs of eerdere prijs als vervanging.
+Na herstel controleert Fresh de lijst opnieuw; andere blokkerende fouten blijven
+de import tegenhouden.
+
+<a id="ac-prijzen-050"></a>
+
+### Een prijsfout biedt een directe link naar herstel
+
+Gegeven een ontbrekende inkoopprijs op bestandsregel 12 van leverancier A,
+vermeldt de foutmelding A, regel 12, het veld inkoopprijs en de foutreden.
+De herstelactie brengt de gebruiker rechtstreeks bij die regel en het op te
+lossen prijsprobleem. Bij meerdere foutregels heeft iedere fout een eigen
+gerichte herstelactie; een link naar alleen een algemeen overzicht volstaat niet.
+
 ## Open keuzes
 
 Het achteraf verwijderen van een standaardmarge bij bestaande voorraad en de
@@ -655,7 +688,7 @@ leveranciersstandaard. Herkenning van bestaande productinstellingen bij nieuwe
 imports vraagt nog uitwerking.
 Gedrag bij geen
 kandidaat of een nog open keuze, behoudkeuzes na wijzigingen van vaste prijs of prijswijze,
-bronbestanden met bedragen inclusief btw,
-ontbrekende
-inkoopprijzen en de hierboven genoemde ketengevolgen worden uitgewerkt in
+bronbestanden met bedragen inclusief btw, de correctieroute voor prijsfouten,
+toegestane prijswaarden (waaronder nulprijzen) en de hierboven genoemde
+ketengevolgen worden uitgewerkt in
 [issue #6](https://github.com/MenkehorstKwekerijen/Fresh/issues/6).
