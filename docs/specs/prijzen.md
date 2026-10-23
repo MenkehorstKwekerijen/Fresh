@@ -81,9 +81,9 @@ afrondingsstaffel geldt uitsluitend voor berekende prijzen. Een vaste prijs van
 EUR 12,07 blijft dus EUR 12,07, ook bij een afrondingsstap van EUR 0,10.
 
 Het moment waarop het prijsbereik wordt bepaald is nog open. Ook gevolgen van
-gewijzigde instellingen voor bestaande berekende prijzen en de keuze tussen een
-afgeronde of onafgeronde vergelijkingsprijs bij vaste prijzen moeten nog worden
-bepaald.
+gewijzigde instellingen voor bestaande berekende prijzen moeten nog worden
+bepaald. De vergelijking met vaste prijzen gebruikt de afgeronde berekende prijs,
+zoals uitgewerkt bij herberekening en aandacht hieronder.
 
 ### Standaardmarge per leverancier
 
@@ -164,9 +164,10 @@ wordt de vergelijkingsprijs bijgewerkt en gelden de onderstaande aandachtregels;
 de vaste prijs blijft staan. Een eigen margegroep blijft voor zowel berekening
 als vergelijking leidend en wordt niet door de leverancierswijziging vervangen.
 
-Vaste verkoopprijzen blijven gelijk. Komt de prijs op basis van het toepasselijke
-percentage boven de vaste verkoopprijs, dan toont Fresh een aandachtspunt met
-de vaste prijs, de berekende prijs en het verschil. Bijvoorbeeld bij EUR 10,00
+Vaste verkoopprijzen blijven gelijk. De vergelijkingsprijs is de berekende prijs
+op basis van het toepasselijke percentage, afgerond volgens de ingestelde staffel.
+Komt deze boven de exacte vaste verkoopprijs, dan toont Fresh een aandachtspunt
+met de vaste prijs, de afgeronde berekende prijs en het verschil. Bijvoorbeeld bij EUR 10,00
 inkoop, EUR 13,00 vast en 40 procent opslag: de vaste verkoopprijs blijft
 EUR 13,00; de melding geeft aan dat deze EUR 1,00 onder de berekende EUR 14,00 ligt.
 Bij een gelijke of lagere berekende prijs is er om deze reden geen aandachtspunt.
@@ -176,7 +177,7 @@ procentuele berekening. Fresh verhoogt de vaste prijs niet automatisch.
 
 Bij bewust kiezen voor 'vaste prijs behouden' verdwijnt het aandachtspunt voor
 dat product bij die leverancier. Fresh onthoudt de op dat moment beoordeelde
-berekende prijs. Zolang de vaste prijs niet wordt gewijzigd, wordt dezelfde
+afgeronde berekende prijs. Zolang de vaste prijs niet wordt gewijzigd, wordt dezelfde
 situatie niet opnieuw voorgelegd: pas als de berekende prijs boven het laatst
 beoordeelde bedrag stijgt én boven de vaste prijs ligt, verschijnt opnieuw een
 aandachtspunt. Een tussentijdse daling en terugkeer naar hetzelfde beoordeelde
@@ -515,6 +516,23 @@ Gegeven een handmatig ingestelde vaste verkoopprijs van EUR 12,07, blijft de
 gebruikte verkoopprijs exact EUR 12,07 bij een staffelstap van EUR 0,10.
 De afrondingsstaffel wordt niet op dit vaste bedrag toegepast.
 
+<a id="ac-prijzen-042"></a>
+
+### Aandacht vergelijkt de afgeronde prijs met de exacte vaste prijs
+
+Gegeven de gekozen staffel en een ongewijzigde vaste verkoopprijs van EUR 12,02,
+zonder eerdere behoudkeuze, geldt:
+
+| Onafgeronde berekende prijs | Afgeronde vergelijkingsprijs | Aandachtspunt |
+| --- | --- | --- |
+| EUR 12,04 | EUR 12,00 | Nee |
+| EUR 12,06 | EUR 12,10 | Ja, met EUR 0,08 verschil |
+
+De vaste prijs blijft in beide gevallen EUR 12,02. Bij bewust behouden van de
+tweede situatie wordt EUR 12,10 de beoordeelde grens; een stijging van het
+onafgeronde bedrag naar EUR 12,09 geeft geen nieuwe melding, omdat de afgeronde
+vergelijkingsprijs EUR 12,10 blijft.
+
 ## Open keuzes
 
 Beheer van de standaardmarge (los percentage of margegroep) en gedrag bij
@@ -526,7 +544,7 @@ leveranciersstandaard. Herkenning van bestaande productinstellingen bij nieuwe
 imports vraagt nog uitwerking.
 Gedrag bij geen
 kandidaat of een nog open keuze, behoudkeuzes na wijzigingen van vaste prijs of prijswijze,
-grensbepaling bij afronding, afgeronde of onafgeronde vergelijking met vaste prijzen en
+grensbepaling bij afronding en
 doorwerking van gewijzigde afrondingsinstellingen,
 de basis van bedragen (zoals belasting en bijkomende kosten), ontbrekende
 inkoopprijzen en de hierboven genoemde ketengevolgen worden uitgewerkt in
