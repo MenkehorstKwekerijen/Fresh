@@ -63,12 +63,18 @@ Voor berekende verkoopprijzen geldt de volgende
 | --- | --- |
 | Onder EUR 1,00 | EUR 0,01 |
 | Vanaf EUR 1,00 tot en met EUR 10,00 | EUR 0,05 |
-| Meer dan EUR 10,00 | EUR 0,25 |
+| Meer dan EUR 10,00 tot en met EUR 20,00 | EUR 0,10 |
+| Meer dan EUR 20,00 | EUR 0,25 |
 
 De staffel moet via de instellingen kunnen worden aangepast. De genoemde
-bedragen zijn de gekozen begininstelling. De richting van afronden, behandeling
-van bedragen precies tussen twee stappen en het moment waarop het prijsbereik
-wordt bepaald zijn nog open. Ook gevolgen van gewijzigde instellingen voor
+bedragen zijn de gekozen begininstelling. Fresh rondt naar het dichtstbijzijnde
+bedrag binnen de toepasselijke stap af, één keer aan het einde van de berekening.
+Iedere herberekening begint bij de actuele inkoopprijs en het toepasselijke
+opslagpercentage. Een eerder afgeronde verkoopprijs is nooit de rekenbasis;
+ongewijzigde invoer en instellingen laten de prijs dus niet verder oplopen.
+
+De behandeling van bedragen precies tussen twee stappen en het moment waarop
+het prijsbereik wordt bepaald zijn nog open. Ook gevolgen van gewijzigde instellingen voor
 bestaande prijzen, de vergelijking met vaste prijzen en toepassing op handmatig
 ingestelde vaste prijzen moeten nog worden bepaald.
 
@@ -464,9 +470,27 @@ verschijnt een aandachtspunt met EUR 0,50 verschil. De verkoopprijs blijft EUR 1
 ### De gekozen afrondingsstaffel is instelbaar
 
 Gegeven de prijsinstellingen, is de beginstaffel zichtbaar met stappen van
-EUR 0,01 onder EUR 1,00, EUR 0,05 vanaf EUR 1,00 tot en met EUR 10,00 en
-EUR 0,25 boven EUR 10,00. De gebruiker kan de staffel via de instellingen
-aanpassen. Het toepassen bij herberekening volgt de nog te bepalen afrondingsregels.
+EUR 0,01 onder EUR 1,00, EUR 0,05 vanaf EUR 1,00 tot en met EUR 10,00,
+EUR 0,10 boven EUR 10,00 tot en met EUR 20,00 en EUR 0,25 boven EUR 20,00.
+De gebruiker kan de staffel via de instellingen aanpassen.
+
+<a id="ac-prijzen-038"></a>
+
+### Afronden kiest het dichtstbijzijnde bedrag
+
+Gegeven de gekozen staffel, wordt een berekende verkoopprijs van EUR 12,04
+afgerond naar EUR 12,00 en EUR 12,06 naar EUR 12,10. Een berekende prijs van
+EUR 20,14 wordt afgerond naar EUR 20,25. Bedragen precies tussen twee stappen
+vallen buiten dit criterium totdat de middenregel is besloten.
+
+<a id="ac-prijzen-039"></a>
+
+### Herhaald berekenen stapelt geen afronding op
+
+Gegeven inkoopprijs EUR 10,05 en opslag 20 procent, is het onafgeronde eindbedrag
+EUR 12,06 en de afgeronde verkoopprijs EUR 12,10. Iedere volgende herberekening
+met dezelfde invoer en staffel gebruikt opnieuw EUR 10,05 en 20 procent en geeft
+EUR 12,10. Het eerder afgeronde bedrag wordt niet als rekenbasis gebruikt.
 
 ## Open keuzes
 
@@ -479,7 +503,7 @@ leveranciersstandaard. Herkenning van bestaande productinstellingen bij nieuwe
 imports vraagt nog uitwerking.
 Gedrag bij geen
 kandidaat of een nog open keuze, behoudkeuzes na wijzigingen van vaste prijs of prijswijze,
-afrondingsrichting, grens- en middelpuntgedrag, toepassing op vaste prijzen en
+grens- en middelpuntgedrag bij afronding, toepassing op vaste prijzen en
 doorwerking van gewijzigde afrondingsinstellingen,
 de basis van bedragen (zoals belasting en bijkomende kosten), ontbrekende
 inkoopprijzen en de hierboven genoemde ketengevolgen worden uitgewerkt in
