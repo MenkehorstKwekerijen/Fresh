@@ -44,6 +44,8 @@ De gebruiker heeft de volgende werkzaamheden genoemd:
 - [Prijsinstellingen](specs/prijzen.md) voor opslag op inkoop en vaste
   verkoopprijzen vastleggen; margegroepen aanmaken en toewijzen voor individuele
   producten, leveranciers en catalogushoofdstukken, ook met een bulkactie.
+  Toewijzingen aan leveranciers en hoofdstukken blijven gelden voor nieuwe
+  producten; onduidelijke voorrang wordt een zichtbaar aandachtspunt.
 - [Catalogusbeheer](glossary.md#term-catalogusbeheer): producten en hun gegevens
   beheren, inclusief hun weergave op de website, hoofdstukken, Duitse en Engelse
   vertalingen en filters.

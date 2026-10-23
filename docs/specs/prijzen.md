@@ -29,9 +29,15 @@ producten, leveranciers en catalogushoofdstukken, ook als bulkactie op een
 selectie. De inhoud van een groep en de voorrang tussen groepsinstellingen en
 afzonderlijke instellingen zijn nog niet bepaald.
 
-Nog te verduidelijken is of leverancier en hoofdstuk dienen als selectie van
-producten voor een eenmalige toewijzing, of als blijvende toewijzingsregel die
-ook op later toegevoegde producten werkt. Er is nog geen overervingsmodel gekozen.
+De toewijzing aan een leverancier of hoofdstuk is blijvend. Ook later toegevoegde
+producten vallen automatisch onder de toepasselijke margegroep, zonder een
+nieuwe bulkactie. Welke instelling uiteindelijk geldt bij meerdere toepasselijke
+toewijzingen, wordt bepaald door nog vast te stellen voorrangsregels.
+
+Als die regels geen eenduidige prijsinstelling opleveren, toont Fresh een duidelijk
+aandachtspunt met de betrokken instellingen en hun herkomst. Fresh kiest in dat
+geval niet stilzwijgend een instelling. Wat vóór oplossing gebeurt met een reeds
+bestaande prijs of een export, moet nog worden bepaald.
 
 ## Keten en herstel
 
@@ -65,8 +71,7 @@ inkoopprijs van EUR 10,00, is de verkoopprijs EUR 15,00.
 ### Toewijzing ondersteunt de drie gekozen doelgroepen
 
 De gebruiker kan een margegroep aanmaken en toewijzing uitvoeren voor individuele
-producten, leveranciers en catalogushoofdstukken. Het precieze effect van
-leverancier- en hoofdstuktoewijzing op toekomstige producten staat nog open.
+producten, leveranciers en catalogushoofdstukken.
 
 <a id="ac-prijzen-004"></a>
 
@@ -74,11 +79,30 @@ leverancier- en hoofdstuktoewijzing op toekomstige producten staat nog open.
 
 Gegeven drie beschikbare onderdelen A, B en C, waarbij de gebruiker A en B
 selecteert, kan de gebruiker met één bulkactie een margegroep voor A en B
-toewijzen. De toewijzing van het niet-geselecteerde onderdeel C verandert niet.
+toewijzen. De directe toewijzing van het niet-geselecteerde onderdeel C verandert niet.
+
+<a id="ac-prijzen-005"></a>
+
+### Nieuwe producten vallen onder blijvende toewijzingen
+
+Gegeven een leverancier of hoofdstuk met toegewezen margegroep G, valt een later
+toegevoegd product dat bij die leverancier of dat hoofdstuk hoort automatisch
+onder G, zonder een nieuwe toewijzingsactie. Eventuele andere toepasselijke
+instellingen worden volgens de nog vast te stellen voorrangsregels beoordeeld.
+
+<a id="ac-prijzen-006"></a>
+
+### Onduidelijke voorrang wordt een zichtbaar aandachtspunt
+
+Gegeven een product waarop meerdere prijsinstellingen van toepassing zijn en
+waarvoor de vastgestelde voorrangsregels geen eenduidige keuze opleveren, toont
+Fresh een aandachtspunt met de betrokken instellingen en hun herkomst. Er wordt
+niet stilzwijgend één van die instellingen gekozen.
 
 ## Open keuzes
 
-Inhoud en blijvende werking van margegroepen, voorrangsregels, afronding, de basis van
+Inhoud van margegroepen, voorrangsregels, gedrag zolang een prijskeuze openstaat,
+afronding, de basis van
 bedragen (zoals belasting en bijkomende kosten), ontbrekende inkoopprijzen en
 de hierboven genoemde ketengevolgen worden uitgewerkt in
 [issue #6](https://github.com/MenkehorstKwekerijen/Fresh/issues/6).
