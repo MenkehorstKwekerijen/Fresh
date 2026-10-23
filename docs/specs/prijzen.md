@@ -73,8 +73,9 @@ Iedere herberekening begint bij de actuele inkoopprijs en het toepasselijke
 opslagpercentage. Een eerder afgeronde verkoopprijs is nooit de rekenbasis;
 ongewijzigde invoer en instellingen laten de prijs dus niet verder oplopen.
 
-De behandeling van bedragen precies tussen twee stappen en het moment waarop
-het prijsbereik wordt bepaald zijn nog open. Ook gevolgen van gewijzigde instellingen voor
+Een bedrag precies halverwege twee afrondingsstappen wordt naar de hogere stap
+afgerond. Bijvoorbeeld EUR 12,05 wordt EUR 12,10 bij een stap van EUR 0,10.
+Het moment waarop het prijsbereik wordt bepaald is nog open. Ook gevolgen van gewijzigde instellingen voor
 bestaande prijzen, de vergelijking met vaste prijzen en toepassing op handmatig
 ingestelde vaste prijzen moeten nog worden bepaald.
 
@@ -480,8 +481,8 @@ De gebruiker kan de staffel via de instellingen aanpassen.
 
 Gegeven de gekozen staffel, wordt een berekende verkoopprijs van EUR 12,04
 afgerond naar EUR 12,00 en EUR 12,06 naar EUR 12,10. Een berekende prijs van
-EUR 20,14 wordt afgerond naar EUR 20,25. Bedragen precies tussen twee stappen
-vallen buiten dit criterium totdat de middenregel is besloten.
+EUR 20,14 wordt afgerond naar EUR 20,25. De afzonderlijke middenregel staat in
+het criterium over bedragen precies halverwege.
 
 <a id="ac-prijzen-039"></a>
 
@@ -491,6 +492,14 @@ Gegeven inkoopprijs EUR 10,05 en opslag 20 procent, is het onafgeronde eindbedra
 EUR 12,06 en de afgeronde verkoopprijs EUR 12,10. Iedere volgende herberekening
 met dezelfde invoer en staffel gebruikt opnieuw EUR 10,05 en 20 procent en geeft
 EUR 12,10. Het eerder afgeronde bedrag wordt niet als rekenbasis gebruikt.
+
+<a id="ac-prijzen-040"></a>
+
+### Precies halverwege wordt naar boven afgerond
+
+Gegeven de gekozen staffel, wordt EUR 0,125 afgerond naar EUR 0,13,
+EUR 2,125 naar EUR 2,15, EUR 12,05 naar EUR 12,10 en EUR 20,125 naar EUR 20,25.
+Elk bedrag ligt precies tussen twee stappen van zijn toepasselijke bereik.
 
 ## Open keuzes
 
@@ -503,7 +512,7 @@ leveranciersstandaard. Herkenning van bestaande productinstellingen bij nieuwe
 imports vraagt nog uitwerking.
 Gedrag bij geen
 kandidaat of een nog open keuze, behoudkeuzes na wijzigingen van vaste prijs of prijswijze,
-grens- en middelpuntgedrag bij afronding, toepassing op vaste prijzen en
+grensbepaling bij afronding, toepassing op vaste prijzen en
 doorwerking van gewijzigde afrondingsinstellingen,
 de basis van bedragen (zoals belasting en bijkomende kosten), ontbrekende
 inkoopprijzen en de hierboven genoemde ketengevolgen worden uitgewerkt in
