@@ -103,6 +103,19 @@ latere verwerking heft een bewuste exportuitsluiting niet op.
 | Wacht op ontbrekende stamcodes en staat op de wachtlijst | Geen matchblokkade voor de overige regels; later verwerken |
 | Ongematcht zonder een van deze uitzonderingen | Definitieve verwerking geblokkeerd |
 
+De actieve wachtlijst volgt de nieuwste definitief verwerkte leverancierslijst
+binnen dezelfde leverancier en bron. Bij vervanging in stap 5 vervallen wachtende
+regels die niet meer in die nieuwe lijst voorkomen uit de actieve wachtlijst.
+Terugkerende regels gebruiken de nieuwste gegevens, waaronder inkoopprijs en
+aantal. Een latere stamupdate mag een vervallen regel uit een oudere lijst niet
+opnieuw als actueel aanbod verwerken. Het selecteren of voorbereiden van een
+nieuw bestand wijzigt de actieve wachtlijst nog niet.
+
+Hoe Fresh dezelfde terugkerende regel herkent, moet nog worden uitgewerkt;
+dit besluit legt geen productidentiteit of automatische herkenningssleutel vast.
+Vervallen uit de actieve wachtlijst bepaalt niet of historische gegevens worden
+bewaard.
+
 ### Kolomtoewijzing in stap 2
 
 De tweede stap van de bestandsimport is
@@ -176,9 +189,10 @@ import of gelijktijdige wijzigingen. Dat moet
 worden gespecificeerd vóór implementatie, inclusief herstel en de gevolgen voor
 eerder vastgelegde menselijke keuzes.
 
-De verwerking van wachtende regels moet ook worden uitgewerkt voor de situatie
-waarin inmiddels een nieuw leveranciersbestand de vorige lijst heeft vervangen.
-De nieuwe wachtlijstafspraak verandert de bestaande vervangingsregel niet.
+De actieve wachtlijst wordt bij voorraadvervanging bijgewerkt volgens de
+[wachtlijstafspraak](#wachtlijst-voor-stamcodes). Een onderbroken import of een
+stamupdate die tegelijk met voorraadvervanging plaatsvindt, vraagt nog uitwerking
+van herstel en gelijktijdigheid; ook dan mag vervallen aanbod niet terugkeren.
 
 ## Acceptatiecriteria
 
@@ -334,12 +348,34 @@ regel geen eenduidige match oplevert, blijft die regel ter controle staan en
 wordt geen willekeurige match vastgelegd. Ontbreken de benodigde codes nog,
 dan blijft de regel wachten.
 
+<a id="ac-voorraadimport-018"></a>
+
+### Ontbrekende wachtregels vervallen bij een nieuwe lijst
+
+Gegeven een actieve wachtende regel A en een nieuw bestand van dezelfde
+leverancier en bron waarin A ontbreekt, blijft A tijdens de importvoorbereiding
+op de actieve wachtlijst. Na succesvolle vervanging in stap 5 vervalt A uit die
+lijst. Als de benodigde stamcodes later beschikbaar komen, verwerkt Fresh A
+niet alsnog vanuit de oude lijst als actueel aanbod.
+
+<a id="ac-voorraadimport-019"></a>
+
+### Terugkerende wachtregels gebruiken de nieuwste gegevens
+
+Gegeven een wachtende regel met 20 planten en inkoopprijs EUR 10,00, wanneer
+deze regel terugkomt in de nieuwe leverancierslijst met 12 planten en inkoopprijs
+EUR 11,00 en die lijst definitief is verwerkt, gebruikt latere verwerking na een
+stamupdate de 12 planten en EUR 11,00 uit de nieuwste lijst. De oude gegevens
+worden niet teruggezet of erbij opgeteld. De herkenning van dezelfde regel moet
+afzonderlijk worden gespecificeerd.
+
 ## Open keuzes
 
 Gedrag bij gewijzigde bestandsstructuur,
 de exacte automatische matchregels, intern gebruik van ongematchte uitgesloten
-of wachtende regels, verdere bediening van de wachtlijst en hervatten na een
-nieuwer leveranciersbestand, de precieze plaats van 'Voor controle' in de importroute,
+of wachtende regels, verdere bediening van de wachtlijst en herkenning van
+terugkerende regels in een nieuw leveranciersbestand, de precieze plaats van
+'Voor controle' in de importroute,
 verdere afbakening, de vergelijking van inhoud, het gedrag zolang een bronkeuze
 openstaat en het bewaren en opnieuw beoordelen van die keuze bij nieuwe import,
 en de hierboven genoemde import- en herstelvragen worden behandeld in

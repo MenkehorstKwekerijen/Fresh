@@ -42,8 +42,10 @@ Regels die op ontbrekende naam- of maatcodes wachten, kunnen op een
 [wachtlijst](../specs/voorraadimport.md#wachtlijst-voor-stamcodes) blijven staan.
 Een basisstamupdate vanuit WinTree start automatisch een nieuwe matchpoging.
 Onduidelijke matches blijven ter controle; de inkoper houdt de exportvrijgave.
-De wachtlijst blokkeert de export van de overige regels niet. De afhandeling
-na een nieuwer leveranciersbestand is nog open.
+De wachtlijst blokkeert de export van de overige regels niet en volgt bij
+definitieve voorraadvervanging de nieuwste leverancierslijst: ontbrekende
+wachtregels vervallen en terugkerende regels gebruiken de nieuwste gegevens.
+De herkenning van terugkerende regels is nog uit te werken.
 
 Het gebruik van naamcodes en maatcodes bepaalt nog niet of hun combinatie een
 volledige productidentiteit vormt. De precieze rol van pot-/kluitgegevens en het
