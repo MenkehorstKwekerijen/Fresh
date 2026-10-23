@@ -49,6 +49,11 @@ Bij bewust terugschakelen naar procentuele berekening gebruikt Fresh opnieuw
 dezelfde groep met het actuele percentage en de actuele inkoopprijs. De gebruiker
 hoeft de groep niet opnieuw te kiezen.
 
+Zonder gekoppelde margegroep gebruikt Fresh de actuele standaardmarge van die
+leverancier voor de vergelijking met een vaste prijs. Bij bewust terugschakelen
+naar procentuele berekening gebruikt Fresh diezelfde leveranciersstandaard met
+de actuele inkoopprijs. Fresh hoeft daarvoor geen margegroep toe te wijzen.
+
 ### Standaardmarge per leverancier
 
 Bij het inlezen van voorraadlijsten in Fresh wordt de ingestelde standaardmarge
@@ -140,9 +145,9 @@ aandachtspunt. Een tussentijdse daling en terugkeer naar hetzelfde beoordeelde
 bedrag geven geen nieuwe melding. Opnieuw behouden neemt de dan beoordeelde
 berekende prijs als nieuwe grens.
 
-Welke procentuele regel wordt gebruikt bij een vaste prijs zonder groepskoppeling
-en wat prijswijze- of vaste-prijswijzigingen met een eerdere behoudkeuze doen,
-moet nog worden bepaald.
+Wat prijswijze- of vaste-prijswijzigingen met een eerdere behoudkeuze doen,
+moet nog worden bepaald. Ook gedrag bij een ontbrekende leveranciersstandaard
+zonder groepskoppeling blijft open; Fresh neemt daarvoor geen percentage aan.
 
 ## Keten en herstel
 
@@ -385,6 +390,24 @@ prijs EUR 14,00, verschijnt opnieuw een aandachtspunt als de berekende prijs
 EUR 14,50 wordt. Behoudt de gebruiker opnieuw EUR 13,00, dan wordt EUR 14,50 de
 nieuwe beoordelingsgrens. De vaste verkoopprijs blijft EUR 13,00.
 
+<a id="ac-prijzen-032"></a>
+
+### Zonder groep levert de leveranciersstandaard de vergelijkingsprijs
+
+Gegeven een product bij A zonder margegroep, met inkoopprijs EUR 10,00, vaste
+verkoopprijs EUR 13,00 en leveranciersstandaard 40 procent, is de vergelijkingsprijs
+EUR 14,00. Zonder eerdere behoudkeuze toont Fresh het aandachtspunt van EUR 1,00;
+de gebruikte verkoopprijs blijft EUR 13,00.
+
+<a id="ac-prijzen-033"></a>
+
+### Terugschakelen zonder groep gebruikt de leveranciersstandaard
+
+Gegeven een product bij A zonder margegroep, met vaste verkoopprijs EUR 13,00,
+actuele inkoopprijs EUR 10,00 en actuele leveranciersstandaard 40 procent,
+geeft bewust terugschakelen naar procentuele berekening EUR 14,00 verkoopprijs.
+Een margegroeptoewijzing is hiervoor niet nodig.
+
 ## Open keuzes
 
 Beheer van de standaardmarge (los percentage of margegroep), herberekening na
@@ -395,9 +418,9 @@ hoofdstukactie blijven open. Automatische uitbreiding van een handmatige
 selectie is niet gekozen; voorraad zonder individuele regel valt onder de
 leveranciersstandaard. Herkenning van bestaande productinstellingen bij nieuwe
 imports vraagt nog uitwerking.
-Omschakelen zonder bestaande groepskoppeling, gedrag bij geen
+Gedrag bij geen
 kandidaat of een nog open keuze, behoudkeuzes na wijzigingen van vaste prijs of prijswijze,
-de vergelijkingsregel bij vaste prijzen zonder groepskoppeling, afronding,
+afronding,
 de basis van bedragen (zoals belasting en bijkomende kosten), ontbrekende
 inkoopprijzen en de hierboven genoemde ketengevolgen worden uitgewerkt in
 [issue #6](https://github.com/MenkehorstKwekerijen/Fresh/issues/6).
