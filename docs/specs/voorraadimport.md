@@ -17,6 +17,8 @@ De regel geldt voor [externe fictieve voorraad](../glossary.md#term-externe-fict
 [TCM-voorraad](../glossary.md#term-tcm-voorraad).
 Het gebruikersbesluit is vastgelegd in
 [issue #4](https://github.com/MenkehorstKwekerijen/Fresh/issues/4).
+Prijscontroles, herstel en de kolomtoewijzingsstap zijn verder besloten in
+[issue #6](https://github.com/MenkehorstKwekerijen/Fresh/issues/6).
 
 ## Gedrag en gegevens
 
@@ -37,6 +39,21 @@ De afhandeling van een bestand met meerdere leveranciers wordt nog uitgewerkt.
 Een ontbrekende of ongeldige inkoopprijs blokkeert eveneens de volledige
 leverancierslijst volgens de [prijsvalidatie](prijzen.md#ac-prijzen-049).
 De foutmelding biedt een [directe herstelactie per foutregel](prijzen.md#ac-prijzen-050).
+
+### Kolomtoewijzing in stap 2
+
+De tweede stap van de bestandsimport is
+[kolomtoewijzing](../glossary.md#term-kolomtoewijzing), ook kolommapping genoemd.
+De gebruiker wijst bestandskolommen toe aan gegevens in Fresh, zoals plantnaam,
+maat en inkoopprijs. Deze stap vindt plaats vóór verwerking van het bestand tot
+actuele voorraad.
+
+Fresh waarschuwt in deze stap wanneer de inkoopprijskolom niet is toegewezen of
+wanneer ontbrekende of ongeldige prijzen worden gevonden in de toegewezen kolom.
+De waarschuwing geeft toegang tot de betreffende toewijzing of foutregels met
+hun directe herstelactie. De [blokkerende prijscontrole](prijzen.md#ac-prijzen-049)
+blijft gelden; een waarschuwing mag niet als toestemming om toch te verwerken
+worden gebruikt. Prijzen kunnen [direct in Fresh worden gecorrigeerd](prijzen.md#ac-prijzen-051).
 
 ### Leveranciers en mogelijke dubbele aanlevering
 
@@ -150,9 +167,27 @@ Gegeven samenloop van fictief en TCM voor dezelfde leverancier, waarbij een
 benodigde datum ontbreekt of ongeldig is, toont Fresh één aandachtspunt waarin
 de gebruiker de te gebruiken bron kiest.
 
+<a id="ac-voorraadimport-008"></a>
+
+### De tweede importstap wijst bestandskolommen toe
+
+Gegeven een geselecteerd leveranciersbestand, kan de gebruiker in stap 2 de
+kolommen voor plantnaam, maat en inkoopprijs aan de overeenkomstige gegevens
+in Fresh toewijzen, vóór verwerking tot actuele voorraad.
+
+<a id="ac-voorraadimport-009"></a>
+
+### Prijsproblemen zijn al bij de kolomtoewijzing zichtbaar
+
+Gegeven stap 2 met een niet-toegewezen inkoopprijskolom of een toegewezen kolom
+met een lege of ongeldige prijs op regel 12, toont Fresh daar al een waarschuwing
+met toegang tot respectievelijk de toewijzing of de betreffende foutregel en
+herstelactie. Verwerking blijft geblokkeerd zolang het prijsprobleem bestaat.
+
 ## Open keuzes
 
-Verdere afbakening, de vergelijking van inhoud, het gedrag zolang een bronkeuze
+Hergebruik van kolomtoewijzingen bij volgende bestanden, de overige importstappen,
+verdere afbakening, de vergelijking van inhoud, het gedrag zolang een bronkeuze
 openstaat en het bewaren en opnieuw beoordelen van die keuze bij nieuwe import,
 en de hierboven genoemde import- en herstelvragen worden behandeld in
 [issue #4](https://github.com/MenkehorstKwekerijen/Fresh/issues/4).

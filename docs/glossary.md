@@ -53,6 +53,15 @@ herkomst verschilt tussen fictief en TCM en is vastgelegd in de
 
 De datum waarop een bestand via de importeerfunctie van Fresh wordt ingelezen.
 
+## Kolomtoewijzing
+
+<a id="term-kolomtoewijzing"></a>
+
+Het koppelen van kolommen uit een importbestand aan de gegevens die Fresh
+verwacht, zoals plantnaam, maat en inkoopprijs. Ook kolommapping genoemd.
+Het importgedrag staat in de
+[voorraadimportspecificatie](specs/voorraadimport.md#kolomtoewijzing-in-stap-2).
+
 ## WinTree
 
 <a id="term-wintree"></a>

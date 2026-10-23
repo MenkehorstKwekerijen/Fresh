@@ -38,6 +38,8 @@ andere bijkomende kosten bij deze rekenbasis op. De gebruiker houdt met die
 kosten rekening bij het kiezen van de leveranciersstandaard of het percentage
 van een individuele margegroep. Deze afspraak geldt ook voor de procentuele
 vergelijkingsprijs achter een vaste verkoopprijs.
+Bij een expliciete prijscorrectie tijdens de import gebruikt Fresh de
+gecorrigeerde inkoopprijs; de oorspronkelijke bronwaarde blijft zichtbaar.
 
 ### Prijsfouten bij import
 
@@ -49,7 +51,14 @@ Iedere fout heeft een directe link naar de betreffende regel en herstelactie,
 zodat de gebruiker het probleem niet zelf in een algemeen overzicht hoeft te
 zoeken. Na herstel worden de importcontroles opnieuw uitgevoerd; pas als de
 blokkerende fouten zijn opgelost kan de import doorgaan.
-De precieze correctieroute (binnen Fresh of via het bronbestand) wordt nog bepaald.
+De gebruiker kan de prijs rechtstreeks in de importvoorbereiding van Fresh
+corrigeren, zonder het Excel- of CSV-bestand opnieuw aan te leveren. De directe
+herstelactie opent de betreffende regel met de oorspronkelijke bronwaarde
+(ook als die leeg is) en de correctiemogelijkheid. Fresh gebruikt de gecorrigeerde
+inkoopprijs bij de hercontrole en verdere prijsberekening. Een correctie wijzigt
+de actieve voorraad niet zolang de import nog geblokkeerd is.
+Prijsproblemen worden al gemeld tijdens
+[stap 2: kolomtoewijzing](voorraadimport.md#kolomtoewijzing-in-stap-2).
 
 ### Prijswijzen
 
@@ -677,6 +686,18 @@ De herstelactie brengt de gebruiker rechtstreeks bij die regel en het op te
 lossen prijsprobleem. Bij meerdere foutregels heeft iedere fout een eigen
 gerichte herstelactie; een link naar alleen een algemeen overzicht volstaat niet.
 
+<a id="ac-prijzen-051"></a>
+
+### Een prijsfout wordt rechtstreeks in Fresh gecorrigeerd
+
+Gegeven een lege inkoopprijs op regel 12, opent de directe herstelactie die regel
+in Fresh. De gebruiker ziet de lege bronwaarde en kan EUR 10,00 exclusief btw
+invullen zonder een nieuw bestand te uploaden. Fresh controleert de import
+opnieuw en gebruikt EUR 10,00 als inkoopprijs; bij 30 procent opslag is de
+berekende verkoopprijs EUR 13,00 exclusief btw. De oorspronkelijke bronwaarde
+blijft zichtbaar. Zolang andere blokkerende fouten bestaan, blijft de volledige
+import geblokkeerd en de vorige voorraad behouden.
+
 ## Open keuzes
 
 Het achteraf verwijderen van een standaardmarge bij bestaande voorraad en de
@@ -688,7 +709,8 @@ leveranciersstandaard. Herkenning van bestaande productinstellingen bij nieuwe
 imports vraagt nog uitwerking.
 Gedrag bij geen
 kandidaat of een nog open keuze, behoudkeuzes na wijzigingen van vaste prijs of prijswijze,
-bronbestanden met bedragen inclusief btw, de correctieroute voor prijsfouten,
+bronbestanden met bedragen inclusief btw, hergebruik van prijscorrecties bij
+volgende bestanden en correcties na gewijzigde kolomtoewijzing,
 toegestane prijswaarden (waaronder nulprijzen) en de hierboven genoemde
 ketengevolgen worden uitgewerkt in
 [issue #6](https://github.com/MenkehorstKwekerijen/Fresh/issues/6).
