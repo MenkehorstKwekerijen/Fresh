@@ -9,7 +9,7 @@ in [de glossary](../glossary.md).
 
 | Bron | Bekende aanlevering | Nog te bepalen grens |
 | --- | --- | --- |
-| [WinTree-basisstam](../glossary.md#term-wintree-basisstam) | Referentie met naamcodes en maatcodes | Aanlevering aan Fresh, omschrijvingen en actualisering |
+| [WinTree-basisstam](../glossary.md#term-wintree-basisstam) | Excel/CSV uit WinTree met naamcodes, maatcodes en bijbehorende omschrijvingen | Bestandsindeling, actualisering en verwerking van gewijzigde codes |
 | [Externe fictieve voorraad](../glossary.md#term-externe-fictieve-voorraad) | Excel of CSV, ritme verschilt per leverancier | Bestandsinhoud en vervanging of aanvulling van vorige gegevens |
 | [Eigen voorraad](../glossary.md#term-eigen-voorraad) | Periodiek vanuit WinTree via Excel of CSV | Bestandsinhoud, actualiteit en vervanging of aanvulling |
 | [Eigen externe voorraad](../glossary.md#term-eigen-externe-voorraad) | Periodiek vanuit WinTree via Excel of CSV | Bestandsinhoud, actualiteit en vervanging of aanvulling |
@@ -30,8 +30,9 @@ voorraad wordt aangeleverd met plantnamen, maten en pot-/kluitgegevens. Fresh mo
 deze gegevens omzetten naar de bijbehorende WinTree-naamcodes en -maatcodes voor
 de latere import in het ERP.
 
-De basisstam is daarmee een noodzakelijke referentie voor deze omzetting.
-Hoe Fresh de basisstam ontvangt en actueel houdt, is nog te bepalen. De regels
+De basisstam is daarmee een noodzakelijke referentie voor deze omzetting en is
+beschikbaar als Excel/CSV met de codes en bijbehorende omschrijvingen. Hoe Fresh
+deze referentie actueel houdt en gewijzigde codes verwerkt, is nog te bepalen. De regels
 voor herkenning, meerdere mogelijke codes, ontbrekende codes en hergebruik van
 menselijke keuzes horen in de eerste relevante productspecificatie.
 
