@@ -49,17 +49,11 @@ omzetten, marges bepalen en exporteren naar WinTree. De inkoper controleert marg
 en de import in WinTree. Exportformaat,
 controlepunten en bevestiging van verwerking in het ERP zijn nog te specificeren.
 
-De gekozen prijswijzen en open vragen over margegroepen staan in de
-[conceptspecificatie prijzen](../specs/prijzen.md). Ingelezen leveranciersvoorraad
-krijgt de standaardmarge van die leverancier op diens inkoopprijs. Afzonderlijke
-margegroeptoewijzingen gelden per product en leverancier en vervangen voor die
-combinatie de standaardmarge, zonder stapeling. Hoe leveranciersprijzen naar een catalogusprijs
-leiden en welke prijzen naar afnemers gaan, moet nog worden uitgewerkt.
-
-Voor margegroeptoewijzing selecteert de gebruiker producten binnen een leverancier
-met filters op actueel fictief/TCM-aanbod en verkoopgeschiedenis. Deze route
-vereist betrouwbare koppeling van verkoopgegevens aan producten en waar nodig
-leveranciers; de beschikbare velden en filterbetekenis moeten nog worden bepaald.
+De [prijsspecificatie](../specs/prijzen.md) bezit berekening, groepstoewijzing en
+prijsvalidatie. De berekening gebruikt leverancier, productkoppeling en inkoopprijs.
+Groepstoewijzing gebruikt daarnaast aanbod uit fictief/TCM en gekoppelde
+verkoopgeschiedenis. Productidentiteit, verkoopkoppeling, uiteindelijke catalogusprijs
+en de prijsvelden voor elke afnemer zijn nog te bepalen.
 
 De commerciële route gebruikt voorraadbronnen en historische verkoopgegevens
 voor leveranciersvoorkeuren en assortimentskeuzes. Catalogusbeheer omvat de

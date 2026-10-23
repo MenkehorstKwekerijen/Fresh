@@ -85,7 +85,8 @@ precies omvat, is nog niet uitgewerkt.
 
 <a id="term-opslag-op-inkoop"></a>
 
-Een procentuele verhoging van de inkoopprijs om de verkoopprijs te bepalen.
+Een procentuele verhoging van de inkoopprijs exclusief btw om de verkoopprijs
+exclusief btw te bepalen.
 Het percentage heeft de inkoopprijs als grondslag. Berekening en voorbeelden
 staan in de [prijsspecificatie](specs/prijzen.md).
 
@@ -93,16 +94,25 @@ staan in de [prijsspecificatie](specs/prijzen.md).
 
 <a id="term-vaste-verkoopprijs"></a>
 
-Een expliciet ingesteld verkoopbedrag, in plaats van een verkoopprijs die met
-een opslagpercentage wordt berekend. Het toepassingsgedrag staat in de
+Een afzonderlijk ingesteld verkoopbedrag exclusief btw voor een product bij een leverancier,
+in plaats van een verkoopprijs die met een opslagpercentage wordt berekend.
+Het toepassingsgedrag staat in de
 [prijsspecificatie](specs/prijzen.md).
+
+## Afrondingsstaffel
+
+<a id="term-afrondingsstaffel"></a>
+
+Een instelbare indeling van prijsbereiken met per bereik een afrondingsstap.
+De gekozen bedragen en toepassingsregels staan in de
+[prijsspecificatie](specs/prijzen.md#instelbare-afrondingsstaffel).
 
 ## Standaardmarge van een leverancier
 
 <a id="term-standaardmarge-leverancier"></a>
 
-De per leverancier ingestelde opslag op de inkoopprijs voor diens ingelezen
-voorraad. De verhouding tot afzonderlijk toegewezen margegroepen staat in de
+Het rechtstreeks per leverancier ingestelde opslagpercentage op de inkoopprijs
+voor diens ingelezen voorraad. De verhouding tot afzonderlijk toegewezen margegroepen staat in de
 [prijsspecificatie](specs/prijzen.md).
 
 ## Individuele margeregel
@@ -117,7 +127,7 @@ van die leverancier staat in de [prijsspecificatie](specs/prijzen.md).
 
 <a id="term-margegroep"></a>
 
-Een groep voor prijsinstellingen die aan een product bij een leverancier wordt
+Een groep met een opslagpercentage die aan een product bij een leverancier wordt
 gekoppeld. De actieve margegroep is de gekozen groep voor die combinatie. De inhoud en werking
 van de toewijzing worden vastgelegd in de
 [prijsspecificatie](specs/prijzen.md).
