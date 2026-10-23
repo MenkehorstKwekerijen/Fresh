@@ -53,12 +53,19 @@ voorraadlijst van dezelfde leverancier, niet afzonderlijk per productregel.
 De overlappende voorraad wordt niet opgeteld en regels uit de oudere lijst
 worden niet bijgemengd in de gekozen nieuwere lijst.
 
-De exacte veldnamen en de herkenning van dezelfde leverancier tussen de routes
-moeten nog worden uitgewerkt en aan de
-bestanden getoetst. Gedrag bij gelijke, ontbrekende of ongeldige datums is nog
-niet besloten. Dit besluit gaat over samenloop van fictief en TCM, niet over
-de verwerking van een ouder bestand binnen dezelfde bron. Ook het opnieuw
-inlezen van hetzelfde fictieve bestand vraagt nog een expliciete afspraak.
+Bij de datumvergelijking gelden de volgende uitzonderingen:
+
+| Situatie bij dezelfde leverancier | Gedrag |
+| --- | --- |
+| Gelijke geldige datum en gelijke inhoud | Geen gebruikersactie nodig; de voorraad blijft enkelvoudig |
+| Gelijke geldige datum, maar verschillende inhoud | Eén aandachtspunt waarin de gebruiker de bron kiest |
+| Een benodigde datum ontbreekt of is ongeldig | Eén aandachtspunt waarin de gebruiker de bron kiest |
+
+De exacte veldnamen, herkenning van dezelfde leverancier en vergelijking van
+inhoud moeten nog worden uitgewerkt en aan bestanden getoetst. Dit besluit gaat
+over samenloop van fictief en TCM, niet over de verwerking van een ouder bestand
+binnen dezelfde bron. Ook het opnieuw inlezen van hetzelfde fictieve bestand
+vraagt nog een expliciete afspraak.
 
 ## Keten en herstel
 
@@ -109,8 +116,33 @@ met alleen A voor dezelfde leverancier, wordt de fictieve lijst gebruikt.
 B wordt niet aangevuld vanuit de oudere TCM-lijst. Bij een nieuwere TCM-lijst
 geldt dezelfde regel met TCM als gekozen bron.
 
+<a id="ac-voorraadimport-005"></a>
+
+### Gelijke datum en inhoud vragen geen handmatige keuze
+
+Gegeven fictief en TCM voor dezelfde leverancier met dezelfde geldige datum en
+dezelfde voorraadinhoud, vraagt Fresh geen bronkeuze aan de gebruiker. De voorraad
+wordt niet dubbel geteld.
+
+<a id="ac-voorraadimport-006"></a>
+
+### Verschillende inhoud op dezelfde datum vraagt één bronkeuze
+
+Gegeven fictief en TCM voor dezelfde leverancier met dezelfde geldige datum,
+maar respectievelijk 12 en 20 planten voor dezelfde regel, toont Fresh één
+aandachtspunt waarin de gebruiker de te gebruiken bron kiest.
+
+<a id="ac-voorraadimport-007"></a>
+
+### Een ontbrekende of ongeldige datum vraagt één bronkeuze
+
+Gegeven samenloop van fictief en TCM voor dezelfde leverancier, waarbij een
+benodigde datum ontbreekt of ongeldig is, toont Fresh één aandachtspunt waarin
+de gebruiker de te gebruiken bron kiest.
+
 ## Open keuzes
 
-Verdere afbakening, het uitzonderingsgedrag van de voorraaddatum en
-de hierboven genoemde import- en herstelvragen worden behandeld in
+Verdere afbakening, de vergelijking van inhoud, het gedrag zolang een bronkeuze
+openstaat en het bewaren en opnieuw beoordelen van die keuze bij nieuwe import,
+en de hierboven genoemde import- en herstelvragen worden behandeld in
 [issue #4](https://github.com/MenkehorstKwekerijen/Fresh/issues/4).

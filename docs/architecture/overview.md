@@ -62,8 +62,8 @@ en TCM en het onderscheid met dezelfde soort en maat bij verschillende leveranci
 staan in de [conceptspecificatie voorraadimport](../specs/voorraadimport.md#leveranciers-en-mogelijke-dubbele-aanlevering).
 De bronvoorrang voor deze samenloop staat bij het
 [criterium over de voorraaddatum](../specs/voorraadimport.md#ac-voorraadimport-003).
-De uitzonderingen op die datumvergelijking en overige combinatieregels zijn nog
-uit te werken.
+Uitzonderingen op de datumvergelijking staan in dezelfde specificatie. De
+technische bestandsvalidatie en overige combinatieregels zijn nog uit te werken.
 
 ## Technische richting
 
