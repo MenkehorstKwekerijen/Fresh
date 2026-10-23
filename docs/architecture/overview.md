@@ -60,8 +60,10 @@ deze is niet nodig voor de eerste CSV-route.
 Deze routes delen gegevens. De bekende samenloop tussen leveranciersbestanden
 en TCM en het onderscheid met dezelfde soort en maat bij verschillende leveranciers
 staan in de [conceptspecificatie voorraadimport](../specs/voorraadimport.md#leveranciers-en-mogelijke-dubbele-aanlevering).
-De afhandeling van deze samenloop en regels voor optellen, voorrang of uitsluiten
-van bronnen zijn nog niet besloten.
+De bronvoorrang voor deze samenloop staat bij het
+[criterium over de voorraaddatum](../specs/voorraadimport.md#ac-voorraadimport-003).
+De uitzonderingen op die datumvergelijking en overige combinatieregels zijn nog
+uit te werken.
 
 ## Technische richting
 

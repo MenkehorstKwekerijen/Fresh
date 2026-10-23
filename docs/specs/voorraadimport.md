@@ -8,7 +8,7 @@ depends_on: []
 ## Doel en scope
 
 Nieuwe voorraadbestanden actualiseren de voorraad in Fresh. Deze eerste
-conceptspecificatie legt de besloten vervangingsregel vast; de volledige
+conceptspecificatie legt de besloten vervangingsregel en bronvoorrang vast; de volledige
 importroute is nog niet voldoende bepaald om te bouwen.
 
 De regel geldt voor [externe fictieve voorraad](../glossary.md#term-externe-fictieve-voorraad),
@@ -38,9 +38,17 @@ De gebruiker heeft geen overlap bevestigd tussen eigen voorraad, eigen externe
 voorraad en de andere voorraadsoorten. Wel kan één leverancier in theorie zowel
 via een fictief voorraadbestand als via TCM worden ingelezen. Daar komt hetzelfde
 aanbod via twee routes binnen. De aanlevering vermeldt expliciet of het om TCM of
-"inkoop aanbieding" (fictief) gaat. Welke bron bij deze samenloop moet worden
-gebruikt, is nog niet besloten. De exacte veldnamen en herkenning van dezelfde
-leverancier tussen de routes moeten nog aan de bestanden worden getoetst.
+"inkoop aanbieding" (fictief) gaat. Bij deze samenloop is de bron met de meest
+recente [voorraaddatum](../glossary.md#term-voorraaddatum) leidend. De gebruiker
+heeft bevestigd dat deze datum in het Excel-bestand staat. De uploadvolgorde
+bepaalt dus niet welke bron voorrang krijgt; de overlappende voorraad wordt
+niet opgeteld.
+
+De exacte veldnamen, het niveau waarop de datum geldt en de herkenning van
+dezelfde leverancier tussen de routes moeten nog worden uitgewerkt en aan de
+bestanden getoetst. Gedrag bij gelijke, ontbrekende of ongeldige datums is nog
+niet besloten. Dit besluit gaat over samenloop van fictief en TCM, niet over
+de verwerking van een ouder bestand binnen dezelfde bron.
 
 ## Keten en herstel
 
@@ -71,8 +79,18 @@ Gegeven een vorige lijst met regels A en B en een nieuwe lijst met alleen A,
 behoort B na vervanging niet meer tot de actuele voorraad van die leverancier
 of bron. Dit bepaalt niet of historische gegevens worden bewaard.
 
+<a id="ac-voorraadimport-003"></a>
+
+### De voorraaddatum bepaalt de bronvoorrang
+
+Gegeven hetzelfde aanbod van één leverancier via beide routes, met één regel
+van 20 planten in TCM met voorraaddatum 20 oktober 2026 en 12 planten in fictief
+met voorraaddatum 22 oktober 2026, is fictief leidend en is de gebruikte voorraad
+12, ook als het TCM-bestand later is geüpload. Wanneer in dit voorbeeld de
+bronlabels worden verwisseld, is TCM met de datum van 22 oktober leidend.
+
 ## Open keuzes
 
-Verdere afbakening, de afhandeling van een leverancier die zowel via fictief
-als TCM binnenkomt en de hierboven genoemde import- en herstelvragen worden behandeld in
+Verdere afbakening, het niveau en uitzonderingsgedrag van de voorraaddatum en
+de hierboven genoemde import- en herstelvragen worden behandeld in
 [issue #4](https://github.com/MenkehorstKwekerijen/Fresh/issues/4).

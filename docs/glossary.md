@@ -37,6 +37,14 @@ Voorraad die automatisch via WinTree wordt ontvangen met TreeCommerce Messenger
 (TCM). De route van WinTree naar Fresh staat in het
 [ketenoverzicht](architecture/overview.md#inkomende-gegevens).
 
+## Voorraaddatum
+
+<a id="term-voorraaddatum"></a>
+
+De in het aangeleverde Excel-bestand vermelde datum van de voorraad. Deze datum
+beschrijft de actualiteit van de voorraad, niet het moment waarop Fresh het
+bestand ontvangt. Het niveau waarop de datum geldt, moet nog worden vastgesteld.
+
 ## WinTree
 
 <a id="term-wintree"></a>
