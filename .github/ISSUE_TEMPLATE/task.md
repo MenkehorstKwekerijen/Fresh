@@ -20,10 +20,10 @@ Verwijs bij een zelfstandig extra resultaat naar een apart issue.
 Link de relevante specificatie en criteria. Voor proceswerk: link de owning
 werkwijze of beschrijf het besluit dat dit werk autoriseert.
 
-## Afhankelijkheden
+<!-- Benoem ook de documentatiekeuze: bestaande eigenaar of nieuw zelfstandig
+onderwerp, met de geraakte glossary/keten/handleiding waar nodig. -->
 
-<!-- Benoem onder Specificatie ook de documentatiekeuze: bestaande eigenaar of
-nieuw zelfstandig onderwerp, met de geraakte glossary/keten/handleiding waar nodig. -->
+## Afhankelijkheden
 
 Welke andere issues of besluiten blokkeren dit werk werkelijk? Anders: geen.
 
