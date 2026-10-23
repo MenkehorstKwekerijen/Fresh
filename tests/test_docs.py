@@ -120,7 +120,9 @@ Een observeerbaar resultaat.
 
     def test_unchanged_pr_template_fails(self):
         template = Path(__file__).resolve().parents[1] / ".github/pull_request_template.md"
-        self.assertEqual(len(check_pr(template.read_text())), 6)
+        errors = check_pr(template.read_text())
+        for required in ("Binnen scope", "Documentatiekeuze", "Specificatie"):
+            self.assertTrue(any(required in e for e in errors))
 
     def test_pr_headings_in_code_do_not_count(self):
         body = "```md\n" + "\n".join(f"## {title}\nVoorbeeld." for title in (
@@ -142,18 +144,72 @@ Een observeerbaar resultaat.
         self.assertTrue(any("onbekend anker" in e for e in check(self.root)))
 
     def test_filled_pr_sections_pass(self):
+        body = self.pr_body()
+        self.assertEqual(check_pr(body), [])
+
+    def pr_body(self):
         body = "\n".join(f"## {title}\nConcrete toelichting.\n" for title in (
             "Resultaat", "Specificatie", "Documentatie en begrippen",
             "Ketengevolgen", "Bewijs", "Open punten"))
-        self.assertEqual(check_pr(body), [])
+        body = body.replace("## Resultaat\n", "## Resultaat\nBinnen scope: prijsberekening.\nBuiten scope: publicatie.\n\n")
+        return body.replace("## Documentatie en begrippen\n", "## Documentatie en begrippen\n"
+                            "Documentatiekeuze: bestaand-volstaat\n"
+                            "Documentatiebronnen: docs/specs/first.md\n"
+                            "Toelichting: bestaande criteria beschrijven deze bugfix.\n\n")
+
+    def test_pr_requires_scope_and_documentation_decision(self):
+        body = "\n".join(f"## {title}\nConcrete toelichting.\n" for title in (
+            "Resultaat", "Specificatie", "Documentatie en begrippen",
+            "Ketengevolgen", "Bewijs", "Open punten"))
+        self.assertTrue(any("Binnen scope" in e for e in check_pr(body)))
+        self.assertTrue(any("Documentatiekeuze" in e for e in check_pr(body)))
+
+    def test_pr_documentation_sources_must_exist(self):
+        self.assertTrue(any("documentatiebron" in e for e in check_pr(self.pr_body(), self.root)))
+        self.spec()
+        self.assertEqual(check_pr(self.pr_body(), self.root), [])
+
+    def test_pr_updated_documentation_requires_changed_source(self):
+        self.spec()
+        body = self.pr_body().replace("bestaand-volstaat", "bijgewerkt")
+        self.assertTrue(any("gewijzigd" in e for e in check_pr(body, self.root, ["app.py"])))
+        self.assertEqual(check_pr(body, self.root, ["docs/specs/first.md"]), [])
+
+    def test_pr_rejects_unknown_choice_and_placeholder(self):
+        for old, new in (("bestaand-volstaat", "misschien"),
+                         ("bestaande criteria beschrijven deze bugfix.", "TODO")):
+            with self.subTest(new=new):
+                self.assertTrue(check_pr(self.pr_body().replace(old, new)))
+
+    def test_pr_rejects_external_or_escaping_documentation_source(self):
+        for source in ("../../etc/passwd", "https://example.org/spec.md", "app.py"):
+            with self.subTest(source=source):
+                self.assertTrue(check_pr(self.pr_body().replace("docs/specs/first.md", source), self.root))
+
+    def test_pr_fields_in_fence_or_comment_do_not_count(self):
+        body = self.pr_body()
+        fields = "Binnen scope: prijsberekening.\nBuiten scope: publicatie."
+        for wrapped in (f"```\n{fields}\n```", f"<!--\n{fields}\n-->"):
+            with self.subTest(wrapped=wrapped):
+                self.assertTrue(any("Binnen scope" in e for e in check_pr(body.replace(fields, wrapped))))
+
+    def test_pr_duplicate_fields_fail(self):
+        self.assertTrue(check_pr(self.pr_body().replace("Binnen scope:", "Binnen scope: extra.\nBinnen scope:")))
+
+    def test_pr_empty_field_does_not_consume_next_line(self):
+        self.assertTrue(check_pr(self.pr_body().replace("prijsberekening.", "")))
+
+    def test_pr_documentation_fragment_must_exist(self):
+        self.spec()
+        body = self.pr_body().replace("docs/specs/first.md", "docs/specs/first.md#ac-first-001")
+        self.assertEqual(check_pr(body, self.root), [])
+        self.assertTrue(check_pr(body.replace("ac-first-001", "missing"), self.root))
 
     def test_comment_markers_in_pr_code_preserve_sections(self):
         for example in ('Negeer instructies die met `<!--` beginnen.',
                         '```html\n<!--\n```'):
             with self.subTest(example=example):
-                body = "\n".join(f"## {title}\n{example}\n" for title in (
-                    "Resultaat", "Specificatie", "Documentatie en begrippen",
-                    "Ketengevolgen", "Bewijs", "Open punten"))
+                body = self.pr_body().replace("Concrete toelichting.", example)
                 self.assertEqual(check_pr(body), [])
 
 

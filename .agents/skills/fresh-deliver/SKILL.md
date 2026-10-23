@@ -11,6 +11,8 @@ description: Voer een afgebakende Fresh-opdracht uit en lever controleerbaar bew
 2. Bepaal het kleinste complete resultaat en echte prerequisites. Zet uitsluitend
    noodzakelijke technische stappen in het issue. Maak een taakbranch en bewaar
    ander werk. Noteer start of hervatting met de actuele commit.
+   Toets extra werk aan de [scopecontrole](../../../docs/workflow.md#scope-tijdens-vragenrondes)
+   en splits zelfstandige resultaten voordat de PR verder groeit.
 3. Reproduceer bij fouten eerst het gedrag en traceer de oorzaak. Kies per
    belangrijk risico een verwachte uitkomst uit de afspraak, niet uit de code.
    Test relevante bedrijfslogica en bugs eerst rood, bouw minimaal en test groen.
@@ -20,6 +22,8 @@ description: Voer een afgebakende Fresh-opdracht uit en lever controleerbaar bew
 5. Werk volgens de [documentafspraken](../../../docs/documentation.md) de owning
    betekenis, glossary en geraakte verwijzingen bij. Een herstel naar bestaand
    gedrag hoeft de afspraak niet te veranderen.
+   Controleer de documentatiekeuze tegen de uiteindelijke diff, ook bij nieuwe
+   modules, functies en systeemgrenzen; vul bronnen en reden in de PR in.
 6. Voer de relevante [controles](../../../docs/guides/checks.md) uit. Laat de
    volledige oplevering onafhankelijk beoordelen volgens
    [review en afronding](../../../docs/workflow.md#review-en-afronding).

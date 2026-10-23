@@ -29,9 +29,17 @@ gecontroleerd. Bestanden buiten de genoemde scope vereisen uitbreiding van de sc
 
 Specificaties krijgen ID-, status-, dependency-, cyclus- en criteriumcontroles.
 Skillnaam en beschrijving worden gecontroleerd. PR-events controleren aanwezigheid
-van de zes ingevulde secties uit het PR-sjabloon. De controle bewijst geen
+van de zes ingevulde secties uit het PR-sjabloon, expliciete scope en de
+[documentatiekeuze](../documentation.md#documentatie-bij-uitbreidingen).
+De bronnen moeten bestaande lokale Markdown-bestanden/ankers zijn; `bijgewerkt`
+vereist een bron die in de werkelijke PR-diff verandert. De workflow haalt de
+base-commit op en leest de diff zonder shellinterpolatie van PR-tekst.
+Bij `bestaand-volstaat` blijft een concrete toelichting verplicht. De controle bewijst geen
 inhoudelijke volledigheid, autorisatie van een besluit, juiste glossarybetekenis,
 uitgevoerde applicatietest of onafhankelijke review. Dat blijft reviewwerk.
+Een verkeerde maar syntactisch geldige documentatiekeuze kan alleen inhoudelijk
+worden afgewezen. Gesloten historische PR's worden niet achteraf aan nieuwe
+sjabloonvelden aangepast; open PR's volgen de actuele afspraken.
 
 ## GitHub-beveiliging instellen en bewijzen
 
