@@ -86,9 +86,11 @@ actuele inkoopprijs en het toepasselijke percentage. Vaste verkoopprijzen blijve
 exact staan. De bijgewerkte vergelijkingsprijzen volgen de bestaande regels voor
 aandachtspunten en eerder beoordeelde bedragen.
 
-Het moment waarop het prijsbereik wordt bepaald is nog open. De vergelijking met
-vaste prijzen gebruikt de afgeronde berekende prijs, zoals uitgewerkt bij
-herberekening en aandacht hieronder.
+De onafgeronde berekende prijs bepaalt het prijsbereik en daarmee de
+afrondingsstap. Fresh past deze stap precies één keer toe. Als het afgeronde
+bedrag in een ander prijsbereik valt, wordt geen nieuwe stap gekozen en niet
+opnieuw afgerond. De vergelijking met vaste prijzen gebruikt de afgeronde
+berekende prijs, zoals uitgewerkt bij herberekening en aandacht hieronder.
 
 ### Standaardmarge per leverancier
 
@@ -552,6 +554,24 @@ vaste prijs vervalt. De vaste verkoopprijs blijft EUR 12,02.
 Dit leidt niet automatisch tot export of publicatie en wijzigt geen eerder
 geëxporteerde bestanden.
 
+<a id="ac-prijzen-044"></a>
+
+### De onafgeronde prijs bepaalt de afrondingsstap
+
+Gegeven de gekozen beginstaffel, geldt:
+
+| Onafgeronde berekende prijs | Gekozen stap | Afgeronde prijs |
+| --- | --- | --- |
+| EUR 0,999 | EUR 0,01 | EUR 1,00 |
+| EUR 1,00 | EUR 0,05 | EUR 1,00 |
+| EUR 10,00 | EUR 0,05 | EUR 10,00 |
+| EUR 10,04 | EUR 0,10 | EUR 10,00 |
+| EUR 20,00 | EUR 0,10 | EUR 20,00 |
+| EUR 20,04 | EUR 0,25 | EUR 20,00 |
+
+Het afgeronde bedrag leidt niet tot een nieuwe keuze van de stap of een tweede
+afronding, ook wanneer het bedrag op een grens van een ander prijsbereik uitkomt.
+
 ## Open keuzes
 
 Beheer van de standaardmarge (los percentage of margegroep) en gedrag bij
@@ -563,7 +583,6 @@ leveranciersstandaard. Herkenning van bestaande productinstellingen bij nieuwe
 imports vraagt nog uitwerking.
 Gedrag bij geen
 kandidaat of een nog open keuze, behoudkeuzes na wijzigingen van vaste prijs of prijswijze,
-grensbepaling bij afronding,
 de basis van bedragen (zoals belasting en bijkomende kosten), ontbrekende
 inkoopprijzen en de hierboven genoemde ketengevolgen worden uitgewerkt in
 [issue #6](https://github.com/MenkehorstKwekerijen/Fresh/issues/6).
