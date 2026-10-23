@@ -80,10 +80,15 @@ Handmatig ingestelde vaste verkoopprijzen blijven exact zoals ingevoerd. De
 afrondingsstaffel geldt uitsluitend voor berekende prijzen. Een vaste prijs van
 EUR 12,07 blijft dus EUR 12,07, ook bij een afrondingsstap van EUR 0,10.
 
-Het moment waarop het prijsbereik wordt bepaald is nog open. Ook gevolgen van
-gewijzigde instellingen voor bestaande berekende prijzen moeten nog worden
-bepaald. De vergelijking met vaste prijzen gebruikt de afgeronde berekende prijs,
-zoals uitgewerkt bij herberekening en aandacht hieronder.
+Na wijziging van de afrondingsstaffel worden alle bestaande berekende
+verkoopprijzen en vergelijkingsprijzen automatisch opnieuw berekend vanuit de
+actuele inkoopprijs en het toepasselijke percentage. Vaste verkoopprijzen blijven
+exact staan. De bijgewerkte vergelijkingsprijzen volgen de bestaande regels voor
+aandachtspunten en eerder beoordeelde bedragen.
+
+Het moment waarop het prijsbereik wordt bepaald is nog open. De vergelijking met
+vaste prijzen gebruikt de afgeronde berekende prijs, zoals uitgewerkt bij
+herberekening en aandacht hieronder.
 
 ### Standaardmarge per leverancier
 
@@ -207,7 +212,8 @@ welke leveranciersaanbiedingen worden geraakt; de bediening hiervan is nog open.
 
 WinTree-export en catalogus/website zijn relevante afnemers binnen het
 [productdoel](../project.md). Welke prijsvelden elke afnemer krijgt, moet nog
-worden uitgewerkt. Herberekening na een groeps- of leveranciersstandaardwijziging geldt binnen Fresh;
+worden uitgewerkt. Herberekening na wijziging van een groepspercentage,
+leveranciersstandaard of afrondingsstaffel geldt binnen Fresh;
 dit besluit geeft geen automatische publicatie of aanpassing van al geëxporteerde
 bestanden. Het moment van overdracht naar afnemers, herberekening bij nieuwe
 inkoopprijzen, gelijktijdige wijzigingen
@@ -533,6 +539,19 @@ tweede situatie wordt EUR 12,10 de beoordeelde grens; een stijging van het
 onafgeronde bedrag naar EUR 12,09 geeft geen nieuwe melding, omdat de afgeronde
 vergelijkingsprijs EUR 12,10 blijft.
 
+<a id="ac-prijzen-043"></a>
+
+### Een gewijzigde staffel herberekent bestaande prijzen en vergelijkingen
+
+Gegeven inkoopprijs EUR 10,05 en opslag 20 procent, geeft de berekening
+EUR 12,06. Bij wijziging van de stap voor dit bereik van EUR 0,10 naar EUR 0,25
+verandert de berekende verkoopprijs automatisch van EUR 12,10 naar EUR 12,00.
+Voor een product met dezelfde rekeninvoer en vaste prijs EUR 12,02 verandert de
+vergelijkingsprijs eveneens naar EUR 12,00; het aandachtspunt voor een te lage
+vaste prijs vervalt. De vaste verkoopprijs blijft EUR 12,02.
+Dit leidt niet automatisch tot export of publicatie en wijzigt geen eerder
+geëxporteerde bestanden.
+
 ## Open keuzes
 
 Beheer van de standaardmarge (los percentage of margegroep) en gedrag bij
@@ -544,8 +563,7 @@ leveranciersstandaard. Herkenning van bestaande productinstellingen bij nieuwe
 imports vraagt nog uitwerking.
 Gedrag bij geen
 kandidaat of een nog open keuze, behoudkeuzes na wijzigingen van vaste prijs of prijswijze,
-grensbepaling bij afronding en
-doorwerking van gewijzigde afrondingsinstellingen,
+grensbepaling bij afronding,
 de basis van bedragen (zoals belasting en bijkomende kosten), ontbrekende
 inkoopprijzen en de hierboven genoemde ketengevolgen worden uitgewerkt in
 [issue #6](https://github.com/MenkehorstKwekerijen/Fresh/issues/6).
