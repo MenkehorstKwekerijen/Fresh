@@ -10,17 +10,19 @@ in [de glossary](../glossary.md).
 | Bron | Bekende aanlevering | Nog te bepalen grens |
 | --- | --- | --- |
 | [WinTree-basisstam](../glossary.md#term-wintree-basisstam) | Excel/CSV uit WinTree met naamcodes, maatcodes en bijbehorende omschrijvingen | Bestandsindeling, actualisering en verwerking van gewijzigde codes |
-| [Externe fictieve voorraad](../glossary.md#term-externe-fictieve-voorraad) | Excel of CSV, ritme verschilt per leverancier | Bestandsinhoud en vervanging of aanvulling van vorige gegevens |
-| [Eigen voorraad](../glossary.md#term-eigen-voorraad) | Periodiek vanuit WinTree via Excel of CSV | Bestandsinhoud, actualiteit en vervanging of aanvulling |
-| [Eigen externe voorraad](../glossary.md#term-eigen-externe-voorraad) | Periodiek vanuit WinTree via Excel of CSV | Bestandsinhoud, actualiteit en vervanging of aanvulling |
-| [TCM-voorraad](../glossary.md#term-tcm-voorraad) | Periodiek vanuit WinTree via Excel of CSV | Bestandsinhoud, actualiteit en vervanging of aanvulling |
+| [Externe fictieve voorraad](../glossary.md#term-externe-fictieve-voorraad) | Excel of CSV, ritme verschilt per leverancier | Bestandsinhoud, bronafbakening en actualiteit |
+| [Eigen voorraad](../glossary.md#term-eigen-voorraad) | Periodiek vanuit WinTree via Excel of CSV | Bestandsinhoud, bronafbakening en actualiteit |
+| [Eigen externe voorraad](../glossary.md#term-eigen-externe-voorraad) | Periodiek vanuit WinTree via Excel of CSV | Bestandsinhoud, bronafbakening en actualiteit |
+| [TCM-voorraad](../glossary.md#term-tcm-voorraad) | Periodiek vanuit WinTree via Excel of CSV | Bestandsinhoud, bronafbakening en actualiteit |
 | Historische verkoopgegevens | Periodiek vanuit WinTree via Excel of CSV | Bestandsinhoud, periode, detailniveau en herhaalde aanlevering |
 | Catalogusupdates | Excel-lijsten en afzonderlijke producten toevoegen | Identificatie van bestaande producten en betekenis van wijzigingen |
 
 De automatische ontvangst van TCM betreft de aanlevering aan WinTree. De route
 van WinTree naar Fresh gebruikt periodieke bestanden, net als de andere hierboven
 genoemde WinTree-bronnen. Frequentie en handmatige of automatische bediening van
-die bestandsoverdracht zijn nog niet bepaald.
+die bestandsoverdracht zijn nog niet bepaald. De besloten vervangingsregel voor
+de vier voorraadsoorten staat in de
+[conceptspecificatie voorraadimport](../specs/voorraadimport.md#gedrag-en-gegevens).
 
 ## Omzetting naar WinTree-codes
 
