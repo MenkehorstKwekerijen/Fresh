@@ -1,0 +1,4 @@
+interface:
+  display_name: "Fresh specificeren"
+  short_description: "Begrippen en ketengedrag precies vastleggen"
+  default_prompt: "Gebruik $fresh-spec om deze wijziging te specificeren."
