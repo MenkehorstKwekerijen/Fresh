@@ -1,0 +1,4 @@
+interface:
+  display_name: "Fresh overdragen"
+  short_description: "Werk compact overdragen en betrouwbaar hervatten"
+  default_prompt: "Gebruik $fresh-handoff om dit werk over te dragen of te hervatten."

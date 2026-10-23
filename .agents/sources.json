@@ -24,11 +24,13 @@
         "skills/engineering/domain-modeling/SKILL.md",
         "skills/engineering/to-spec/SKILL.md",
         "skills/engineering/to-tickets/SKILL.md",
-        "skills/engineering/tdd/SKILL.md"
+        "skills/engineering/tdd/SKILL.md",
+        "skills/productivity/handoff/SKILL.md"
       ],
       "used_by": [
         "fresh-spec",
-        "fresh-deliver"
+        "fresh-deliver",
+        "fresh-handoff"
       ]
     },
     {

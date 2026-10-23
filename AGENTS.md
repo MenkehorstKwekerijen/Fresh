@@ -10,6 +10,7 @@ Lees daarna alleen de bronnen die bij de taak horen:
 | --- | --- |
 | Nieuw gedrag, veranderde betekenis of nieuwe begrippen | [fresh-spec](.agents/skills/fresh-spec/SKILL.md) |
 | Implementeren, bugfix, testen of opleveren | [fresh-deliver](.agents/skills/fresh-deliver/SKILL.md) |
+| Chat overdragen of werk hervatten | [fresh-handoff](.agents/skills/fresh-handoff/SKILL.md) |
 | Documentatie of glossary aanpassen | [documentafspraken](docs/documentation.md) |
 | Werkwijze, issues of PR's inrichten | [werkwijze](docs/workflow.md) |
 | Skillselectie of skillwijziging | [skillprofiel](docs/skills.md) |
@@ -33,8 +34,8 @@ haar directe afhankelijkheden. Laad niet standaard alle documentatie of skills.
 - Een functionele oplevering krijgt een onafhankelijke eindreview. Zie de
   [reviewafspraken](docs/workflow.md#review-en-afronding); een eigen tweede lezing
   is geen onafhankelijke review.
-- Bewaar bij onderbreking een korte hervattingsnotitie op issue of PR: commit,
-  bewezen resultaat, resterend werk en blokkade.
+- Gebruik bij een chatwissel [fresh-handoff](.agents/skills/fresh-handoff/SKILL.md)
+  voor één hervattingsnotitie op het actieve issue of de PR.
 
 ## Prioriteit en grenzen
 

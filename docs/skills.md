@@ -1,6 +1,6 @@
 # Fresh-skillprofiel
 
-Fresh gebruikt twee lokale projectskills, gebaseerd op geselecteerde principes.
+Fresh gebruikt drie lokale projectskills, gebaseerd op geselecteerde principes.
 Dit is een aangepaste werkwijze, geen ongewijzigde installatie van vier pakketten.
 De [bronregistratie](../.agents/sources.json) bewaart de onderzochte upstream
 revisies en bestanden. De lokale teksten zijn zelfstandig geformuleerd; zij
@@ -12,6 +12,7 @@ roepen geen upstream scripts, agents of verborgen afhankelijkheden aan.
 | --- | --- | --- |
 | Begrippen, nieuwe eisen en ketengedrag | [fresh-spec](../.agents/skills/fresh-spec/SKILL.md) | Superpowers ontwerp; Matt domeinmodellering; l-gevity dependencies; pstack schrijven |
 | Uitvoering, diagnose, review en bewijs | [fresh-deliver](../.agents/skills/fresh-deliver/SKILL.md) | Superpowers uitvoering; Matt gedragstests; l-gevity teststrategie; pstack impact en echte appcontrole |
+| Chat overdragen of werk hervatten | [fresh-handoff](../.agents/skills/fresh-handoff/SKILL.md) | Matt handoff; verwijzen naar actuele bronnen zonder dubbel dossier |
 
 De root [AGENTS.md](../AGENTS.md) wijst expliciet naar de lokale bestanden.
 Automatische ontdekking verschilt per agentomgeving. Als de skill niet in de
@@ -23,6 +24,9 @@ de lokale leesroute. Download upstream documenten niet opnieuw bij iedere taak.
 
 - Specificaties staan in de repository. Uitvoeringsplannen en besluiten staan in
   kleine issues; geen dubbele planbestanden, Projects of voortgangsdocumenten.
+- Handoff gebruikt één notitie op het actieve issue of de PR in plaats van Matts
+  tijdelijke bestand. Nieuwe chats kunnen zo zonder gedeelde tijdelijke map
+  hervatten. De skilltekst wordt alleen bij overdracht of hervatting gelezen.
 - Eén uitvoerder en één onafhankelijke eindreview zijn standaard; geen verplichte
   agent per deelstap of integratiebranch voor iedere functie.
 - Vragen beperken zich tot beslissingen die uitkomst of moeilijk omkeerbare
