@@ -3,6 +3,8 @@
 Deze glossary bezit de besloten betekenis van bedrijfsbegrippen in Fresh.
 De eerste definities komen uit de gebruikersantwoorden vastgelegd in
 [issue #4](https://github.com/MenkehorstKwekerijen/Fresh/issues/4).
+Prijsbegrippen worden verder besloten in
+[issue #6](https://github.com/MenkehorstKwekerijen/Fresh/issues/6).
 Verwerkingsregels en berekeningen horen in productspecificaties.
 
 ## Externe fictieve voorraad
@@ -94,6 +96,21 @@ staan in de [prijsspecificatie](specs/prijzen.md).
 Een expliciet ingesteld verkoopbedrag, in plaats van een verkoopprijs die met
 een opslagpercentage wordt berekend. Het toepassingsgedrag staat in de
 [prijsspecificatie](specs/prijzen.md).
+
+## Margegroep
+
+<a id="term-margegroep"></a>
+
+Een groep waarmee prijsinstellingen kunnen worden toegewezen. De inhoud en
+werking van de toewijzing worden vastgelegd in de
+[prijsspecificatie](specs/prijzen.md).
+
+## Bulkactie
+
+<a id="term-bulkactie"></a>
+
+Eén handeling waarmee dezelfde wijziging op meerdere geselecteerde onderdelen
+wordt toegepast.
 
 ## Catalogusbeheer
 

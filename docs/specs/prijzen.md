@@ -8,8 +8,10 @@ depends_on: []
 ## Doel en scope
 
 Fresh ondersteunt [opslag op inkoop](../glossary.md#term-opslag-op-inkoop) en
-een [vaste verkoopprijs](../glossary.md#term-vaste-verkoopprijs). Margegroepen
-moeten kunnen worden aangemaakt en toegewezen. Dit gebruikersbesluit staat in
+een [vaste verkoopprijs](../glossary.md#term-vaste-verkoopprijs).
+[Margegroepen](../glossary.md#term-margegroep) moeten kunnen worden aangemaakt en
+toegewezen voor individuele producten, leveranciers en catalogushoofdstukken,
+ook via een [bulkactie](../glossary.md#term-bulkactie). Dit gebruikersbesluit staat in
 [issue #6](https://github.com/MenkehorstKwekerijen/Fresh/issues/6).
 De specificatie is nog niet volledig genoeg voor implementatie.
 
@@ -22,9 +24,14 @@ Bij procentuele opslag geldt:
 Bij een vaste verkoopprijs is het expliciet ingestelde bedrag de verkoopprijs.
 Een brutomargepercentage over de verkoopprijs is niet als prijswijze gekozen.
 
-Margegroepen kunnen worden aangemaakt en toegewezen. De inhoud van een groep,
-de entiteiten waaraan een groep wordt toegewezen en de voorrang tussen
-groepsinstellingen en afzonderlijke instellingen zijn nog niet bepaald.
+Margegroepen kunnen worden aangemaakt. Toewijzing is beschikbaar voor individuele
+producten, leveranciers en catalogushoofdstukken, ook als bulkactie op een
+selectie. De inhoud van een groep en de voorrang tussen groepsinstellingen en
+afzonderlijke instellingen zijn nog niet bepaald.
+
+Nog te verduidelijken is of leverancier en hoofdstuk dienen als selectie van
+producten voor een eenmalige toewijzing, of als blijvende toewijzingsregel die
+ook op later toegevoegde producten werkt. Er is nog geen overervingsmodel gekozen.
 
 ## Keten en herstel
 
@@ -53,9 +60,25 @@ is de berekende verkoopprijs EUR 13,00.
 Gegeven een toepasselijke instelling met vaste verkoopprijs EUR 15,00 en een
 inkoopprijs van EUR 10,00, is de verkoopprijs EUR 15,00.
 
+<a id="ac-prijzen-003"></a>
+
+### Toewijzing ondersteunt de drie gekozen doelgroepen
+
+De gebruiker kan een margegroep aanmaken en toewijzing uitvoeren voor individuele
+producten, leveranciers en catalogushoofdstukken. Het precieze effect van
+leverancier- en hoofdstuktoewijzing op toekomstige producten staat nog open.
+
+<a id="ac-prijzen-004"></a>
+
+### Een bulkactie past de toewijzing toe op de selectie
+
+Gegeven drie beschikbare onderdelen A, B en C, waarbij de gebruiker A en B
+selecteert, kan de gebruiker met één bulkactie een margegroep voor A en B
+toewijzen. De toewijzing van het niet-geselecteerde onderdeel C verandert niet.
+
 ## Open keuzes
 
-Inhoud en toewijzing van margegroepen, voorrangsregels, afronding, de basis van
+Inhoud en blijvende werking van margegroepen, voorrangsregels, afronding, de basis van
 bedragen (zoals belasting en bijkomende kosten), ontbrekende inkoopprijzen en
 de hierboven genoemde ketengevolgen worden uitgewerkt in
 [issue #6](https://github.com/MenkehorstKwekerijen/Fresh/issues/6).
