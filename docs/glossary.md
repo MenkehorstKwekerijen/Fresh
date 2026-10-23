@@ -32,7 +32,8 @@ reeds gekochte bomen.
 <a id="term-tcm-voorraad"></a>
 
 Voorraad die automatisch via WinTree wordt ontvangen met TreeCommerce Messenger
-(TCM). Deze definitie bepaalt nog niet hoe Fresh die gegevens uit WinTree krijgt.
+(TCM). De route van WinTree naar Fresh staat in het
+[ketenoverzicht](architecture/overview.md#inkomende-gegevens).
 
 ## WinTree
 

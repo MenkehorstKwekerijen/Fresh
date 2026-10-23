@@ -10,11 +10,16 @@ in [de glossary](../glossary.md).
 | Bron | Bekende aanlevering | Nog te bepalen grens |
 | --- | --- | --- |
 | [Externe fictieve voorraad](../glossary.md#term-externe-fictieve-voorraad) | Excel of CSV, ritme verschilt per leverancier | Bestandsinhoud en vervanging of aanvulling van vorige gegevens |
-| [Eigen voorraad](../glossary.md#term-eigen-voorraad) | Eigen containervelden en percelen | Bronsysteem, formaat en route naar Fresh |
-| [Eigen externe voorraad](../glossary.md#term-eigen-externe-voorraad) | Reeds ingekochte voorraad bij leveranciers | Bronsysteem, formaat en route naar Fresh |
-| [TCM-voorraad](../glossary.md#term-tcm-voorraad) | Automatische ontvangst via WinTree | Route van WinTree naar Fresh |
-| Historische verkoopgegevens | Beoogde input voor voorkeuren en assortimentsanalyse | Bronsysteem, formaat, periode en detailniveau |
+| [Eigen voorraad](../glossary.md#term-eigen-voorraad) | Periodiek vanuit WinTree via Excel of CSV | Bestandsinhoud, actualiteit en vervanging of aanvulling |
+| [Eigen externe voorraad](../glossary.md#term-eigen-externe-voorraad) | Periodiek vanuit WinTree via Excel of CSV | Bestandsinhoud, actualiteit en vervanging of aanvulling |
+| [TCM-voorraad](../glossary.md#term-tcm-voorraad) | Periodiek vanuit WinTree via Excel of CSV | Bestandsinhoud, actualiteit en vervanging of aanvulling |
+| Historische verkoopgegevens | Periodiek vanuit WinTree via Excel of CSV | Bestandsinhoud, periode, detailniveau en herhaalde aanlevering |
 | Catalogusupdates | Excel-lijsten en afzonderlijke producten toevoegen | Identificatie van bestaande producten en betekenis van wijzigingen |
+
+De automatische ontvangst van TCM betreft de aanlevering aan WinTree. De route
+van WinTree naar Fresh gebruikt periodieke bestanden, net als de andere hierboven
+genoemde WinTree-bronnen. Frequentie en handmatige of automatische bediening van
+die bestandsoverdracht zijn nog niet bepaald.
 
 ## Verwerking en afnemers
 
@@ -24,8 +29,11 @@ controlepunten en bevestiging van verwerking in het ERP zijn nog te specificeren
 
 De commerciële route gebruikt voorraadbronnen en historische verkoopgegevens
 voor leveranciersvoorkeuren en assortimentskeuzes. Catalogusbeheer omvat de
-productgegevens en websiteweergave uit de projectbasis. Het publicatieformaat en
-de overdracht naar de website zijn nog niet besloten.
+productgegevens en websiteweergave uit de projectbasis. De website leest nu
+CSV-bestanden in; Fresh sluit in de eerste versie op die route aan. Welke velden
+worden aangeleverd en hoe de website wijzigingen verwerkt, vraagt nog een
+expliciete interfaceafspraak. Een API-koppeling is de gewenste latere uitbreiding;
+deze is niet nodig voor de eerste CSV-route.
 
 Deze routes delen gegevens. Welke producten tussen bronnen bij elkaar horen en
 hoe mogelijke overlap tussen voorraadbronnen wordt behandeld, moet expliciet

@@ -42,11 +42,13 @@ De gebruiker heeft de volgende werkzaamheden genoemd:
   beheren, inclusief hun weergave op de website, hoofdstukken, Duitse en Engelse
   vertalingen en filters.
 - Productupdates via Excel-lijsten verwerken en afzonderlijke producten toevoegen.
+- Catalogusgegevens via CSV aan de website overdragen, aansluitend op de huidige
+  importwerkwijze van de website. Een API-koppeling volgt als latere uitbreiding.
 
 Export naar WinTree hoort bij het productdoel. De exacte exportafspraak en de
-grens tussen catalogusbeheer en daadwerkelijke websitepublicatie moeten nog
-worden uitgewerkt. Ook de eerste oplevering van verkoopanalyse en automatisering
-en expliciet uitgestelde functies zijn nog niet afgebakend.
+inhoud en verwerking van de website-CSV's moeten nog worden uitgewerkt. Ook de
+eerste oplevering van verkoopanalyse en automatisering en overige uitgestelde
+functies zijn nog niet afgebakend.
 
 ## Algemene kwaliteitseisen
 
