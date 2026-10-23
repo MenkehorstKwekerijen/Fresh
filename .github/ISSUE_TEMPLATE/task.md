@@ -13,6 +13,7 @@ Wat kan de gebruiker na afronding? Voor proceswerk: welk concreet resultaat onts
 ## Scope
 
 Wat hoort erbij en wat valt erbuiten? Voeg alleen noodzakelijke technische stappen toe.
+Verwijs bij een zelfstandig extra resultaat naar een apart issue.
 
 ## Specificatie
 
@@ -26,3 +27,8 @@ Welke andere issues of besluiten blokkeren dit werk werkelijk? Anders: geen.
 ## Controle
 
 Welk bewijs sluit de scope? Vermeld een vereiste praktijkproef hier vooraf.
+
+## Open keuzes
+
+Alleen ontbrekende beslissingen binnen deze scope. Werk beantwoorde vragen bij
+in de specificatie; bewaar hier zo nodig kort de besluitreden, zonder de regels te kopiëren.

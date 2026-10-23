@@ -93,6 +93,25 @@ maar geen volledige betekenis of alle natuurlijke-taalsynoniemen herkennen.
 
 ## Review en onderhoud
 
+Verwerk een antwoord door de bestaande afspraak te herschrijven; voeg alleen
+een nieuw criterium toe als er nieuw observeerbaar gedrag ontstaat. Verwijder
+vervangen tekst en groepeer regel, uitzondering en voorbeelden per onderwerp.
+Een specificatie beschrijft de actuele afspraken, niet de volgorde van de chat.
+Behoud bij redactie de betekenis en bestaande criterium-ID's; vergelijk de
+oude en nieuwe dekking voordat je dubbele uitleg verwijdert.
+
+Gebruik bovenaan langere specificaties een korte leeswijzer met sectielinks.
+Zet toetsbare voorbeelden bij de betreffende regels; herhaal niet daarnaast
+de hele specificatie in een tweede criterialijst. Splits alleen op zelfstandige
+verantwoordelijkheid, niet op een willekeurig aantal regels.
+
+Consolideer bij afronding van een onderwerp en vóór review. Issues bevatten
+resultaat, grenzen, besluitredenen, open vragen en links; PR's bevatten de
+wijziging en het bewijs. Herschrijf hun actuele tekst zodra de scope verandert.
+Bewaar historie in Git en issuegeschiedenis, zonder actieve archiefdocumenten.
+De structurele checker bewijst geen inhoudelijke scope of afwezigheid van
+duplicatie; daarvoor gelden de [reviewafspraken](workflow.md#review-en-afronding).
+
 Een nieuw inzicht wordt eerst bij zijn eigenaar verwerkt. Afgeleide tekst
 verwijst daarheen. Wanneer code afwijkt, bepaal of code of afspraak fout is; werk
 documentatie niet automatisch naar de feitelijke bug toe.

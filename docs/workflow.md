@@ -33,6 +33,35 @@ niet meer met haar relevante context te begrijpen en te verifiëren is.
 
 ## Kleine issues en voortgang
 
+### Scope tijdens vragenrondes
+
+Begin ieder issue en iedere PR met één concreet resultaat en een korte grens:
+wat hoort erbij, wat valt erbuiten? Toets bij een onderwerpwissel, nieuwe
+afnemer of extra zelfstandig resultaat of het nog binnen die grens past.
+Een raakvlak alleen is geen afhankelijkheid.
+
+| Uitkomst | Handeling |
+| --- | --- |
+| Verduidelijkt het afgesproken resultaat | Werk de bestaande afspraak bij |
+| Is noodzakelijk voor dat resultaat | Houd het erbij en benoem de concrete afhankelijkheid in issue en PR |
+| Levert een zelfstandig resultaat | Verwerk het in een passend klein issue; maak een eigen PR zodra het werk start |
+| Is een toekomstidee | Noteer het kort op het passende issue; werk nog geen specificatie uit |
+
+Meld een scopeverschuiving kort aan de gebruiker. Vraag alleen een keuze als
+productwerking of prioriteit onduidelijk is; routine-indeling vereist geen
+nieuwe toestemming. Hervat de vraag bij het juiste onderwerp. Kopieer geen
+gesprek naar meerdere issues: link naar de owning afspraak en bewaar alleen
+besluitreden en open vragen bij het issue.
+
+Splits bestaand werk voordat meer zelfstandige scope wordt toegevoegd. Bewaar
+besloten inhoud, criterium-ID's en herleidbare geschiedenis. Nieuwe PR's tonen
+alleen hun eigen wijziging. Gebruik bij echte afhankelijkheden een expliciete
+base-branch en mergevolgorde; werk na merge de volgende base bij en controleer
+de diff opnieuw. Sluit de oude verzamel-PR pas wanneer alle opvolgers vindbaar
+zijn; sluit daarmee geen onvoltooide productissues.
+
+### Voortgang zonder extra register
+
 Gebruik [het issuesjabloon](../.github/ISSUE_TEMPLATE/task.md). Eén issue bezit één
 resultaat; opslag, verwerking, scherm en tests mogen daarvoor samen veranderen.
 Maak maximaal twee niveaus: een kort overkoepelend issue en uitvoeringsissues.
@@ -83,8 +112,10 @@ de procesbasis krijgen een onafhankelijke reviewer met opdracht, specificatie,
 base/head-revisies en bewijs. Geef geen gewenste conclusie mee. Extra parallelle
 agents zijn alleen nuttig bij onafhankelijk werk of gerichte risicoanalyse.
 
-De reviewer controleert ook glossary-impact, geraakte documentverwijzingen en
-onvoorziene ketengevolgen. Los belangrijke bevindingen op. Herhaal gerichte
+De reviewer controleert ook of diff en open vragen bij het ene PR-resultaat
+horen, of echte afhankelijkheden zijn benoemd en of productregels bij hun eigenaar
+staan zonder onnodige kopieën. Controleer glossary-impact, geraakte verwijzingen
+en onvoorziene ketengevolgen. Los belangrijke bevindingen op. Herhaal gerichte
 controles na fixes; doe een nieuwe review wanneer nieuwe wijzigingen of resterend
 risico dit rechtvaardigen. Is onafhankelijke review niet beschikbaar, rapporteer
 dat als ontbrekend bewijs, niet als geslaagde fresh pass.

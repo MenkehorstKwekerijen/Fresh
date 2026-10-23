@@ -11,6 +11,8 @@ description: Voer een afgebakende Fresh-opdracht uit en lever controleerbaar bew
 2. Bepaal het kleinste complete resultaat en echte prerequisites. Zet uitsluitend
    noodzakelijke technische stappen in het issue. Maak een taakbranch en bewaar
    ander werk. Noteer start of hervatting met de actuele commit.
+   Toets extra werk aan de [scopecontrole](../../../docs/workflow.md#scope-tijdens-vragenrondes)
+   en splits zelfstandige resultaten voordat de PR verder groeit.
 3. Reproduceer bij fouten eerst het gedrag en traceer de oorzaak. Kies per
    belangrijk risico een verwachte uitkomst uit de afspraak, niet uit de code.
    Test relevante bedrijfslogica en bugs eerst rood, bouw minimaal en test groen.

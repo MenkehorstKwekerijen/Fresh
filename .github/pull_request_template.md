@@ -1,11 +1,13 @@
 ## Resultaat
 
-<!-- Beschrijf het concrete resultaat en verwijs naar het issue. Gebruik Closes alleen
+<!-- Beschrijf één concreet resultaat, wat erbij hoort en wat erbuiten valt.
+Verwijs naar het issue en motiveer noodzakelijke scope-uitbreiding. Gebruik Closes alleen
 als de volledige afgesproken scope bij merge is bewezen; anders Refs. -->
 
 ## Specificatie
 
-<!-- Link de relevante afspraken en criteria, of de owning werkwijze voor proceswerk. -->
+<!-- Link de relevante afspraken en criteria, of de owning werkwijze voor proceswerk.
+Herhaal de productregels niet. Noem bij afhankelijke PR's de base en mergevolgorde. -->
 
 ## Documentatie en begrippen
 
