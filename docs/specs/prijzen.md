@@ -107,9 +107,29 @@ de gekozen groep van bestaande producten niet automatisch. Bestaande producten
 vragen een expliciete herbeoordeling. Een andere groep wordt pas gekoppeld als
 die herbeoordeling tot die keuze leidt.
 
-Deze afspraak gaat over het wijzigen van expliciete groepstoewijzingen. Wat er
-gebeurt als de standaardmarge of de prijsinstellingen binnen een al gekoppelde
-margegroep wijzigen, is nog open.
+Deze afspraak gaat over het wijzigen van expliciete groepstoewijzingen.
+Het wijzigen van een percentage binnen een gekoppelde groep is een andere
+handeling en werkt volgens onderstaande herberekeningsregel.
+
+### Herberekening en aandacht voor vaste prijzen
+
+Een gewijzigd groepspercentage wordt automatisch toegepast op de gekoppelde
+producten met procentuele prijsberekening. Bij EUR 10,00 inkoop en wijziging
+van 30 naar 35 procent verandert de berekende verkoopprijs van EUR 13,00 naar
+EUR 13,50. De groepskoppeling verandert daarbij niet.
+
+Vaste verkoopprijzen blijven gelijk. Komt de prijs op basis van het toepasselijke
+percentage boven de vaste verkoopprijs, dan toont Fresh een aandachtspunt met
+de vaste prijs, de berekende prijs en het verschil. Bijvoorbeeld bij EUR 10,00
+inkoop, EUR 13,00 vast en 40 procent opslag: de vaste verkoopprijs blijft
+EUR 13,00; de melding geeft aan dat deze EUR 1,00 onder de berekende EUR 14,00 ligt.
+Bij een gelijke of lagere berekende prijs is er om deze reden geen aandachtspunt.
+
+De gebruiker kan de vaste prijs behouden, aanpassen of teruggaan naar
+procentuele berekening. Fresh verhoogt de vaste prijs niet automatisch. Hoe
+lang een bewuste behoudkeuze geldt en wanneer het aandachtspunt opnieuw
+verschijnt, moet nog worden bepaald. Ook welke procentuele regel wordt gebruikt
+voor vergelijking bij een vaste prijs zonder groepskoppeling is nog open.
 
 ## Keten en herstel
 
@@ -130,8 +150,11 @@ welke leveranciersaanbiedingen worden geraakt; de bediening hiervan is nog open.
 
 WinTree-export en catalogus/website zijn relevante afnemers binnen het
 [productdoel](../project.md). Welke prijsvelden elke afnemer krijgt, moet nog
-worden uitgewerkt. Herberekening bij nieuwe inkoopprijzen of gewijzigde
-groepsinhoud, gelijktijdige wijzigingen en herstel vragen nog afspraken.
+worden uitgewerkt. Herberekening na een groepswijziging geldt binnen Fresh;
+dit besluit geeft geen automatische publicatie of aanpassing van al geëxporteerde
+bestanden. Het moment van overdracht naar afnemers, herberekening bij nieuwe
+inkoopprijzen of gewijzigde leveranciersstandaarden, gelijktijdige wijzigingen
+en herstel vragen nog afspraken.
 
 ## Acceptatiecriteria
 
@@ -279,17 +302,53 @@ waarbij B zonder individuele regel een standaardmarge van 30 procent gebruikt,
 geeft het instellen van vaste verkoopprijs EUR 15,00 bij A een verkoopprijs
 van EUR 15,00 bij A. De verkoopprijs bij B blijft EUR 13,00.
 
+<a id="ac-prijzen-024"></a>
+
+### Een groepswijziging herberekent gekoppelde procentuele prijzen
+
+Gegeven een product bij A met inkoopprijs EUR 10,00, gekoppelde groep G met
+30 procent en zonder vaste verkoopprijs, wordt de verkoopprijs automatisch
+EUR 13,50 als G naar 35 procent wijzigt. Het product blijft aan G gekoppeld.
+
+<a id="ac-prijzen-025"></a>
+
+### Een hogere berekende prijs geeft aandacht zonder vaste prijs te wijzigen
+
+Gegeven een product bij A met inkoopprijs EUR 10,00, vaste verkoopprijs EUR 13,00
+en een toepasselijk groepspercentage dat van 30 naar 40 procent wijzigt,
+blijft de verkoopprijs EUR 13,00. Fresh toont een aandachtspunt met EUR 13,00
+vast, EUR 14,00 berekend en EUR 1,00 verschil.
+
+<a id="ac-prijzen-026"></a>
+
+### Een berekende prijs op of onder de vaste prijs geeft dit signaal niet
+
+Gegeven een product bij A met vaste verkoopprijs EUR 13,00, geeft een toepasselijke
+berekende prijs van EUR 13,00 of EUR 12,00 geen aandachtspunt voor een te lage
+vaste prijs.
+
+<a id="ac-prijzen-027"></a>
+
+### De gebruiker kiest hoe een vaste prijs wordt behandeld
+
+Gegeven het aandachtspunt met EUR 13,00 vast en EUR 14,00 berekend, kan de
+gebruiker de vaste EUR 13,00 behouden, een ander vast bedrag instellen of
+teruggaan naar de toepasselijke procentuele berekening. Alleen die keuze
+wijzigt de prijswijze of de vaste prijs; het signaal doet dit niet zelfstandig.
+
 ## Open keuzes
 
-Beheer van de standaardmarge (los percentage of margegroep), herberekening na wijzigingen en
-gedrag bij ontbrekende standaardmarge moeten nog worden bepaald. Concrete
+Beheer van de standaardmarge (los percentage of margegroep), herberekening na
+wijzigingen aan die standaard en gedrag bij ontbrekende standaardmarge moeten
+nog worden bepaald. Concrete
 verkoopfilters, combinatie met actueel aanbod en leveranciersbereik van een
 hoofdstukactie blijven open. Automatische uitbreiding van een handmatige
 selectie is niet gekozen; voorraad zonder individuele regel valt onder de
 leveranciersstandaard. Herkenning van bestaande productinstellingen bij nieuwe
 imports vraagt nog uitwerking.
 Omschakelen tussen vaste prijs en procentuele berekening, gedrag bij geen
-kandidaat of een nog open keuze, gevolgen van gewijzigde groepspercentages, afronding,
+kandidaat of een nog open keuze, de duur en herhaling van aandachtspunten,
+de vergelijkingsregel bij vaste prijzen zonder groepskoppeling, afronding,
 de basis van bedragen (zoals belasting en bijkomende kosten), ontbrekende
 inkoopprijzen en de hierboven genoemde ketengevolgen worden uitgewerkt in
 [issue #6](https://github.com/MenkehorstKwekerijen/Fresh/issues/6).
