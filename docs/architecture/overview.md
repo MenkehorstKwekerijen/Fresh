@@ -57,10 +57,11 @@ worden aangeleverd en hoe de website wijzigingen verwerkt, vraagt nog een
 expliciete interfaceafspraak. Een API-koppeling is de gewenste latere uitbreiding;
 deze is niet nodig voor de eerste CSV-route.
 
-Deze routes delen gegevens. Welke producten tussen bronnen bij elkaar horen en
-hoe mogelijke overlap tussen voorraadbronnen wordt behandeld, moet expliciet
-worden besloten voordat gegevens worden gecombineerd. Er is nog geen regel
-vastgesteld voor optellen, voorrang of uitsluiten van bronnen.
+Deze routes delen gegevens. De bekende samenloop tussen leveranciersbestanden
+en TCM en het onderscheid met dezelfde soort en maat bij verschillende leveranciers
+staan in de [conceptspecificatie voorraadimport](../specs/voorraadimport.md#leveranciers-en-mogelijke-dubbele-aanlevering).
+De afhandeling van deze samenloop en regels voor optellen, voorrang of uitsluiten
+van bronnen zijn nog niet besloten.
 
 ## Technische richting
 

@@ -29,6 +29,17 @@ Deze afspraak bepaalt geen vervangingsgedrag voor historische verkoopgegevens,
 de WinTree-basisstam of catalogusupdates. De bestandsvelden die bepalen bij welke
 leverancier of bron een bestand hoort, moeten nog worden uitgewerkt.
 
+### Leveranciers en mogelijke dubbele aanlevering
+
+Dezelfde soort en maat kunnen bij verschillende leveranciers beschikbaar zijn.
+Dat is op zichzelf geen dubbele aanlevering van dezelfde voorraad.
+
+De gebruiker heeft geen overlap bevestigd tussen eigen voorraad, eigen externe
+voorraad en de andere voorraadsoorten. Wel kan één leverancier in theorie zowel
+via een fictief voorraadbestand als via TCM worden ingelezen. Daar kan dezelfde
+voorraad dus via twee routes binnenkomen. Of de twee lijsten dan hetzelfde
+volledige aanbod bevatten en welke bron moet worden gebruikt, is nog niet bepaald.
+
 ## Keten en herstel
 
 Leveranciersvoorkeuren, assortimentsanalyses en uitvoer naar WinTree of website
@@ -60,6 +71,6 @@ of bron. Dit bepaalt niet of historische gegevens worden bewaard.
 
 ## Open keuzes
 
-Verdere afbakening, voorraadoverlap en de hierboven genoemde import- en
-herstelvragen worden behandeld in
+Verdere afbakening, de afhandeling van een leverancier die zowel via fictief
+als TCM binnenkomt en de hierboven genoemde import- en herstelvragen worden behandeld in
 [issue #4](https://github.com/MenkehorstKwekerijen/Fresh/issues/4).
