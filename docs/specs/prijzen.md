@@ -42,9 +42,12 @@ toegepast. Een brutomargepercentage over de verkoopprijs is niet als prijswijze 
 
 Bij een vaste verkoopprijs van EUR 15,00 blijft de verkoopprijs EUR 15,00 als
 de inkoopprijs van EUR 10,00 naar EUR 11,00 verandert. Deze instelling geldt
-alleen bij die leverancier. Het bewaren of verwijderen van een groepskoppeling
-bij omschakelen naar een vaste prijs en het terugschakelen naar procentuele
-berekening moeten nog worden uitgewerkt.
+alleen bij die leverancier. Een bestaande margegroep blijft gekoppeld wanneer
+de gebruiker een vaste prijs instelt. Fresh gebruikt het actuele groepspercentage
+voor de vergelijkingsprijs; de gebruikte verkoopprijs blijft het vaste bedrag.
+Bij bewust terugschakelen naar procentuele berekening gebruikt Fresh opnieuw
+dezelfde groep met het actuele percentage en de actuele inkoopprijs. De gebruiker
+hoeft de groep niet opnieuw te kiezen.
 
 ### Standaardmarge per leverancier
 
@@ -336,6 +339,24 @@ gebruiker de vaste EUR 13,00 behouden, een ander vast bedrag instellen of
 teruggaan naar de toepasselijke procentuele berekening. Alleen die keuze
 wijzigt de prijswijze of de vaste prijs; het signaal doet dit niet zelfstandig.
 
+<a id="ac-prijzen-028"></a>
+
+### De groep blijft gekoppeld bij een vaste verkoopprijs
+
+Gegeven een product bij A met groep G van 30 procent en inkoopprijs EUR 10,00,
+blijft G gekoppeld nadat de gebruiker vaste verkoopprijs EUR 13,00 instelt.
+Na wijziging van G naar 40 procent gebruikt Fresh G voor de vergelijkingsprijs
+EUR 14,00; de gebruikte verkoopprijs blijft EUR 13,00.
+
+<a id="ac-prijzen-029"></a>
+
+### Terugschakelen gebruikt de bewaarde groep met actuele gegevens
+
+Gegeven een product bij A met vaste verkoopprijs EUR 13,00, bewaarde groep G
+met actueel 40 procent en actuele inkoopprijs EUR 10,00, geeft bewust
+terugschakelen naar procentuele berekening EUR 14,00 verkoopprijs. Fresh
+vraagt niet opnieuw om een groep te kiezen.
+
 ## Open keuzes
 
 Beheer van de standaardmarge (los percentage of margegroep), herberekening na
@@ -346,7 +367,7 @@ hoofdstukactie blijven open. Automatische uitbreiding van een handmatige
 selectie is niet gekozen; voorraad zonder individuele regel valt onder de
 leveranciersstandaard. Herkenning van bestaande productinstellingen bij nieuwe
 imports vraagt nog uitwerking.
-Omschakelen tussen vaste prijs en procentuele berekening, gedrag bij geen
+Omschakelen zonder bestaande groepskoppeling, gedrag bij geen
 kandidaat of een nog open keuze, de duur en herhaling van aandachtspunten,
 de vergelijkingsregel bij vaste prijzen zonder groepskoppeling, afronding,
 de basis van bedragen (zoals belasting en bijkomende kosten), ontbrekende
