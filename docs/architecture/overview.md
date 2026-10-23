@@ -40,9 +40,10 @@ menselijke keuzes horen in de eerste relevante productspecificatie.
 
 Regels die op ontbrekende naam- of maatcodes wachten, kunnen op een
 [wachtlijst](../specs/voorraadimport.md#wachtlijst-voor-stamcodes) blijven staan.
-Een basisstamupdate vanuit WinTree maakt latere matching en verwerking mogelijk;
-de wachtlijst blokkeert de export van de overige regels niet. De manier van
-hervatten en de afhandeling na een nieuwer leveranciersbestand zijn nog open.
+Een basisstamupdate vanuit WinTree start automatisch een nieuwe matchpoging.
+Onduidelijke matches blijven ter controle; de inkoper houdt de exportvrijgave.
+De wachtlijst blokkeert de export van de overige regels niet. De afhandeling
+na een nieuwer leveranciersbestand is nog open.
 
 Het gebruik van naamcodes en maatcodes bepaalt nog niet of hun combinatie een
 volledige productidentiteit vormt. De precieze rol van pot-/kluitgegevens en het

@@ -28,8 +28,10 @@ stap 5 van de import vervangt deze inkoperscontrole niet.
 
 Regels op de [wachtlijst voor stamcodes](voorraadimport.md#wachtlijst-voor-stamcodes)
 gaan nog niet mee naar WinTree, maar blokkeren de export van de overige regels
-niet. Na een stamupdate kunnen ze worden gematcht en verwerkt. Ook dan blijft
-de inkoperscontrole vóór exportvrijgave gelden.
+niet. Na een stamupdate probeert Fresh ze
+[automatisch opnieuw te matchen](voorraadimport.md#ac-voorraadimport-016).
+Ook dan blijft de inkoperscontrole vóór exportvrijgave gelden; een geslaagde
+match geeft de export niet automatisch vrij.
 
 ## Keten en herstel
 
@@ -81,6 +83,14 @@ Gegeven gematchte, niet uitgesloten regels A en B die voldoen aan de overige
 exportcontroles, en regel C op de wachtlijst wegens een ontbrekende stamcode,
 kan de inkoper de export van A en B vrijgeven. C ontbreekt in dat bestand en
 blijft wachten op latere verwerking.
+
+<a id="ac-wintree-export-005"></a>
+
+### Automatische matching geeft geen exportvrijgave
+
+Gegeven een wachtende regel die na een stamupdate succesvol wordt gematcht,
+blijft de inkoperscontrole vereist voordat die regel voor WinTree-export wordt
+vrijgegeven. De automatische matchpoging veroorzaakt zelf geen exportvrijgave.
 
 ## Open keuzes
 

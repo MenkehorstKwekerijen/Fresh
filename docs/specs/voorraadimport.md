@@ -86,9 +86,13 @@ wachtlijst blokkeert de definitieve import van de overige regels niet en
 [blokkeert evenmin hun WinTree-export](wintree-export.md#ac-wintree-export-004).
 De bestaande prijscontroles blijven gelden.
 
-Na actualisering van de basisstam vanuit WinTree kunnen de wachtende regels
-worden gematcht en verwerkt zodra de benodigde codes beschikbaar zijn.
-Of Fresh dit automatisch start of de gebruiker dit start, is nog niet besloten.
+Na actualisering van de basisstam vanuit WinTree probeert Fresh de wachtlijst
+automatisch opnieuw te matchen. De gebruiker hoeft deze poging niet zelf te
+starten. Eenduidige matches kunnen verder worden verwerkt; onduidelijke matches
+blijven ter controle staan. Regels waarvoor de benodigde codes nog ontbreken,
+blijven wachten. De exacte regels voor een eenduidige match moeten nog worden
+gespecificeerd. Automatisch opnieuw matchen geeft geen exportvrijgave: de
+[inkoperscontrole](wintree-export.md#ac-wintree-export-005) blijft vereist.
 Wachten op stamcodes is iets anders dan bewust uitsluiten van de export;
 latere verwerking heft een bewuste exportuitsluiting niet op.
 
@@ -312,13 +316,29 @@ Gegeven een wachtende regel waarvan de naamcode of maatcode ontbreekt en waarvan
 het leveranciersbestand nog niet is vervangen, wanneer de benodigde codes via
 een basisstamupdate uit WinTree beschikbaar komen, kan die bewaarde regel worden
 gematcht en verwerkt. Een eventuele bewuste exportuitsluiting blijft behouden.
-Dit criterium kiest nog niet voor automatisch of handmatig starten.
+
+<a id="ac-voorraadimport-016"></a>
+
+### Een stamupdate start automatisch een nieuwe matchpoging
+
+Gegeven een wachtlijst bij een nog actuele leverancierslijst, wanneer de
+WinTree-basisstam in Fresh wordt geactualiseerd, probeert Fresh die wachtende
+regels opnieuw te matchen zonder aparte startactie door de gebruiker.
+
+<a id="ac-voorraadimport-017"></a>
+
+### Onduidelijke matches blijven ter controle
+
+Gegeven een automatische matchpoging na een stamupdate die voor een wachtende
+regel geen eenduidige match oplevert, blijft die regel ter controle staan en
+wordt geen willekeurige match vastgelegd. Ontbreken de benodigde codes nog,
+dan blijft de regel wachten.
 
 ## Open keuzes
 
 Gedrag bij gewijzigde bestandsstructuur,
-automatische matching, intern gebruik van ongematchte uitgesloten of wachtende
-regels, bediening van de wachtlijst en hervatten na een stamupdate of na een
+de exacte automatische matchregels, intern gebruik van ongematchte uitgesloten
+of wachtende regels, verdere bediening van de wachtlijst en hervatten na een
 nieuwer leveranciersbestand, de precieze plaats van 'Voor controle' in de importroute,
 verdere afbakening, de vergelijking van inhoud, het gedrag zolang een bronkeuze
 openstaat en het bewaren en opnieuw beoordelen van die keuze bij nieuwe import,
