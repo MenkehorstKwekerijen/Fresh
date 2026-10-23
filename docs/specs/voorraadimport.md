@@ -67,9 +67,10 @@ WinTree-export. Dit kan zowel bij een nog niet gematchte als bij een al gematcht
 regel. De inkoper kan ook na het matchen nog regels uitsluiten tijdens de
 [inkoperscontrole vóór exportvrijgave](wintree-export.md#gedrag-en-gegevens).
 
-Dit besluit bepaalt de exportselectie. Of uitgesloten regels ook buiten de
-actuele voorraad in Fresh vallen, en wat uitsluiten betekent voor resterende
-matchblokkades bij stap 5, is nog niet besloten. De eerder vastgelegde
+Uitsluiten geldt alleen voor de WinTree-export; de regels blijven
+[intern beschikbaar](wintree-export.md#ac-wintree-export-003).
+Wat gebeurt met resterende ongematchte regels bij stap 5, is nog niet besloten.
+Een exportuitsluiting lost een ontbrekende match niet op. De eerder vastgelegde
 prijsblokkades blijven gelden; uitsluiten is geen vastgestelde uitzondering daarop.
 
 ### Kolomtoewijzing in stap 2
@@ -258,8 +259,8 @@ resultaat in het exportbestand.
 
 Gedrag bij gewijzigde bestandsstructuur,
 automatische matching en resterende ongematchte regels na stap 4,
-de precieze plaats van 'Voor controle' in de importroute en het effect van
-uitsluiten op actuele voorraad en matchblokkades,
+de precieze plaats van 'Voor controle' in de importroute en de omgang met
+matchblokkades bij exportuitsluiting,
 verdere afbakening, de vergelijking van inhoud, het gedrag zolang een bronkeuze
 openstaat en het bewaren en opnieuw beoordelen van die keuze bij nieuwe import,
 en de hierboven genoemde import- en herstelvragen worden behandeld in

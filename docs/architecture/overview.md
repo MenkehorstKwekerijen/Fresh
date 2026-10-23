@@ -49,8 +49,9 @@ omzetten, marges bepalen en exporteren naar WinTree. De inkoper controleert marg
 en de import in WinTree. Vóór exportvrijgave vindt een
 [inkoperscontrole](../specs/wintree-export.md) plaats, waarbij ook gematchte regels
 kunnen worden uitgesloten. Exportformaat, overige controlepunten en bevestiging
-van verwerking in het ERP zijn nog te specificeren. Het effect van uitsluiten
-op de voorraad en commerciële afnemers in Fresh is nog open.
+van verwerking in het ERP zijn nog te specificeren. Exportuitsluiting laat
+het [interne aanbod intact](../specs/wintree-export.md#ac-wintree-export-003)
+voor catalogusbeheer, verkoop en assortimentsanalyse.
 
 De gekozen prijswijzen en open vragen over margegroepen staan in de
 [conceptspecificatie prijzen](../specs/prijzen.md). Ingelezen leveranciersvoorraad

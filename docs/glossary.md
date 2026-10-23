@@ -81,9 +81,10 @@ de inkoper ook regels kan uitsluiten. Het gedrag staat in de
 
 <a id="term-uitsluiten-wintree-export"></a>
 
-De bewuste keuze om een regel niet mee te nemen in de WinTree-export.
-Dit begrip bepaalt op zichzelf niet of de regel in Fresh als voorraad beschikbaar
-blijft. De toepassing staat in de [exportspecificatie](specs/wintree-export.md).
+De bewuste keuze om een regel alleen uit de WinTree-export weg te laten,
+met behoud van de interne beschikbaarheid in Fresh voor catalogusbeheer,
+verkoop en assortimentsanalyse. De toepassing staat in de
+[exportspecificatie](specs/wintree-export.md).
 
 ## WinTree-basisstam
 

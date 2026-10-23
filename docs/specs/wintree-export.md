@@ -28,9 +28,15 @@ stap 5 van de import vervangt deze inkoperscontrole niet.
 
 ## Keten en herstel
 
-WinTree is de afnemer van de export. Of een uitgesloten regel beschikbaar blijft
-voor voorraadweergave, leveranciersvoorkeuren of catalogusbeheer in Fresh, is nog
-open. Dit besluit legt evenmin vast wat er met eerder naar WinTree geëxporteerde
+WinTree is de afnemer van de export. Uitsluiten heeft alleen effect op deze
+export: de regel blijft intern in Fresh beschikbaar en doet mee voor
+catalogusbeheer, verkoop en assortimentsanalyse. De uitsluiting verwijdert de
+regel niet uit de actuele voorraad en vormt geen interne aanbodfilter.
+
+Dit maakt een nog niet gematchte regel niet automatisch gematcht. Hoe resterende
+ongematchte regels worden verwerkt en aan interne producten gekoppeld, blijft
+een open keuze in de [voorraadimportspecificatie](voorraadimport.md#open-keuzes).
+Dit besluit legt evenmin vast wat er met eerder naar WinTree geëxporteerde
 regels gebeurt; het beschrijft welke regels de nieuwe export bevat.
 
 ## Acceptatiecriteria
@@ -51,10 +57,19 @@ Gegeven regel A uitgesloten vanuit 'Voor controle' en gematchte regel B
 uitgesloten tijdens de inkoperscontrole, bevat de vrijgegeven WinTree-export
 geen A en geen B.
 
+<a id="ac-wintree-export-003"></a>
+
+### Exportuitsluiting verandert het interne aanbod niet
+
+Gegeven een geïmporteerde en gematchte regel A die beschikbaar is voor
+catalogusbeheer, verkoop en assortimentsanalyse, wanneer A wordt uitgesloten
+van de WinTree-export, blijft A voor die interne toepassingen beschikbaar en
+meedoen. Alleen de opname in de WinTree-export verandert. Dit geldt voor
+uitsluiten vanuit 'Voor controle' en tijdens de inkoperscontrole.
+
 ## Open keuzes
 
-Het effect op voorraad en commerciële afnemers in Fresh, opnieuw opnemen van
-regels, geldigheid van uitsluitingen bij een volgend bestand, overige
+Opnieuw opnemen in de export, geldigheid van uitsluitingen bij een volgend bestand, overige
 controlepunten, wijzigingen na controle, gelijktijdige wijzigingen, exportformaat
 en verwerking of herstel in WinTree moeten nog worden bepaald. De eerstvolgende
 keuze staat in [issue #6](https://github.com/MenkehorstKwekerijen/Fresh/issues/6).
