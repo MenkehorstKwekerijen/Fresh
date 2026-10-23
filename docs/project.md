@@ -43,9 +43,11 @@ De gebruiker heeft de volgende werkzaamheden genoemd:
 - Leveranciersvoorkeuren vastleggen.
 - [Prijsinstellingen](specs/prijzen.md) voor opslag op inkoop en vaste
   verkoopprijzen vastleggen; margegroepen aanmaken en toewijzen voor individuele
-  producten, leveranciers en catalogushoofdstukken, ook met een bulkactie.
-  Toewijzingen aan leveranciers en hoofdstukken blijven gelden voor nieuwe
-  producten; onduidelijke voorrang wordt een zichtbaar aandachtspunt.
+  producten, ook met een bulkactie. Leverancier en catalogushoofdstuk helpen
+  bij de automatische toewijzing van één actieve margegroep per product.
+  Verschillende kandidaten vragen een eenmalige keuze. Een gekozen groep blijft
+  gekoppeld; gewijzigde toewijzingsregels vragen expliciete herbeoordeling van
+  bestaande producten.
 - [Catalogusbeheer](glossary.md#term-catalogusbeheer): producten en hun gegevens
   beheren, inclusief hun weergave op de website, hoofdstukken, Duitse en Engelse
   vertalingen en filters.

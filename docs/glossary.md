@@ -101,9 +101,17 @@ een opslagpercentage wordt berekend. Het toepassingsgedrag staat in de
 
 <a id="term-margegroep"></a>
 
-Een groep waarmee prijsinstellingen kunnen worden toegewezen. De inhoud en
-werking van de toewijzing worden vastgelegd in de
+Een groep voor prijsinstellingen die aan een product wordt gekoppeld. De
+actieve margegroep is de gekozen groep van dat product. De inhoud en werking
+van de toewijzing worden vastgelegd in de
 [prijsspecificatie](specs/prijzen.md).
+
+## Kandidaat-margegroep
+
+<a id="term-kandidaat-margegroep"></a>
+
+Een margegroep die op basis van leverancier of catalogushoofdstuk in aanmerking
+komt voor toewijzing aan een product. Een kandidaat is nog geen actieve koppeling.
 
 ## Bulkactie
 

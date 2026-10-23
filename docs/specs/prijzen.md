@@ -8,14 +8,19 @@ depends_on: []
 ## Doel en scope
 
 Fresh ondersteunt [opslag op inkoop](../glossary.md#term-opslag-op-inkoop) en
-een [vaste verkoopprijs](../glossary.md#term-vaste-verkoopprijs).
-[Margegroepen](../glossary.md#term-margegroep) moeten kunnen worden aangemaakt en
-toegewezen voor individuele producten, leveranciers en catalogushoofdstukken,
-ook via een [bulkactie](../glossary.md#term-bulkactie). Dit gebruikersbesluit staat in
+een [vaste verkoopprijs](../glossary.md#term-vaste-verkoopprijs). Een product heeft
+na toewijzing één actieve [margegroep](../glossary.md#term-margegroep).
+Leverancier en catalogushoofdstuk helpen bij de automatische toewijzing.
+Handmatige toewijzing en keuze zijn ook beschikbaar als
+[bulkactie](../glossary.md#term-bulkactie).
+
+Het actuele gebruikersbesluit staat in
 [issue #6](https://github.com/MenkehorstKwekerijen/Fresh/issues/6).
 De specificatie is nog niet volledig genoeg voor implementatie.
 
 ## Gedrag en gegevens
+
+### Prijswijzen
 
 Bij procentuele opslag geldt:
 
@@ -23,32 +28,34 @@ Bij procentuele opslag geldt:
 
 Bij een vaste verkoopprijs is het expliciet ingestelde bedrag de verkoopprijs.
 Een brutomargepercentage over de verkoopprijs is niet als prijswijze gekozen.
+Hoe beide gekozen prijswijzen in de margegroep of op het product worden
+vastgelegd, is nog te bepalen; de wens voor een vaste verkoopprijs blijft gelden.
 
-Margegroepen kunnen worden aangemaakt. Toewijzing is beschikbaar voor individuele
-producten, leveranciers en catalogushoofdstukken, ook als bulkactie op een
-selectie. De inhoud van een groep en de verhouding tussen een groepsinstelling
-en een afzonderlijke instelling op hetzelfde niveau zijn nog niet bepaald.
+### Eén actieve groep en kandidaten voor toewijzing
 
-De toewijzing aan een leverancier of hoofdstuk is blijvend. Ook later toegevoegde
-producten vallen automatisch onder de toepasselijke margegroep, zonder een
-nieuwe bulkactie.
+Margegroepen kunnen worden aangemaakt en aan producten toegewezen. Instellingen
+bij leverancier en hoofdstuk leveren [kandidaat-margegroepen](../glossary.md#term-kandidaat-margegroep)
+voor automatische toewijzing bij nieuwe producten. Er is geen voorrangsvolgorde
+tussen product, leverancier en hoofdstuk voor de prijsberekening.
 
-### Voorrang tussen niveaus
+Bij één kandidaat wordt die groep automatisch gekoppeld. Wanneer leverancier
+en hoofdstuk dezelfde groep opleveren, is dat één kandidaat. Bij verschillende
+kandidaten krijgt de gebruiker een duidelijk aandachtspunt en kiest die eenmaal,
+eventueel voor meerdere producten met een bulkactie.
 
-De vaste volgorde is **product, leverancier, hoofdstuk**. Een toepasselijke
-productinstelling gaat voor een leveranciersinstelling; een leveranciersinstelling
-gaat voor een hoofdstukinstelling. Alleen als op het hogere niveau geen
-toepasselijke instelling is vastgelegd, wordt het volgende niveau gebruikt.
-Normale overlap tussen deze niveaus vraagt geen handmatige keuze.
+De gekozen groep blijft aan het product gekoppeld. Een volgende prijsberekening
+vraagt niet opnieuw om dezelfde keuze. Leverancier en hoofdstuk blijven dus niet
+bij elke berekening concurrerende prijsinstellingen leveren.
 
-Er is nog geen standaardinstelling besloten voor het geval alle drie ontbreken.
-Meerdere instellingen op hetzelfde niveau en een ongeldige instelling zijn ook
-nog uit te werken; die situaties zijn niet automatisch gelijk aan ontbreken.
+### Herbeoordeling na gewijzigde toewijzingsregels
 
-Als de regels geen eenduidige prijsinstelling opleveren, toont Fresh een duidelijk
-aandachtspunt met de betrokken instellingen en hun herkomst. Fresh kiest in dat
-geval niet stilzwijgend een instelling. Wat vóór oplossing gebeurt met een reeds
-bestaande prijs of een export, moet nog worden bepaald.
+Een wijziging van de toewijzingsregels bij leverancier of hoofdstuk overschrijft
+de gekozen groep van bestaande producten niet automatisch. Bestaande producten
+vragen een expliciete herbeoordeling. Een andere groep wordt pas gekoppeld als
+die herbeoordeling tot die keuze leidt.
+
+Deze afspraak gaat over het wijzigen van toewijzingsregels. Wat er gebeurt als
+de prijsinstellingen binnen een al gekoppelde margegroep wijzigen, is nog open.
 
 ## Keten en herstel
 
@@ -58,8 +65,8 @@ leveranciersvoorkeur moet nog worden besloten.
 
 WinTree-export en catalogus/website zijn relevante afnemers binnen het
 [productdoel](../project.md). Welke prijsvelden elke afnemer krijgt, moet nog
-worden uitgewerkt. Ook herberekening bij nieuwe inkoopprijzen, wijzigingen van
-groepen, gelijktijdige wijzigingen en herstel vragen nog concrete afspraken.
+worden uitgewerkt. Herberekening bij nieuwe inkoopprijzen of gewijzigde
+groepsinhoud, gelijktijdige wijzigingen en herstel vragen nog afspraken.
 
 ## Acceptatiecriteria
 
@@ -77,13 +84,6 @@ is de berekende verkoopprijs EUR 13,00.
 Gegeven een toepasselijke instelling met vaste verkoopprijs EUR 15,00 en een
 inkoopprijs van EUR 10,00, is de verkoopprijs EUR 15,00.
 
-<a id="ac-prijzen-003"></a>
-
-### Toewijzing ondersteunt de drie gekozen doelgroepen
-
-De gebruiker kan een margegroep aanmaken en toewijzing uitvoeren voor individuele
-producten, leveranciers en catalogushoofdstukken.
-
 <a id="ac-prijzen-004"></a>
 
 ### Een bulkactie past de toewijzing toe op de selectie
@@ -92,44 +92,42 @@ Gegeven drie beschikbare onderdelen A, B en C, waarbij de gebruiker A en B
 selecteert, kan de gebruiker met één bulkactie een margegroep voor A en B
 toewijzen. De directe toewijzing van het niet-geselecteerde onderdeel C verandert niet.
 
-<a id="ac-prijzen-005"></a>
+<a id="ac-prijzen-008"></a>
 
-### Nieuwe producten vallen onder blijvende toewijzingen
+### Eén kandidaat wordt automatisch gekoppeld
 
-Gegeven een leverancier of hoofdstuk met toegewezen margegroep G, valt een later
-toegevoegd product dat bij die leverancier of dat hoofdstuk hoort automatisch
-onder G, zonder een nieuwe toewijzingsactie. Eventuele andere toepasselijke
-instellingen worden volgens de [vaste niveauvolgorde](#voorrang-tussen-niveaus) beoordeeld.
+Gegeven een nieuw product waarvoor de leveranciers- en hoofdstukinstellingen
+samen alleen groep G opleveren, wordt G automatisch de actieve margegroep.
+Dit geldt ook wanneer beide instellingen dezelfde groep G aanwijzen.
 
-<a id="ac-prijzen-006"></a>
+<a id="ac-prijzen-009"></a>
 
-### Onduidelijke voorrang wordt een zichtbaar aandachtspunt
+### Verschillende kandidaten vragen een eenmalige keuze
 
-Gegeven een product waarop meerdere prijsinstellingen van toepassing zijn en
-waarvoor de vastgestelde voorrangsregels geen eenduidige keuze opleveren, toont
-Fresh een aandachtspunt met de betrokken instellingen en hun herkomst. Er wordt
-niet stilzwijgend één van die instellingen gekozen.
+Gegeven een nog niet toegewezen product met kandidaat G via de leverancier en
+H via het hoofdstuk, toont Fresh de kandidaten en hun herkomst. De gebruiker
+kan eenmaal een groep kiezen, ook in bulk. Na keuze voor H is alleen H actief.
 
-<a id="ac-prijzen-007"></a>
+<a id="ac-prijzen-010"></a>
 
-### Product gaat voor leverancier en leverancier voor hoofdstuk
+### Een gekozen koppeling blijft behouden
 
-Gegeven een inkoopprijs van EUR 10,00 gelden de volgende uitkomsten bij
-eenduidige, geldige instellingen op de genoemde niveaus:
+Gegeven een product waarvoor de gebruiker bij kandidaten G en H groep H heeft
+gekozen, blijft H bij volgende berekeningen actief zonder een herhaalde
+keuzevraag over dezelfde kandidaten.
 
-| Product | Leverancier | Hoofdstuk | Toegepaste instelling | Verkoopprijs |
-| --- | --- | --- | --- | --- |
-| 40% opslag | 30% opslag | 20% opslag | Product | EUR 14,00 |
-| Geen | 30% opslag | 20% opslag | Leverancier | EUR 13,00 |
-| Geen | Geen | 20% opslag | Hoofdstuk | EUR 12,00 |
+<a id="ac-prijzen-011"></a>
 
-Deze gevallen vragen geen handmatige keuze vanwege de overlap tussen niveaus.
+### Gewijzigde toewijzingsregels vereisen expliciete herbeoordeling
+
+Gegeven een product met actieve groep G, blijft G gekoppeld wanneer de
+leveranciers- of hoofdstukinstelling een andere groep H gaat voorstellen.
+Wijziging van de productkoppeling naar H vereist expliciete herbeoordeling.
 
 ## Open keuzes
 
-Inhoud van margegroepen, meerdere instellingen op hetzelfde niveau, het ontbreken
-van alle instellingen, gedrag zolang een prijskeuze openstaat,
-afronding, de basis van
-bedragen (zoals belasting en bijkomende kosten), ontbrekende inkoopprijzen en
-de hierboven genoemde ketengevolgen worden uitgewerkt in
+Inhoud van margegroepen en de plaats van vaste verkoopprijzen, gedrag bij geen
+kandidaat of een nog open keuze, gevolgen van gewijzigde groepsinhoud, afronding,
+de basis van bedragen (zoals belasting en bijkomende kosten), ontbrekende
+inkoopprijzen en de hierboven genoemde ketengevolgen worden uitgewerkt in
 [issue #6](https://github.com/MenkehorstKwekerijen/Fresh/issues/6).
