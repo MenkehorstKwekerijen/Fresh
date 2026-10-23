@@ -26,6 +26,11 @@ inkoperscontrole zijn uitgesloten, komen niet in de vrijgegeven WinTree-export.
 Import definitief verwerken en export vrijgeven zijn afzonderlijke handelingen;
 stap 5 van de import vervangt deze inkoperscontrole niet.
 
+Regels op de [wachtlijst voor stamcodes](voorraadimport.md#wachtlijst-voor-stamcodes)
+gaan nog niet mee naar WinTree, maar blokkeren de export van de overige regels
+niet. Na een stamupdate kunnen ze worden gematcht en verwerkt. Ook dan blijft
+de inkoperscontrole vóór exportvrijgave gelden.
+
 ## Keten en herstel
 
 WinTree is de afnemer van de export. Uitsluiten heeft alleen effect op deze
@@ -33,9 +38,10 @@ export: de regel blijft intern in Fresh beschikbaar en doet mee voor
 catalogusbeheer, verkoop en assortimentsanalyse. De uitsluiting verwijdert de
 regel niet uit de actuele voorraad en vormt geen interne aanbodfilter.
 
-Dit maakt een nog niet gematchte regel niet automatisch gematcht. Hoe resterende
-ongematchte regels worden verwerkt en aan interne producten gekoppeld, blijft
-een open keuze in de [voorraadimportspecificatie](voorraadimport.md#open-keuzes).
+Dit maakt een nog niet gematchte regel niet automatisch gematcht. De
+[matchvoorwaarde en uitzonderingen](voorraadimport.md#wachtlijst-voor-stamcodes)
+staan in de voorraadimportspecificatie. Hoe ongematchte regels intern aan
+producten worden gekoppeld en gebruikt, blijft daar een open keuze.
 Dit besluit legt evenmin vast wat er met eerder naar WinTree geëxporteerde
 regels gebeurt; het beschrijft welke regels de nieuwe export bevat.
 
@@ -66,6 +72,15 @@ catalogusbeheer, verkoop en assortimentsanalyse, wanneer A wordt uitgesloten
 van de WinTree-export, blijft A voor die interne toepassingen beschikbaar en
 meedoen. Alleen de opname in de WinTree-export verandert. Dit geldt voor
 uitsluiten vanuit 'Voor controle' en tijdens de inkoperscontrole.
+
+<a id="ac-wintree-export-004"></a>
+
+### Wachten op stamcodes blokkeert de overige export niet
+
+Gegeven gematchte, niet uitgesloten regels A en B die voldoen aan de overige
+exportcontroles, en regel C op de wachtlijst wegens een ontbrekende stamcode,
+kan de inkoper de export van A en B vrijgeven. C ontbreekt in dat bestand en
+blijft wachten op latere verwerking.
 
 ## Open keuzes
 

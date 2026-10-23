@@ -86,6 +86,15 @@ met behoud van de interne beschikbaarheid in Fresh voor catalogusbeheer,
 verkoop en assortimentsanalyse. De toepassing staat in de
 [exportspecificatie](specs/wintree-export.md).
 
+## Wachtlijst voor stamcodes
+
+<a id="term-wachtlijst-stamcodes"></a>
+
+Bewaarde leveranciersregels die wachten op een ontbrekende naamcode of maatcode
+in de actuele WinTree-basisstam, zodat ze na actualisering van die stam verwerkt
+kunnen worden. Dit is geen bewuste uitsluiting van WinTree-export.
+Het gedrag staat in de [voorraadimportspecificatie](specs/voorraadimport.md#wachtlijst-voor-stamcodes).
+
 ## WinTree-basisstam
 
 <a id="term-wintree-basisstam"></a>

@@ -38,6 +38,12 @@ deze referentie actueel houdt en gewijzigde codes verwerkt, is nog te bepalen. D
 voor herkenning, meerdere mogelijke codes, ontbrekende codes en hergebruik van
 menselijke keuzes horen in de eerste relevante productspecificatie.
 
+Regels die op ontbrekende naam- of maatcodes wachten, kunnen op een
+[wachtlijst](../specs/voorraadimport.md#wachtlijst-voor-stamcodes) blijven staan.
+Een basisstamupdate vanuit WinTree maakt latere matching en verwerking mogelijk;
+de wachtlijst blokkeert de export van de overige regels niet. De manier van
+hervatten en de afhandeling na een nieuwer leveranciersbestand zijn nog open.
+
 Het gebruik van naamcodes en maatcodes bepaalt nog niet of hun combinatie een
 volledige productidentiteit vormt. De precieze rol van pot-/kluitgegevens en het
 gebruik van codes in historische verkopen moeten nog worden bevestigd.

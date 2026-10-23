@@ -57,8 +57,9 @@ prijscorrecties en handmatige matches in de importvoorbereiding vervangen de
 vorige voorraad niet. Alleen de definitieve verwerking in stap 5 actualiseert
 de voorraad volgens de vervangingsregel. De eerder vastgelegde prijsblokkades
 blijven gelden.
-De automatische matchregels en het gedrag wanneer regels na stap 4 ongematcht
-blijven, moeten nog worden uitgewerkt.
+Vóór stap 5 moeten alle regels gematcht zijn, behalve bewust van WinTree-export
+uitgesloten regels en regels op de hieronder beschreven wachtlijst.
+De automatische matchregels moeten nog worden uitgewerkt.
 
 ### Uitsluiten vanuit Voor controle
 
@@ -69,9 +70,34 @@ regel. De inkoper kan ook na het matchen nog regels uitsluiten tijdens de
 
 Uitsluiten geldt alleen voor de WinTree-export; de regels blijven
 [intern beschikbaar](wintree-export.md#ac-wintree-export-003).
-Wat gebeurt met resterende ongematchte regels bij stap 5, is nog niet besloten.
-Een exportuitsluiting lost een ontbrekende match niet op. De eerder vastgelegde
-prijsblokkades blijven gelden; uitsluiten is geen vastgestelde uitzondering daarop.
+Een bewust uitgesloten regel mag ongematcht blijven en blokkeert stap 5 niet
+vanwege die ontbrekende match. Uitsluiten vult geen naam- of maatcode in.
+Hoe een ongematchte regel intern wordt getoond en betrokken bij productgebonden
+toepassingen, moet nog worden uitgewerkt. De eerder vastgelegde prijsblokkades
+blijven gelden; uitsluiten is geen uitzondering daarop.
+
+### Wachtlijst voor stamcodes
+
+Een regel waarvoor de benodigde naamcode of maatcode nog ontbreekt in de actuele
+WinTree-basisstam, kan op de
+[wachtlijst voor stamcodes](../glossary.md#term-wachtlijst-stamcodes) komen.
+Deze regel blijft bewaard voor latere verwerking. De ontbrekende match op de
+wachtlijst blokkeert de definitieve import van de overige regels niet en
+[blokkeert evenmin hun WinTree-export](wintree-export.md#ac-wintree-export-004).
+De bestaande prijscontroles blijven gelden.
+
+Na actualisering van de basisstam vanuit WinTree kunnen de wachtende regels
+worden gematcht en verwerkt zodra de benodigde codes beschikbaar zijn.
+Of Fresh dit automatisch start of de gebruiker dit start, is nog niet besloten.
+Wachten op stamcodes is iets anders dan bewust uitsluiten van de export;
+latere verwerking heft een bewuste exportuitsluiting niet op.
+
+| Situatie van een regel | Gevolg voor de matchvoorwaarde van stap 5 |
+| --- | --- |
+| Naam- en maatcode gematcht | Matchvoorwaarde voldaan |
+| Ongematcht en bewust uitgesloten van WinTree-export | Geen matchblokkade |
+| Wacht op ontbrekende stamcodes en staat op de wachtlijst | Geen matchblokkade voor de overige regels; later verwerken |
+| Ongematcht zonder een van deze uitzonderingen | Definitieve verwerking geblokkeerd |
 
 ### Kolomtoewijzing in stap 2
 
@@ -141,9 +167,14 @@ worden bijgewerkt, is nog niet besloten.
 
 Naast de hierboven vastgelegde prijsblokkades is het gedrag bij andere fouten
 in een bestand of een leeg bestand nog open, evenals bij
-onbekende codes, een onderbroken import of gelijktijdige wijzigingen. Dat moet
+andere codeproblemen dan wachten op ontbrekende stamcodes, een onderbroken
+import of gelijktijdige wijzigingen. Dat moet
 worden gespecificeerd vóór implementatie, inclusief herstel en de gevolgen voor
 eerder vastgelegde menselijke keuzes.
+
+De verwerking van wachtende regels moet ook worden uitgewerkt voor de situatie
+waarin inmiddels een nieuw leveranciersbestand de vorige lijst heeft vervangen.
+De nieuwe wachtlijstafspraak verandert de bestaande vervangingsregel niet.
 
 ## Acceptatiecriteria
 
@@ -255,12 +286,40 @@ WinTree-export. Een geslaagde match is geen belemmering om B uit te sluiten.
 De [exportspecificatie](wintree-export.md#ac-wintree-export-002) bepaalt het
 resultaat in het exportbestand.
 
+<a id="ac-voorraadimport-013"></a>
+
+### Ongematchte regels zonder uitzondering blokkeren afronding
+
+Gegeven een verder geldige import met één ongematchte regel die niet bewust is
+uitgesloten en niet op de wachtlijst voor stamcodes staat, blijft stap 5
+geblokkeerd en blijft de actuele voorraad ongewijzigd.
+
+<a id="ac-voorraadimport-014"></a>
+
+### Uitgesloten en wachtende regels blokkeren niet op matching
+
+Gegeven een verder geldige import met gematchte regels, één bewust uitgesloten
+ongematchte regel en één wachtende regel waarvoor een stamcode ontbreekt,
+kan stap 5 doorgaan zonder eerst die twee regels te matchen. De wachtende regel
+blijft bewaard voor latere verwerking; de uitgesloten regel wordt niet verwijderd
+vanwege zijn exportuitsluiting.
+
+<a id="ac-voorraadimport-015"></a>
+
+### Nieuwe stamcodes maken verwerking van wachtende regels mogelijk
+
+Gegeven een wachtende regel waarvan de naamcode of maatcode ontbreekt en waarvan
+het leveranciersbestand nog niet is vervangen, wanneer de benodigde codes via
+een basisstamupdate uit WinTree beschikbaar komen, kan die bewaarde regel worden
+gematcht en verwerkt. Een eventuele bewuste exportuitsluiting blijft behouden.
+Dit criterium kiest nog niet voor automatisch of handmatig starten.
+
 ## Open keuzes
 
 Gedrag bij gewijzigde bestandsstructuur,
-automatische matching en resterende ongematchte regels na stap 4,
-de precieze plaats van 'Voor controle' in de importroute en de omgang met
-matchblokkades bij exportuitsluiting,
+automatische matching, intern gebruik van ongematchte uitgesloten of wachtende
+regels, bediening van de wachtlijst en hervatten na een stamupdate of na een
+nieuwer leveranciersbestand, de precieze plaats van 'Voor controle' in de importroute,
 verdere afbakening, de vergelijking van inhoud, het gedrag zolang een bronkeuze
 openstaat en het bewaren en opnieuw beoordelen van die keuze bij nieuwe import,
 en de hierboven genoemde import- en herstelvragen worden behandeld in
