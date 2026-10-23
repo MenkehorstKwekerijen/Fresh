@@ -40,6 +40,23 @@ Een ontbrekende of ongeldige inkoopprijs blokkeert eveneens de volledige
 leverancierslijst volgens de [prijsvalidatie](prijzen.md#ac-prijzen-049).
 De foutmelding biedt een [directe herstelactie per foutregel](prijzen.md#ac-prijzen-050).
 
+### Stappen van de leveranciersimport
+
+De gebruiker heeft de volgende volgorde gekozen:
+
+| Stap | Handeling |
+| --- | --- |
+| 1 | Bestand en leverancier selecteren |
+| 2 | Kolomtoewijzing |
+| 3 | Verwerken |
+| 4 | Niet-gematchte regels matchen met naamcodes en maatcodes |
+| 5 | Bestand verwerken |
+
+Het onderscheid tussen de verwerking in stap 3 en stap 5, inclusief het moment
+waarop actuele voorraad wordt vervangen, moet nog worden verduidelijkt. Deze
+volgorde bepaalt nog niet de automatische matchregels of het gedrag wanneer
+regels na stap 4 ongematcht blijven.
+
 ### Kolomtoewijzing in stap 2
 
 De tweede stap van de bestandsimport is
@@ -47,6 +64,13 @@ De tweede stap van de bestandsimport is
 De gebruiker wijst bestandskolommen toe aan gegevens in Fresh, zoals plantnaam,
 maat en inkoopprijs. Deze stap vindt plaats vóór verwerking van het bestand tot
 actuele voorraad.
+
+Fresh onthoudt de kolomtoewijzing per leverancier en vult die bij een volgend
+bestand van dezelfde leverancier alvast in. De gebruiker kan de toewijzing
+controleren en aanpassen. De controles worden opnieuw op het nieuwe bestand
+uitgevoerd; een eerdere toewijzing bewijst niet dat het nieuwe bestand geldig is.
+Herkenning van gewijzigde kolomnamen, volgorde of bestandsstructuur moet nog
+worden uitgewerkt.
 
 Fresh waarschuwt in deze stap wanneer de inkoopprijskolom niet is toegewezen of
 wanneer ontbrekende of ongeldige prijzen worden gevonden in de toegewezen kolom.
@@ -184,9 +208,20 @@ met een lege of ongeldige prijs op regel 12, toont Fresh daar al een waarschuwin
 met toegang tot respectievelijk de toewijzing of de betreffende foutregel en
 herstelactie. Verwerking blijft geblokkeerd zolang het prijsprobleem bestaat.
 
+<a id="ac-voorraadimport-010"></a>
+
+### Kolomtoewijzing wordt per leverancier hergebruikt
+
+Gegeven een vastgelegde kolomtoewijzing voor leverancier A, vult Fresh die in
+stap 2 alvast in bij een volgend bestand van A met dezelfde kolomstructuur.
+De gebruiker kan haar controleren en aanpassen. Fresh controleert de inhoud
+van dit nieuwe bestand opnieuw; de toewijzing van A wordt niet als instelling
+voor een andere leverancier gebruikt.
+
 ## Open keuzes
 
-Hergebruik van kolomtoewijzingen bij volgende bestanden, de overige importstappen,
+Gedrag bij gewijzigde bestandsstructuur, het onderscheid tussen stap 3 en 5,
+automatische matching en resterende ongematchte regels na stap 4,
 verdere afbakening, de vergelijking van inhoud, het gedrag zolang een bronkeuze
 openstaat en het bewaren en opnieuw beoordelen van die keuze bij nieuwe import,
 en de hierboven genoemde import- en herstelvragen worden behandeld in
