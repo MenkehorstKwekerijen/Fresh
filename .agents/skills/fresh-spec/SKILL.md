@@ -9,6 +9,8 @@ description: Specificeer nieuw of gewijzigd gedrag in Fresh. Gebruik bij nieuwe 
 2. Zoek de relevante glossarytermen en bestaande owning specificatie. Ontbreken
    deze nog, leg alleen werkelijk besloten inhoud vast op de afgesproken plek.
    Verzamel concrete voorbeelden. Een andere betekenis vraagt een gebruikerskeuze.
+   Bepaal de [documentatiekeuze](../../../docs/documentation.md#documentatie-bij-uitbreidingen):
+   bestaande eigenaar aanpassen of een zelfstandig nieuw onderwerp met een leesroute.
 3. Onderzoek een eenvoudige oplossing en relevante alternatieven. Benoem wat
    nog niet besloten is. Ontwerp geen technische uitbreidbaarheid zonder behoefte.
    Pas bij een onderwerpwissel de [scopecontrole](../../../docs/workflow.md#scope-tijdens-vragenrondes)

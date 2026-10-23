@@ -23,6 +23,8 @@ haar directe afhankelijkheden. Laad niet standaard alle documentatie of skills.
 ## Uitvoeren en afronden
 
 - Werk op een taakbranch. Kies de kleinste complete, controleerbare oplevering.
+- Bepaal bij een module of functie de [documentatiekeuze](docs/documentation.md#documentatie-bij-uitbreidingen)
+  vóór bouwen; leg scope en owning bronnen vast in issue en PR.
 - Volg de [ontwikkelcyclus](docs/workflow.md#ontwikkelcyclus). Reeds geautoriseerd
   werk gaat door; leg een nieuwe bedrijfskeuze voor als die de uitkomst verandert.
 - Houd betekenis en gedrag bij hun documenteigenaar. Werk gewijzigde afspraken,

@@ -14,6 +14,8 @@ voor informatie-eigenaarschap en [skillprofiel](skills.md) voor de gekozen bronn
    verwachte uitkomst, foutgedrag en ketengevolgen vast. Een voorstel blijft
    `draft` totdat het bevoegde gebruikersbesluit is vastgelegd. Reeds expliciet
    opgedragen gedrag hoeft niet nogmaals te worden goedgekeurd.
+   Leg de [documentatiekeuze](documentation.md#documentatie-bij-uitbreidingen)
+   vast vóór bouwen en herbeoordeel haar bij een scopewijziging.
 3. **Plannen.** Maak een klein uitvoeringsissue met verwijzingen naar criteria,
    echte afhankelijkheden en een korte technische checklist waar nodig. Een
    onbekende haalbaarheid krijgt een begrensde proef met een stopcriterium.
@@ -115,6 +117,7 @@ agents zijn alleen nuttig bij onafhankelijk werk of gerichte risicoanalyse.
 De reviewer controleert ook of diff en open vragen bij het ene PR-resultaat
 horen, of echte afhankelijkheden zijn benoemd en of productregels bij hun eigenaar
 staan zonder onnodige kopieën. Controleer glossary-impact, geraakte verwijzingen
+en of nieuwe modules/functies de juiste eigenaar en een vindbare leesroute hebben,
 en onvoorziene ketengevolgen. Los belangrijke bevindingen op. Herhaal gerichte
 controles na fixes; doe een nieuwe review wanneer nieuwe wijzigingen of resterend
 risico dit rechtvaardigen. Is onafhankelijke review niet beschikbaar, rapporteer

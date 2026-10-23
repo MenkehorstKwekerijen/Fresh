@@ -4,6 +4,7 @@ from __future__ import annotations
 import argparse
 import json
 import re
+import subprocess
 import sys
 from dataclasses import dataclass
 from pathlib import Path
@@ -190,24 +191,29 @@ def check(root: Path) -> list[str]:
     return errors
 
 
-def check_pr(body: str) -> list[str]:
+def check_pr(body: str, root: Path | None = None,
+             changed_files: list[str] | None = None) -> list[str]:
     tokens = MD.parse(body)
     sections = {}
+    field_sections = {}
     active = None
     heading_content = False
     for index, token in enumerate(tokens):
         if token.type == "heading_open" and token.tag == "h2" and token.level == 0:
             active = tokens[index + 1].content
             sections[active] = []
+            field_sections[active] = []
             heading_content = True
         elif token.type == "heading_close":
             heading_content = False
         elif active and not heading_content:
             if token.type == "inline":
-                value = "".join(COMMENTS.sub("", child.content)
+                value = "".join("\n" if child.type in {"softbreak", "hardbreak"} else
+                                COMMENTS.sub("", child.content)
                                 if child.type == "html_inline" else child.content
                                 for child in (token.children or []))
                 sections[active].append(value)
+                field_sections[active].append(value)
             elif token.type in {"fence", "code_block", "html_block"}:
                 value = COMMENTS.sub("", token.content) if token.type == "html_block" else token.content
                 sections[active].append(value)
@@ -216,6 +222,52 @@ def check_pr(body: str) -> list[str]:
         value = "\n".join(sections.get(title, [])).strip()
         if not value or value.lower() in {"todo", "tbd", "..."}:
             errors.append(f"PR: vul sectie {title} in")
+
+    def field(section: str, label: str) -> str:
+        # Ignore code fences and HTML comments: examples are not declarations.
+        if not "\n".join(sections.get(section, [])).strip():
+            return ""  # the missing section was already reported
+        values = re.findall(r"^" + re.escape(label) + r":[ \t]*([^\n]*)$",
+                            "\n".join(field_sections.get(section, [])), re.MULTILINE)
+        if len(values) != 1 or not values[0].strip() or values[0].strip().lower() in {
+                "todo", "tbd", "...", "n.v.t.", "nvt"}:
+            errors.append(f"PR: vul {label} eenmaal concreet in onder {section}")
+            return ""
+        return values[0].strip()
+
+    field("Resultaat", "Binnen scope")
+    field("Resultaat", "Buiten scope")
+    choice = field("Documentatie en begrippen", "Documentatiekeuze")
+    sources = field("Documentatie en begrippen", "Documentatiebronnen")
+    field("Documentatie en begrippen", "Toelichting")
+    if choice and choice not in {"bijgewerkt", "bestaand-volstaat"}:
+        errors.append("PR: Documentatiekeuze moet bijgewerkt of bestaand-volstaat zijn")
+    source_paths = []
+    for source in sources.split(",") if sources else []:
+        source = source.strip()
+        url = urlsplit(source)
+        path = Path(unquote(url.path))
+        if (url.scheme or url.netloc or url.query or path.is_absolute()
+                or ".." in path.parts or path.suffix != ".md"
+                or not (path.as_posix() in {"AGENTS.md", "README.md"}
+                        or path.parts[0] in {"docs", ".agents", ".github"})):
+            errors.append(f"PR: ongeldige documentatiebron: {source}")
+            continue
+        source_paths.append(path.as_posix())
+        if root is not None:
+            target = (root / path).resolve()
+            if not target.is_relative_to(root.resolve()) or not target.is_file():
+                errors.append(f"PR: ontbrekende documentatiebron: {source}")
+            elif url.fragment:
+                try:
+                    doc = parse(target, target.read_text(encoding="utf-8"))
+                    if unquote(url.fragment) not in doc.anchors:
+                        errors.append(f"PR: onbekend anker in documentatiebron: {source}")
+                except (ValueError, TypeError, yaml.YAMLError):
+                    errors.append(f"PR: onleesbare documentatiebron: {source}")
+    if choice == "bijgewerkt" and changed_files is not None:
+        if not set(source_paths).intersection(changed_files):
+            errors.append("PR: bijgewerkt vereist minstens één gewijzigde documentatiebron in deze diff")
     return errors
 
 
@@ -228,7 +280,19 @@ def main():
     if args.pr_event:
         event = json.loads(args.pr_event.read_text(encoding="utf-8"))
         if "pull_request" in event:
-            errors.extend(check_pr(event["pull_request"].get("body") or ""))
+            pr = event["pull_request"]
+            base = pr.get("base", {}).get("sha", "")
+            changed_files = None
+            if not re.fullmatch(r"[0-9a-f]{40}", base):
+                errors.append("PR: base-SHA ontbreekt voor documentatiecontrole op de diff")
+            else:
+                result = subprocess.run(["git", "diff", "--name-only", base, "HEAD"],
+                                        cwd=args.root, text=True, capture_output=True)
+                if result.returncode:
+                    errors.append("PR: diff niet beschikbaar; haal de base-commit op")
+                else:
+                    changed_files = result.stdout.splitlines()
+            errors.extend(check_pr(pr.get("body") or "", args.root, changed_files))
     for error in errors:
         print(error)
     print(f"Documentatiecontrole: {'FAIL' if errors else 'PASS'} ({len(errors)} fouten)")

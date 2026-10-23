@@ -22,6 +22,9 @@ werkwijze of beschrijf het besluit dat dit werk autoriseert.
 
 ## Afhankelijkheden
 
+<!-- Benoem onder Specificatie ook de documentatiekeuze: bestaande eigenaar of
+nieuw zelfstandig onderwerp, met de geraakte glossary/keten/handleiding waar nodig. -->
+
 Welke andere issues of besluiten blokkeren dit werk werkelijk? Anders: geen.
 
 ## Controle

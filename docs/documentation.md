@@ -27,6 +27,43 @@ bestaat. Maak documenten pas met werkelijke inhoud. Start een onderwerp als
 `docs/specs/<onderwerp>.md`; groepeer later in een domeinmap als onderdelen
 zelfstandig veranderen. Git bewaart historie; onderhoud geen actieve archiefmap.
 
+## Documentatie bij uitbreidingen
+
+Bepaal vóór bouwen welke bestaande bron het gedrag bezit. Leg de keuze kort
+vast in het issue en neem haar over in de PR; maak hiervoor geen apart document.
+De [scopecontrole](workflow.md#scope-tijdens-vragenrondes) blijft gelden.
+
+| Verandering | Documentatiekeuze |
+| --- | --- |
+| Nieuwe functie binnen een bestaand onderwerp | Werk die specificatie en haar criteria bij |
+| Zelfstandige nieuwe module of verantwoordelijkheid | Maak één specificatie met doel, grenzen, keten, criteria en open keuzes; link haar vanuit de bestaande leesroute |
+| Nieuwe of gewijzigde bedrijfsbetekenis | Werk de glossary in dezelfde PR bij; zet gedrag in de specificatie |
+| Andere bron, afnemer, opslagverantwoordelijkheid of interface | Werk de betrokken systeemgrens in architectuur bij en verwijs naar de specificatie |
+| Nieuwe bediening, installatie of beheerhandeling | Werk de betrokken handleiding bij zodra de route bestaat en is beproefd |
+| Implementatie van bestaand gedrag, bugfix of zuivere redactie | Verwijs naar de bestaande eigenaar; licht toe waarom diens afspraak volstaat of alleen de tekst wordt bijgewerkt |
+
+Maak geen module-README, architectuurdocument of handleiding zonder eigen
+lezerstaak. Een bestaande bron uitbreiden is de standaard. Bij een nieuw document
+moeten ingang, betekenis en dependencies vindbaar zijn; een nieuw bestand zonder
+verwijzing vanuit een bestaande owning bron is niet af.
+
+De PR gebruikt onder **Resultaat** `Binnen scope:` en `Buiten scope:`. Onder
+**Documentatie en begrippen** staan drie velden op afzonderlijke regels:
+
+```text
+Documentatiekeuze: bijgewerkt
+Documentatiebronnen: docs/specs/onderwerp.md
+Toelichting: beschrijf de documentwijziging en beoordeel glossary, keten en handleidingen.
+```
+
+Kies `bijgewerkt` wanneer een owning bron in deze diff verandert, anders
+`bestaand-volstaat` met een concrete reden. Gebruik bestaande repo-relatieve
+Markdown-paden, eventueel met anker, gescheiden door komma's. Voor proceswerk
+zijn de owning procesdocumenten de bronnen. Geen kunstmatige documentedit om
+een check groen te krijgen. De reviewer toetst of bron, keuze en betekenis bij
+de werkelijke diff passen; de checker toetst vorm, verwijzingen en bij
+`bijgewerkt` minstens één gewijzigde bron.
+
 ## Schrijven en lezen
 
 1. Zoek eerst een bestaande eigenaar; maak alleen een nieuw document voor een
