@@ -129,10 +129,20 @@ EUR 13,00; de melding geeft aan dat deze EUR 1,00 onder de berekende EUR 14,00 l
 Bij een gelijke of lagere berekende prijs is er om deze reden geen aandachtspunt.
 
 De gebruiker kan de vaste prijs behouden, aanpassen of teruggaan naar
-procentuele berekening. Fresh verhoogt de vaste prijs niet automatisch. Hoe
-lang een bewuste behoudkeuze geldt en wanneer het aandachtspunt opnieuw
-verschijnt, moet nog worden bepaald. Ook welke procentuele regel wordt gebruikt
-voor vergelijking bij een vaste prijs zonder groepskoppeling is nog open.
+procentuele berekening. Fresh verhoogt de vaste prijs niet automatisch.
+
+Bij bewust kiezen voor 'vaste prijs behouden' verdwijnt het aandachtspunt voor
+dat product bij die leverancier. Fresh onthoudt de op dat moment beoordeelde
+berekende prijs. Zolang de vaste prijs niet wordt gewijzigd, wordt dezelfde
+situatie niet opnieuw voorgelegd: pas als de berekende prijs boven het laatst
+beoordeelde bedrag stijgt én boven de vaste prijs ligt, verschijnt opnieuw een
+aandachtspunt. Een tussentijdse daling en terugkeer naar hetzelfde beoordeelde
+bedrag geven geen nieuwe melding. Opnieuw behouden neemt de dan beoordeelde
+berekende prijs als nieuwe grens.
+
+Welke procentuele regel wordt gebruikt bij een vaste prijs zonder groepskoppeling
+en wat prijswijze- of vaste-prijswijzigingen met een eerdere behoudkeuze doen,
+moet nog worden bepaald.
 
 ## Keten en herstel
 
@@ -357,6 +367,24 @@ met actueel 40 procent en actuele inkoopprijs EUR 10,00, geeft bewust
 terugschakelen naar procentuele berekening EUR 14,00 verkoopprijs. Fresh
 vraagt niet opnieuw om een groep te kiezen.
 
+<a id="ac-prijzen-030"></a>
+
+### Een bewust behouden vaste prijs geeft geen herhaalde melding
+
+Gegeven vaste prijs EUR 13,00 en berekende prijs EUR 14,00 bij product P van
+leverancier A, verdwijnt het aandachtspunt wanneer de gebruiker de vaste prijs
+behoudt. Bij ongewijzigde vaste prijs geven berekende prijzen van EUR 14,00 of
+lager geen nieuwe melding, ook niet na een daling en terugkeer naar EUR 14,00.
+
+<a id="ac-prijzen-031"></a>
+
+### Verdere stijging vraagt opnieuw aandacht
+
+Gegeven een bewust behouden vaste prijs EUR 13,00 bij een beoordeelde berekende
+prijs EUR 14,00, verschijnt opnieuw een aandachtspunt als de berekende prijs
+EUR 14,50 wordt. Behoudt de gebruiker opnieuw EUR 13,00, dan wordt EUR 14,50 de
+nieuwe beoordelingsgrens. De vaste verkoopprijs blijft EUR 13,00.
+
 ## Open keuzes
 
 Beheer van de standaardmarge (los percentage of margegroep), herberekening na
@@ -368,7 +396,7 @@ selectie is niet gekozen; voorraad zonder individuele regel valt onder de
 leveranciersstandaard. Herkenning van bestaande productinstellingen bij nieuwe
 imports vraagt nog uitwerking.
 Omschakelen zonder bestaande groepskoppeling, gedrag bij geen
-kandidaat of een nog open keuze, de duur en herhaling van aandachtspunten,
+kandidaat of een nog open keuze, behoudkeuzes na wijzigingen van vaste prijs of prijswijze,
 de vergelijkingsregel bij vaste prijzen zonder groepskoppeling, afronding,
 de basis van bedragen (zoals belasting en bijkomende kosten), ontbrekende
 inkoopprijzen en de hierboven genoemde ketengevolgen worden uitgewerkt in
