@@ -98,6 +98,14 @@ in plaats van een verkoopprijs die met een opslagpercentage wordt berekend.
 Het toepassingsgedrag staat in de
 [prijsspecificatie](specs/prijzen.md).
 
+## Afrondingsstaffel
+
+<a id="term-afrondingsstaffel"></a>
+
+Een instelbare indeling van prijsbereiken met per bereik een afrondingsstap.
+De gekozen bedragen en toepassingsregels staan in de
+[prijsspecificatie](specs/prijzen.md#instelbare-afrondingsstaffel).
+
 ## Standaardmarge van een leverancier
 
 <a id="term-standaardmarge-leverancier"></a>

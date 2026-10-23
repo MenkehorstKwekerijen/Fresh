@@ -54,6 +54,24 @@ leverancier voor de vergelijking met een vaste prijs. Bij bewust terugschakelen
 naar procentuele berekening gebruikt Fresh diezelfde leveranciersstandaard met
 de actuele inkoopprijs. Fresh hoeft daarvoor geen margegroep toe te wijzen.
 
+### Instelbare afrondingsstaffel
+
+Voor berekende verkoopprijzen geldt de volgende
+[afrondingsstaffel](../glossary.md#term-afrondingsstaffel):
+
+| Prijsbereik | Afrondingsstap |
+| --- | --- |
+| Onder EUR 1,00 | EUR 0,01 |
+| Vanaf EUR 1,00 tot en met EUR 10,00 | EUR 0,05 |
+| Meer dan EUR 10,00 | EUR 0,25 |
+
+De staffel moet via de instellingen kunnen worden aangepast. De genoemde
+bedragen zijn de gekozen begininstelling. De richting van afronden, behandeling
+van bedragen precies tussen twee stappen en het moment waarop het prijsbereik
+wordt bepaald zijn nog open. Ook gevolgen van gewijzigde instellingen voor
+bestaande prijzen, de vergelijking met vaste prijzen en toepassing op handmatig
+ingestelde vaste prijzen moeten nog worden bepaald.
+
 ### Standaardmarge per leverancier
 
 Bij het inlezen van voorraadlijsten in Fresh wordt de ingestelde standaardmarge
@@ -441,6 +459,15 @@ verkoopprijs EUR 13,00, wordt de vergelijkingsprijs EUR 13,50 als de
 leveranciersstandaard van 30 naar 35 procent wijzigt. Zonder eerdere behoudkeuze
 verschijnt een aandachtspunt met EUR 0,50 verschil. De verkoopprijs blijft EUR 13,00.
 
+<a id="ac-prijzen-037"></a>
+
+### De gekozen afrondingsstaffel is instelbaar
+
+Gegeven de prijsinstellingen, is de beginstaffel zichtbaar met stappen van
+EUR 0,01 onder EUR 1,00, EUR 0,05 vanaf EUR 1,00 tot en met EUR 10,00 en
+EUR 0,25 boven EUR 10,00. De gebruiker kan de staffel via de instellingen
+aanpassen. Het toepassen bij herberekening volgt de nog te bepalen afrondingsregels.
+
 ## Open keuzes
 
 Beheer van de standaardmarge (los percentage of margegroep) en gedrag bij
@@ -452,7 +479,8 @@ leveranciersstandaard. Herkenning van bestaande productinstellingen bij nieuwe
 imports vraagt nog uitwerking.
 Gedrag bij geen
 kandidaat of een nog open keuze, behoudkeuzes na wijzigingen van vaste prijs of prijswijze,
-afronding,
+afrondingsrichting, grens- en middelpuntgedrag, toepassing op vaste prijzen en
+doorwerking van gewijzigde afrondingsinstellingen,
 de basis van bedragen (zoals belasting en bijkomende kosten), ontbrekende
 inkoopprijzen en de hierboven genoemde ketengevolgen worden uitgewerkt in
 [issue #6](https://github.com/MenkehorstKwekerijen/Fresh/issues/6).
