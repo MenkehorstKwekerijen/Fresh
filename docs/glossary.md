@@ -85,7 +85,8 @@ precies omvat, is nog niet uitgewerkt.
 
 <a id="term-opslag-op-inkoop"></a>
 
-Een procentuele verhoging van de inkoopprijs om de verkoopprijs te bepalen.
+Een procentuele verhoging van de inkoopprijs exclusief btw om de verkoopprijs
+exclusief btw te bepalen.
 Het percentage heeft de inkoopprijs als grondslag. Berekening en voorbeelden
 staan in de [prijsspecificatie](specs/prijzen.md).
 
@@ -93,7 +94,7 @@ staan in de [prijsspecificatie](specs/prijzen.md).
 
 <a id="term-vaste-verkoopprijs"></a>
 
-Een afzonderlijk ingesteld verkoopbedrag voor een product bij een leverancier,
+Een afzonderlijk ingesteld verkoopbedrag exclusief btw voor een product bij een leverancier,
 in plaats van een verkoopprijs die met een opslagpercentage wordt berekend.
 Het toepassingsgedrag staat in de
 [prijsspecificatie](specs/prijzen.md).

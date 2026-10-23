@@ -23,6 +23,13 @@ De specificatie is nog niet volledig genoeg voor implementatie.
 
 ## Gedrag en gegevens
 
+### Bedragen exclusief btw
+
+Alle inkoop- en verkoopprijzen waarmee Fresh rekent zijn exclusief btw. Dit
+geldt ook voor handmatig ingestelde vaste verkoopprijzen, afronding,
+vergelijkingsprijzen en getoonde prijsverschillen. Alle prijsvoorbeelden in deze
+specificatie gebruiken bedragen exclusief btw.
+
 ### Prijswijzen
 
 Bij procentuele opslag geldt:
@@ -607,6 +614,16 @@ voorraadstand van A blijft behouden. Na het instellen van de standaardmarge
 blokkeert deze ontbrekende instelling de import niet meer; andere importfouten
 worden daardoor niet overgeslagen.
 
+<a id="ac-prijzen-047"></a>
+
+### Prijsberekening en vergelijking gebruiken bedragen exclusief btw
+
+Gegeven EUR 10,00 inkoop exclusief btw en 30 procent opslag, berekent Fresh
+EUR 13,00 verkoop exclusief btw. Bij een vaste prijs van EUR 12,07 exclusief btw
+blijft die vaste prijs gelden en is het verschil met de berekende prijs
+EUR 0,93 exclusief btw. Er wordt voor deze berekening of vergelijking geen btw
+aan de bedragen toegevoegd.
+
 ## Open keuzes
 
 Het achteraf verwijderen van een standaardmarge bij bestaande voorraad en de
@@ -618,6 +635,7 @@ leveranciersstandaard. Herkenning van bestaande productinstellingen bij nieuwe
 imports vraagt nog uitwerking.
 Gedrag bij geen
 kandidaat of een nog open keuze, behoudkeuzes na wijzigingen van vaste prijs of prijswijze,
-de basis van bedragen (zoals belasting en bijkomende kosten), ontbrekende
+de verwerking van bijkomende kosten, bronbestanden met bedragen inclusief btw,
+ontbrekende
 inkoopprijzen en de hierboven genoemde ketengevolgen worden uitgewerkt in
 [issue #6](https://github.com/MenkehorstKwekerijen/Fresh/issues/6).
