@@ -1,7 +1,7 @@
 ---
 id: prijzen
 status: draft
-depends_on: []
+depends_on: [voorraadimport]
 ---
 # Prijsinstellingen en margegroepen
 

@@ -55,8 +55,11 @@ verschillende feiten. Een ouderissue sluit pas na beoordeling van zijn eigen
 scope; een telling van gesloten sub-issues is geen acceptatiebewijs.
 
 Voortgang volgt uit issues en PR's, zonder Projects of apart roadmapbestand.
-Bij onderbreking volstaat één korte notitie met commit, bewezen resultaat,
-resterende stap en blokkade. Dupliceer geen specificaties in die notitie.
+Bij een chatwissel verzorgt [fresh-handoff](../.agents/skills/fresh-handoff/SKILL.md)
+één korte hervattingsnotitie op het actieve issue of de PR en een startprompt.
+Wissel op verzoek of bij onoverzichtelijke context op een logisch tussenpunt;
+wacht niet op een gegarandeerde melding over een vol contextvenster. De nieuwe
+sessie controleert eerst de actuele bronnen. Geen extra statusbestand of taak.
 
 ## Ketencontrole
 
