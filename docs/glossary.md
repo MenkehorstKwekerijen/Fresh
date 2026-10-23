@@ -97,12 +97,20 @@ Een expliciet ingesteld verkoopbedrag, in plaats van een verkoopprijs die met
 een opslagpercentage wordt berekend. Het toepassingsgedrag staat in de
 [prijsspecificatie](specs/prijzen.md).
 
+## Standaardmarge van een leverancier
+
+<a id="term-standaardmarge-leverancier"></a>
+
+De per leverancier ingestelde opslag op de inkoopprijs voor diens ingelezen
+voorraad. De verhouding tot afzonderlijk toegewezen margegroepen staat in de
+[prijsspecificatie](specs/prijzen.md).
+
 ## Margegroep
 
 <a id="term-margegroep"></a>
 
-Een groep voor prijsinstellingen die aan een product wordt gekoppeld. De
-actieve margegroep is de gekozen groep van dat product. De inhoud en werking
+Een groep voor prijsinstellingen die aan een product bij een leverancier wordt
+gekoppeld. De actieve margegroep is de gekozen groep voor die combinatie. De inhoud en werking
 van de toewijzing worden vastgelegd in de
 [prijsspecificatie](specs/prijzen.md).
 
@@ -110,7 +118,7 @@ van de toewijzing worden vastgelegd in de
 
 <a id="term-kandidaat-margegroep"></a>
 
-Een margegroep die bij een toewijzing in aanmerking komt voor een product,
+Een margegroep die bij een toewijzing in aanmerking komt voor een product bij een leverancier,
 bijvoorbeeld vanuit een leveranciersselectie of een catalogushoofdstuk.
 Een kandidaat is nog geen actieve koppeling.
 

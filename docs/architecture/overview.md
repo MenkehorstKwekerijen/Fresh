@@ -50,9 +50,11 @@ en de import in WinTree. Exportformaat,
 controlepunten en bevestiging van verwerking in het ERP zijn nog te specificeren.
 
 De gekozen prijswijzen en open vragen over margegroepen staan in de
-[conceptspecificatie prijzen](../specs/prijzen.md). De keuze van de gebruikte
-inkoopprijs en de overdracht van berekende prijzen naar afnemers zijn nog uit
-te werken.
+[conceptspecificatie prijzen](../specs/prijzen.md). Ingelezen leveranciersvoorraad
+krijgt de standaardmarge van die leverancier op diens inkoopprijs. Afzonderlijke
+margegroeptoewijzingen gelden per product en leverancier; hun verhouding tot
+de standaardmarge staat nog open. Hoe leveranciersprijzen naar een catalogusprijs
+leiden en welke prijzen naar afnemers gaan, moet nog worden uitgewerkt.
 
 Voor margegroeptoewijzing selecteert de gebruiker producten binnen een leverancier
 met filters op actueel fictief/TCM-aanbod en verkoopgeschiedenis. Deze route

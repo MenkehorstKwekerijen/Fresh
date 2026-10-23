@@ -46,8 +46,10 @@ De gebruiker heeft de volgende werkzaamheden genoemd:
   producten, zelf geselecteerde producten binnen een leverancier en hele
   catalogushoofdstukken, ook met een bulkactie. Bij de leveranciersselectie
   gebruikt de gebruiker filters op actueel fictief/TCM-aanbod en verkoopgeschiedenis.
-  Uitgangspunt is één actieve margegroep per product; de reikwijdte bij hetzelfde
-  product van meerdere leveranciers vraagt nog verduidelijking.
+  Elke leverancier heeft een [standaardmarge](glossary.md#term-standaardmarge-leverancier)
+  die op diens ingelezen voorraad wordt toegepast. Na groepstoewijzing geldt
+  één actieve margegroep per product en leverancier. Hetzelfde product kan
+  daardoor verschillende marges hebben bij verschillende leveranciers.
   Verschillende kandidaten vragen een eenmalige keuze. Een gekozen groep blijft
   gekoppeld; gewijzigde toewijzingsregels vragen expliciete herbeoordeling van
   bestaande producten.

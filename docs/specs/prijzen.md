@@ -8,8 +8,11 @@ depends_on: []
 ## Doel en scope
 
 Fresh ondersteunt [opslag op inkoop](../glossary.md#term-opslag-op-inkoop) en
-een [vaste verkoopprijs](../glossary.md#term-vaste-verkoopprijs). Een product heeft
-na toewijzing één actieve [margegroep](../glossary.md#term-margegroep).
+een [vaste verkoopprijs](../glossary.md#term-vaste-verkoopprijs). Iedere leverancier
+heeft een [standaardmarge](../glossary.md#term-standaardmarge-leverancier) voor
+diens ingelezen voorraad. Na groepstoewijzing geldt één actieve
+[margegroep](../glossary.md#term-margegroep) per product en leverancier.
+Hetzelfde product kan bij verschillende leveranciers een andere marge hebben.
 Toewijzing kan per individueel product, voor een zelf geselecteerde groep
 producten binnen een leverancier en voor een heel catalogushoofdstuk.
 Meerdere producten toewijzen kan met een [bulkactie](../glossary.md#term-bulkactie).
@@ -31,9 +34,23 @@ Een brutomargepercentage over de verkoopprijs is niet als prijswijze gekozen.
 Hoe beide gekozen prijswijzen in de margegroep of op het product worden
 vastgelegd, is nog te bepalen; de wens voor een vaste verkoopprijs blijft gelden.
 
+### Standaardmarge per leverancier
+
+Bij het inlezen van voorraadlijsten in Fresh wordt de ingestelde standaardmarge
+van de betreffende leverancier toegepast op diens inkoopprijzen. Bijvoorbeeld:
+zonder afwijkende productinstellingen geeft EUR 10,00 inkoop bij leverancier A
+met 30 procent opslag een berekende verkoopprijs van EUR 13,00. Hetzelfde
+product met EUR 10,00 inkoop bij leverancier B met 40 procent opslag geeft
+EUR 14,00. De leveranciersinstelling van A geldt niet voor B.
+
+De standaardmarge en een expliciet gekozen margegroep zijn onderscheiden
+instellingen. Of een productgroep de standaardmarge vervangt, en of de
+standaardmarge zelf als margegroep wordt beheerd, moet nog worden besloten.
+Er wordt geen optelling of andere combinatie van marges aangenomen.
+
 ### Producten selecteren en toewijzen
 
-De gebruiker kan één product rechtstreeks aan een margegroep toewijzen.
+De gebruiker kan één product bij een leverancier rechtstreeks aan een margegroep toewijzen.
 Binnen een leverancier stelt de gebruiker zelf een selectie samen met filters
 op actueel aanbod uit fictieve voorraad en TCM en op verkoopgeschiedenis.
 Vervolgens wijst de gebruiker de geselecteerde producten met een bulkactie aan
@@ -49,15 +66,17 @@ verkoopfilters, periode en combinatie met actueel aanbod zijn nog te bepalen.
 
 Margegroepen kunnen worden aangemaakt en aan producten toegewezen. Verschillende
 toewijzingen kunnen [kandidaat-margegroepen](../glossary.md#term-kandidaat-margegroep)
-voor hetzelfde product opleveren. Er is geen voorrangsvolgorde tussen product,
-leverancier en hoofdstuk voor de prijsberekening.
+voor hetzelfde product bij dezelfde leverancier opleveren. Verschillende
+groepen bij verschillende leveranciers zijn geen conflict. De eerdere
+voorrangsvolgorde product, leverancier, hoofdstuk geldt niet. De verhouding
+tot de standaardmarge moet nog worden bepaald.
 
 Wanneer toewijzingen dezelfde groep opleveren, is dat één kandidaat. Bij
 verschillende kandidaten krijgt de gebruiker een duidelijk aandachtspunt en
 kiest die eenmaal, eventueel voor meerdere producten met een bulkactie.
 Een toewijzing die afwijkt van de bestaande actieve groep vraagt een bewuste keuze.
 
-De gekozen groep blijft aan het product gekoppeld. Een volgende prijsberekening
+De gekozen groep blijft aan het product bij die leverancier gekoppeld. Een volgende prijsberekening
 vraagt niet opnieuw om dezelfde keuze. Leverancier en hoofdstuk blijven dus niet
 bij elke berekening concurrerende prijsinstellingen leveren.
 
@@ -68,23 +87,25 @@ de gekozen groep van bestaande producten niet automatisch. Bestaande producten
 vragen een expliciete herbeoordeling. Een andere groep wordt pas gekoppeld als
 die herbeoordeling tot die keuze leidt.
 
-Deze afspraak gaat over het wijzigen van toewijzingsregels. Wat er gebeurt als
-de prijsinstellingen binnen een al gekoppelde margegroep wijzigen, is nog open.
+Deze afspraak gaat over het wijzigen van expliciete groepstoewijzingen. Wat er
+gebeurt als de standaardmarge of de prijsinstellingen binnen een al gekoppelde
+margegroep wijzigen, is nog open.
 
 ## Keten en herstel
 
-De prijsberekening gebruikt een inkoopprijs. Welke prijs geldt bij meerdere
-leveranciers of voorraadbronnen en of deze keuze samenhangt met de
-leveranciersvoorkeur moet nog worden besloten.
+De leveranciersberekening gebruikt de inkoopprijs van de betreffende leverancier.
+Hoe meerdere leveranciersprijzen leiden tot een catalogusprijs en of deze keuze
+samenhangt met de leveranciersvoorkeur moet nog worden besloten.
 
 De selectieroute gebruikt actueel fictief/TCM-aanbod volgens de
 [bronkeuze bij voorraadimport](voorraadimport.md#leveranciers-en-mogelijke-dubbele-aanlevering).
 Verkoopgeschiedenis moet aan producten en waar nodig leveranciers gekoppeld
 kunnen worden. De benodigde velden en betrouwbare koppeling zijn nog niet
 bevestigd. Of ook eerder verkochte producten buiten het actuele aanbod kunnen
-worden geselecteerd, is open. Eveneens open is of de actieve margegroep geldt
-voor een product over alle leveranciers of voor het product per leverancier;
-deze betekenis mag niet uit een technisch datamodel worden afgeleid.
+worden geselecteerd, is open. De margegroeptoewijzing geldt per product en
+leverancier; de precieze productidentiteit en herkenning over opeenvolgende
+bestanden zijn nog niet bepaald. Bij een hoofdstukactie moet duidelijk zijn
+welke leveranciersaanbiedingen worden geraakt; de bediening hiervan is nog open.
 
 WinTree-export en catalogus/website zijn relevante afnemers binnen het
 [productdoel](../project.md). Welke prijsvelden elke afnemer krijgt, moet nog
@@ -119,7 +140,7 @@ toewijzen. De directe toewijzing van het niet-geselecteerde onderdeel C verander
 
 ### Verschillende kandidaten vragen een eenmalige keuze
 
-Gegeven een nog niet toegewezen product met kandidaat G via de leverancier en
+Gegeven een nog niet toegewezen product bij leverancier A met kandidaat G via een leveranciersselectie en
 H via het hoofdstuk, toont Fresh de kandidaten en hun herkomst. De gebruiker
 kan eenmaal een groep kiezen, ook in bulk. Na keuze voor H is alleen H actief.
 
@@ -127,7 +148,7 @@ kan eenmaal een groep kiezen, ook in bulk. Na keuze voor H is alleen H actief.
 
 ### Een gekozen koppeling blijft behouden
 
-Gegeven een product waarvoor de gebruiker bij kandidaten G en H groep H heeft
+Gegeven een product bij leverancier A waarvoor de gebruiker bij kandidaten G en H groep H heeft
 gekozen, blijft H bij volgende berekeningen actief zonder een herhaalde
 keuzevraag over dezelfde kandidaten.
 
@@ -135,16 +156,16 @@ keuzevraag over dezelfde kandidaten.
 
 ### Gewijzigde toewijzingsregels vereisen expliciete herbeoordeling
 
-Gegeven een product met actieve groep G, blijft G gekoppeld wanneer de
-leveranciers- of hoofdstukinstelling een andere groep H gaat voorstellen.
+Gegeven een product bij leverancier A met actieve groep G, blijft G gekoppeld wanneer een
+leveranciersselectie of hoofdstuktoewijzing een andere groep H gaat voorstellen.
 Wijziging van de productkoppeling naar H vereist expliciete herbeoordeling.
 
 <a id="ac-prijzen-012"></a>
 
 ### Een individueel product krijgt een margegroep
 
-Gegeven een product zonder actieve margegroep, kan de gebruiker rechtstreeks
-groep G toewijzen. Daarna is G de actieve margegroep van dat product.
+Gegeven een product bij leverancier A zonder actieve margegroep, kan de gebruiker
+rechtstreeks groep G toewijzen. Daarna is G de actieve margegroep van dat product bij A.
 
 <a id="ac-prijzen-013"></a>
 
@@ -159,9 +180,9 @@ toewijzen. Welke verkoopfilters beschikbaar zijn, is nog te besluiten.
 
 ### Een heel hoofdstuk kan worden toegewezen
 
-Gegeven een hoofdstuk met producten zonder actieve margegroep, kan de gebruiker
-alle producten in dat hoofdstuk met één bulkactie aan groep G toewijzen.
-Daarna is G de actieve groep van die producten.
+Gegeven een hoofdstuk met producten zonder actieve margegroep voor de gekozen
+leveranciers, kan de gebruiker die producten met één bulkactie aan groep G
+toewijzen. Daarna is G hun actieve groep bij die leveranciers.
 
 <a id="ac-prijzen-015"></a>
 
@@ -171,13 +192,39 @@ Gegeven een handmatig gekozen leveranciersselectie die aan groep G is toegewezen
 wordt een later geïmporteerd nieuw product niet uitsluitend doordat het aan
 dezelfde filters voldoet onderdeel van die selectie of aan G gekoppeld.
 
+<a id="ac-prijzen-016"></a>
+
+### Ingelezen voorraad krijgt de standaardmarge van de leverancier
+
+Gegeven leverancier A met standaardmarge 30 procent en een ingelezen product
+met inkoopprijs EUR 10,00 zonder afwijkende productinstelling, berekent Fresh
+voor dat aanbod EUR 13,00 verkoopprijs.
+
+<a id="ac-prijzen-017"></a>
+
+### Hetzelfde product kan per leverancier een andere marge krijgen
+
+Gegeven hetzelfde product bij A en B, beide met inkoopprijs EUR 10,00 en zonder
+afwijkende productinstelling, geeft de standaardmarge van A van 30 procent
+EUR 13,00 en die van B van 40 procent EUR 14,00. De instelling van A wordt
+niet gebruikt voor het aanbod van B.
+
+<a id="ac-prijzen-018"></a>
+
+### Een groepstoewijzing blijft beperkt tot de gekozen leverancier
+
+Gegeven hetzelfde product bij A en B, verandert het toewijzen van groep G
+aan dat product bij A de margegroeptoewijzing bij B niet.
+
 ## Open keuzes
 
-De reikwijdte van de productkoppeling bij meerdere leveranciers, concrete
-verkoopfilters en de combinatie met actueel aanbod moeten nog worden bepaald.
-De eerdere afspraak over automatische kandidaten voor nieuwe producten moet
-worden afgestemd op de nu gekozen handmatige leveranciersselectie en de
-hoofdstuktoewijzing; automatische uitbreiding van een selectie is niet gekozen.
+De verhouding tussen standaardmarge en expliciete margegroep, beheer van de
+standaardmarge (los percentage of margegroep), herberekening na wijzigingen en
+gedrag bij ontbrekende standaardmarge moeten nog worden bepaald. Concrete
+verkoopfilters, combinatie met actueel aanbod en leveranciersbereik van een
+hoofdstukactie blijven open. Automatische uitbreiding van een handmatige
+selectie is niet gekozen; nieuwe voorraad valt onder de leveranciersstandaard,
+waarbij samenloop met bestaande productinstellingen nog uitwerking vraagt.
 Inhoud van margegroepen en de plaats van vaste verkoopprijzen, gedrag bij geen
 kandidaat of een nog open keuze, gevolgen van gewijzigde groepsinhoud, afronding,
 de basis van bedragen (zoals belasting en bijkomende kosten), ontbrekende
