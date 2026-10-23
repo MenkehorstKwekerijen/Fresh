@@ -75,9 +75,15 @@ ongewijzigde invoer en instellingen laten de prijs dus niet verder oplopen.
 
 Een bedrag precies halverwege twee afrondingsstappen wordt naar de hogere stap
 afgerond. Bijvoorbeeld EUR 12,05 wordt EUR 12,10 bij een stap van EUR 0,10.
-Het moment waarop het prijsbereik wordt bepaald is nog open. Ook gevolgen van gewijzigde instellingen voor
-bestaande prijzen, de vergelijking met vaste prijzen en toepassing op handmatig
-ingestelde vaste prijzen moeten nog worden bepaald.
+
+Handmatig ingestelde vaste verkoopprijzen blijven exact zoals ingevoerd. De
+afrondingsstaffel geldt uitsluitend voor berekende prijzen. Een vaste prijs van
+EUR 12,07 blijft dus EUR 12,07, ook bij een afrondingsstap van EUR 0,10.
+
+Het moment waarop het prijsbereik wordt bepaald is nog open. Ook gevolgen van
+gewijzigde instellingen voor bestaande berekende prijzen en de keuze tussen een
+afgeronde of onafgeronde vergelijkingsprijs bij vaste prijzen moeten nog worden
+bepaald.
 
 ### Standaardmarge per leverancier
 
@@ -501,6 +507,14 @@ Gegeven de gekozen staffel, wordt EUR 0,125 afgerond naar EUR 0,13,
 EUR 2,125 naar EUR 2,15, EUR 12,05 naar EUR 12,10 en EUR 20,125 naar EUR 20,25.
 Elk bedrag ligt precies tussen twee stappen van zijn toepasselijke bereik.
 
+<a id="ac-prijzen-041"></a>
+
+### Een handmatig ingestelde vaste prijs wordt niet afgerond
+
+Gegeven een handmatig ingestelde vaste verkoopprijs van EUR 12,07, blijft de
+gebruikte verkoopprijs exact EUR 12,07 bij een staffelstap van EUR 0,10.
+De afrondingsstaffel wordt niet op dit vaste bedrag toegepast.
+
 ## Open keuzes
 
 Beheer van de standaardmarge (los percentage of margegroep) en gedrag bij
@@ -512,7 +526,7 @@ leveranciersstandaard. Herkenning van bestaande productinstellingen bij nieuwe
 imports vraagt nog uitwerking.
 Gedrag bij geen
 kandidaat of een nog open keuze, behoudkeuzes na wijzigingen van vaste prijs of prijswijze,
-grensbepaling bij afronding, toepassing op vaste prijzen en
+grensbepaling bij afronding, afgeronde of onafgeronde vergelijking met vaste prijzen en
 doorwerking van gewijzigde afrondingsinstellingen,
 de basis van bedragen (zoals belasting en bijkomende kosten), ontbrekende
 inkoopprijzen en de hierboven genoemde ketengevolgen worden uitgewerkt in
