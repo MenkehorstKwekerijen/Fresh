@@ -126,6 +126,13 @@ producten met procentuele prijsberekening. Bij EUR 10,00 inkoop en wijziging
 van 30 naar 35 procent verandert de berekende verkoopprijs van EUR 13,00 naar
 EUR 13,50. De groepskoppeling verandert daarbij niet.
 
+Een wijziging van de leveranciersstandaard werkt eveneens automatisch door
+voor producten die deze standaard gebruiken. Zonder eigen groep of vaste prijs
+wordt de verkoopprijs opnieuw berekend. Bij een vaste prijs zonder eigen groep
+wordt de vergelijkingsprijs bijgewerkt en gelden de onderstaande aandachtregels;
+de vaste prijs blijft staan. Een eigen margegroep blijft voor zowel berekening
+als vergelijking leidend en wordt niet door de leverancierswijziging vervangen.
+
 Vaste verkoopprijzen blijven gelijk. Komt de prijs op basis van het toepasselijke
 percentage boven de vaste verkoopprijs, dan toont Fresh een aandachtspunt met
 de vaste prijs, de berekende prijs en het verschil. Bijvoorbeeld bij EUR 10,00
@@ -168,10 +175,10 @@ welke leveranciersaanbiedingen worden geraakt; de bediening hiervan is nog open.
 
 WinTree-export en catalogus/website zijn relevante afnemers binnen het
 [productdoel](../project.md). Welke prijsvelden elke afnemer krijgt, moet nog
-worden uitgewerkt. Herberekening na een groepswijziging geldt binnen Fresh;
+worden uitgewerkt. Herberekening na een groeps- of leveranciersstandaardwijziging geldt binnen Fresh;
 dit besluit geeft geen automatische publicatie of aanpassing van al geëxporteerde
 bestanden. Het moment van overdracht naar afnemers, herberekening bij nieuwe
-inkoopprijzen of gewijzigde leveranciersstandaarden, gelijktijdige wijzigingen
+inkoopprijzen, gelijktijdige wijzigingen
 en herstel vragen nog afspraken.
 
 ## Acceptatiecriteria
@@ -408,11 +415,36 @@ actuele inkoopprijs EUR 10,00 en actuele leveranciersstandaard 40 procent,
 geeft bewust terugschakelen naar procentuele berekening EUR 14,00 verkoopprijs.
 Een margegroeptoewijzing is hiervoor niet nodig.
 
+<a id="ac-prijzen-034"></a>
+
+### Een gewijzigde leveranciersstandaard herberekent standaardprijzen
+
+Gegeven een product bij A met inkoopprijs EUR 10,00, zonder eigen groep of
+vaste prijs, wordt de verkoopprijs automatisch EUR 13,50 wanneer de
+leveranciersstandaard van 30 naar 35 procent wijzigt.
+
+<a id="ac-prijzen-035"></a>
+
+### Een leverancierswijziging verdringt een eigen groep niet
+
+Gegeven een product bij A met inkoopprijs EUR 10,00 en eigen groep G van
+40 procent, blijft G leidend wanneer de leveranciersstandaard van 30 naar
+35 procent wijzigt. De procentuele prijs blijft EUR 14,00; bij een vaste prijs
+blijft de vergelijkingsprijs op basis van G eveneens EUR 14,00.
+
+<a id="ac-prijzen-036"></a>
+
+### Een leverancierswijziging actualiseert de vergelijking zonder vaste prijs te wijzigen
+
+Gegeven een product bij A zonder groep, met inkoopprijs EUR 10,00 en vaste
+verkoopprijs EUR 13,00, wordt de vergelijkingsprijs EUR 13,50 als de
+leveranciersstandaard van 30 naar 35 procent wijzigt. Zonder eerdere behoudkeuze
+verschijnt een aandachtspunt met EUR 0,50 verschil. De verkoopprijs blijft EUR 13,00.
+
 ## Open keuzes
 
-Beheer van de standaardmarge (los percentage of margegroep), herberekening na
-wijzigingen aan die standaard en gedrag bij ontbrekende standaardmarge moeten
-nog worden bepaald. Concrete
+Beheer van de standaardmarge (los percentage of margegroep) en gedrag bij
+ontbrekende standaardmarge moeten nog worden bepaald. Concrete
 verkoopfilters, combinatie met actueel aanbod en leveranciersbereik van een
 hoofdstukactie blijven open. Automatische uitbreiding van een handmatige
 selectie is niet gekozen; voorraad zonder individuele regel valt onder de
