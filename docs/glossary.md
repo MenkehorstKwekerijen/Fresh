@@ -69,6 +69,22 @@ Het importgedrag staat in de
 Het ERP van de organisatie. WinTree is de bestemming voor de beoogde
 voorraadexport en het systeem waarlangs TCM-voorraad wordt ontvangen.
 
+## Inkoperscontrole
+
+<a id="term-inkoperscontrole"></a>
+
+De beoordeling door de inkoper vóór vrijgave van de WinTree-export, waarbij
+de inkoper ook regels kan uitsluiten. Het gedrag staat in de
+[exportspecificatie](specs/wintree-export.md).
+
+## Uitsluiten van WinTree-export
+
+<a id="term-uitsluiten-wintree-export"></a>
+
+De bewuste keuze om een regel niet mee te nemen in de WinTree-export.
+Dit begrip bepaalt op zichzelf niet of de regel in Fresh als voorraad beschikbaar
+blijft. De toepassing staat in de [exportspecificatie](specs/wintree-export.md).
+
 ## WinTree-basisstam
 
 <a id="term-wintree-basisstam"></a>

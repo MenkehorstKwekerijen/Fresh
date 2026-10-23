@@ -60,6 +60,18 @@ blijven gelden.
 De automatische matchregels en het gedrag wanneer regels na stap 4 ongematcht
 blijven, moeten nog worden uitgewerkt.
 
+### Uitsluiten vanuit Voor controle
+
+Vanuit 'Voor controle' kan de gebruiker een regel direct uitsluiten van de
+WinTree-export. Dit kan zowel bij een nog niet gematchte als bij een al gematchte
+regel. De inkoper kan ook na het matchen nog regels uitsluiten tijdens de
+[inkoperscontrole vóór exportvrijgave](wintree-export.md#gedrag-en-gegevens).
+
+Dit besluit bepaalt de exportselectie. Of uitgesloten regels ook buiten de
+actuele voorraad in Fresh vallen, en wat uitsluiten betekent voor resterende
+matchblokkades bij stap 5, is nog niet besloten. De eerder vastgelegde
+prijsblokkades blijven gelden; uitsluiten is geen vastgestelde uitzondering daarop.
+
 ### Kolomtoewijzing in stap 2
 
 De tweede stap van de bestandsimport is
@@ -232,10 +244,22 @@ gebruiker resterende matches oplossen. De actuele voorraad blijft tijdens deze
 voorbereiding 20. Na succesvolle definitieve verwerking in stap 5 is de actuele
 voorraad 12; het nieuwe bestand vervangt dan de vorige stand.
 
+<a id="ac-voorraadimport-012"></a>
+
+### Voor controle biedt uitsluiten ongeacht de matchstatus
+
+Gegeven een nog niet gematchte regel A en een al gematchte regel B in
+'Voor controle', kan de gebruiker zowel A als B direct uitsluiten van de
+WinTree-export. Een geslaagde match is geen belemmering om B uit te sluiten.
+De [exportspecificatie](wintree-export.md#ac-wintree-export-002) bepaalt het
+resultaat in het exportbestand.
+
 ## Open keuzes
 
 Gedrag bij gewijzigde bestandsstructuur,
 automatische matching en resterende ongematchte regels na stap 4,
+de precieze plaats van 'Voor controle' in de importroute en het effect van
+uitsluiten op actuele voorraad en matchblokkades,
 verdere afbakening, de vergelijking van inhoud, het gedrag zolang een bronkeuze
 openstaat en het bewaren en opnieuw beoordelen van die keuze bij nieuwe import,
 en de hierboven genoemde import- en herstelvragen worden behandeld in

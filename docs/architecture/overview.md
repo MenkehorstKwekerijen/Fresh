@@ -46,8 +46,11 @@ gebruik van codes in historische verkopen moeten nog worden bevestigd.
 
 De operationele route omvat voorraad inlezen, fictieve voorraad naar WinTree-codes
 omzetten, marges bepalen en exporteren naar WinTree. De inkoper controleert marges
-en de import in WinTree. Exportformaat,
-controlepunten en bevestiging van verwerking in het ERP zijn nog te specificeren.
+en de import in WinTree. Vóór exportvrijgave vindt een
+[inkoperscontrole](../specs/wintree-export.md) plaats, waarbij ook gematchte regels
+kunnen worden uitgesloten. Exportformaat, overige controlepunten en bevestiging
+van verwerking in het ERP zijn nog te specificeren. Het effect van uitsluiten
+op de voorraad en commerciële afnemers in Fresh is nog open.
 
 De gekozen prijswijzen en open vragen over margegroepen staan in de
 [conceptspecificatie prijzen](../specs/prijzen.md). Ingelezen leveranciersvoorraad
