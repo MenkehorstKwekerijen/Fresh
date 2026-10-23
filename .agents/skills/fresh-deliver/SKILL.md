@@ -27,6 +27,6 @@ description: Voer een afgebakende Fresh-opdracht uit en lever controleerbaar bew
    wanneer dat binnen de opdracht valt. Maak bewijs, revisie, documentatie-impact
    en ontbrekende controles zichtbaar. Sluit alleen de bewezen issue-scope.
 
-Bij onderbreking: één hervattingsnotitie met commit, bewijs, resterende stap en
-blokkade. Bij ontbrekende rechten: behoud lokaal werk en rapporteer de geweigerde
+Gebruik bij een chatwissel [fresh-handoff](../fresh-handoff/SKILL.md).
+Bij ontbrekende rechten: behoud lokaal werk en rapporteer de geweigerde
 handeling. Een lokale check is geen bewijs van ingestelde GitHub-bescherming.
