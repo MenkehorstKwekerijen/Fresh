@@ -94,6 +94,12 @@ berekende prijs, zoals uitgewerkt bij herberekening en aandacht hieronder.
 
 ### Standaardmarge per leverancier
 
+De gebruiker vult de standaardmarge rechtstreeks als opslagpercentage bij de
+leverancier in, bijvoorbeeld 30 procent. Hiervoor wordt geen margegroep gekozen
+of aangemaakt. Het percentage wordt per leverancier beheerd: een wijziging bij
+leverancier A wijzigt de standaardmarge van leverancier B niet, ook niet als zij
+voorheen hetzelfde percentage hadden.
+
 Bij het inlezen van voorraadlijsten in Fresh wordt de ingestelde standaardmarge
 van de betreffende leverancier toegepast op diens inkoopprijzen. Bijvoorbeeld:
 zonder afwijkende productinstellingen geeft EUR 10,00 inkoop bij leverancier A
@@ -572,10 +578,20 @@ Gegeven de gekozen beginstaffel, geldt:
 Het afgeronde bedrag leidt niet tot een nieuwe keuze van de stap of een tweede
 afronding, ook wanneer het bedrag op een grens van een ander prijsbereik uitkomt.
 
+<a id="ac-prijzen-045"></a>
+
+### De leveranciersstandaard is een rechtstreeks ingesteld percentage
+
+Gegeven leveranciers A en B, kan de gebruiker bij beide rechtstreeks 30 procent
+standaardopslag instellen zonder een margegroep te kiezen of aan te maken.
+Bij wijziging van A naar 35 procent blijft B op 30 procent. Producten bij A die
+de standaard gebruiken worden volgens de bestaande herberekeningsregels
+bijgewerkt; een individueel toegewezen groep blijft voorgaan en een vaste
+verkoopprijs blijft exact staan.
+
 ## Open keuzes
 
-Beheer van de standaardmarge (los percentage of margegroep) en gedrag bij
-ontbrekende standaardmarge moeten nog worden bepaald. Concrete
+Gedrag bij een ontbrekende standaardmarge moet nog worden bepaald. Concrete
 verkoopfilters, combinatie met actueel aanbod en leveranciersbereik van een
 hoofdstukactie blijven open. Automatische uitbreiding van een handmatige
 selectie is niet gekozen; voorraad zonder individuele regel valt onder de

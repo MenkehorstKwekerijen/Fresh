@@ -110,8 +110,8 @@ De gekozen bedragen en toepassingsregels staan in de
 
 <a id="term-standaardmarge-leverancier"></a>
 
-De per leverancier ingestelde opslag op de inkoopprijs voor diens ingelezen
-voorraad. De verhouding tot afzonderlijk toegewezen margegroepen staat in de
+Het rechtstreeks per leverancier ingestelde opslagpercentage op de inkoopprijs
+voor diens ingelezen voorraad. De verhouding tot afzonderlijk toegewezen margegroepen staat in de
 [prijsspecificatie](specs/prijzen.md).
 
 ## Individuele margeregel
