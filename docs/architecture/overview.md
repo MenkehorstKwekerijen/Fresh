@@ -50,8 +50,9 @@ gebruik van codes in historische verkopen moeten nog worden bevestigd.
 
 De operationele route omvat voorraad inlezen, fictieve voorraad naar WinTree-codes
 omzetten, marges bepalen en exporteren naar WinTree. De inkoper controleert marges
-en de import in WinTree. Exportformaat,
-controlepunten en bevestiging van verwerking in het ERP zijn nog te specificeren.
+en de import in WinTree. De [exportspecificatie](../specs/wintree-export.md) bezit
+inkopersvrijgave en selectie van exportregels. Het formaat en de bevestiging van
+verwerking in WinTree zijn nog te bepalen; exportuitsluiting is geen interne aanbodfilter.
 
 De [prijsspecificatie](../specs/prijzen.md) bezit berekening, groepstoewijzing en
 prijsvalidatie. De berekening gebruikt leverancier, productkoppeling en inkoopprijs.
