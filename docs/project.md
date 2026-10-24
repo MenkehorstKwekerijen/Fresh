@@ -41,20 +41,8 @@ De gebruiker heeft de volgende werkzaamheden genoemd:
   [WinTree-basisstam](glossary.md#term-wintree-basisstam), zodat deze voorraad
   later snel in WinTree kan worden ingelezen.
 - Leveranciersvoorkeuren vastleggen.
-- [Prijsinstellingen](specs/prijzen.md) voor opslag op inkoop en vaste
-  verkoopprijzen vastleggen; margegroepen aanmaken en toewijzen voor individuele
-  producten, zelf geselecteerde producten binnen een leverancier en hele
-  catalogushoofdstukken, ook met een bulkactie. Bij de leveranciersselectie
-  gebruikt de gebruiker filters op actueel fictief/TCM-aanbod en verkoopgeschiedenis.
-  Elke leverancier heeft een [standaardmarge](glossary.md#term-standaardmarge-leverancier)
-  die op diens ingelezen voorraad wordt toegepast. Een individuele margeregel
-  voor een product bij die leverancier vervangt deze standaardmarge, zonder
-  stapeling. Na groepstoewijzing geldt
-  één actieve margegroep per product en leverancier. Hetzelfde product kan
-  daardoor verschillende marges hebben bij verschillende leveranciers.
-  Verschillende kandidaten vragen een eenmalige keuze. Een gekozen groep blijft
-  gekoppeld; gewijzigde toewijzingsregels vragen expliciete herbeoordeling van
-  bestaande producten.
+- [Prijsinstellingen](specs/prijzen.md) voor opslag op inkoop, vaste verkoopprijzen
+  en margegroepen, met individuele en bulktoewijzing per product en leverancier.
 - [Catalogusbeheer](glossary.md#term-catalogusbeheer): producten en hun gegevens
   beheren, inclusief hun weergave op de website, hoofdstukken, Duitse en Engelse
   vertalingen en filters.
