@@ -34,6 +34,34 @@ niet. Na een stamupdate probeert Fresh ze
 Ook dan blijft de inkoperscontrole vóór exportvrijgave gelden; een geslaagde
 match geeft de export niet automatisch vrij.
 
+## Uitsluiting per uitvoering en volgende import
+
+Een [productuitvoering](../glossary.md#term-productuitvoering) kan afzonderlijk
+worden uitgesloten, ook als een andere uitvoering dezelfde naam- en maatcodes
+heeft. Bij een volgende lijst blijft de uitsluiting behouden voor dezelfde
+uitvoering volgens de [herkenningsroute](voorraadimport.md#herkenning-bij-volgende-leverancierslijsten).
+De herkenning verleent geen exportvrijgave. Opheffen van een uitsluiting en
+begininstellingen voor een andere uitvoering zijn nog open keuzes.
+
+<a id="ac-wintree-export-006"></a>
+
+### Uitsluiten van de ene kwaliteit sluit de andere niet uit
+
+Gegeven leverancier A met uitvoeringen `2-jarige kroon` en `3-jarige kroon` met
+dezelfde naam- en maatcodes, kan de gebruiker alleen de 2-jarige uitvoering
+uitsluiten. De 3-jarige uitvoering wordt hierdoor niet uitgesloten; haar export
+blijft onderworpen aan de overige controles en inkopersvrijgave.
+
+<a id="ac-wintree-export-007"></a>
+
+### Dezelfde uitvoering behoudt haar uitsluiting bij een volgende lijst
+
+Gegeven een uitgesloten uitvoering bij A, blijft deze uitgesloten na definitieve
+verwerking van een volgende lijst waarin zij als dezelfde uitvoering wordt herkend.
+Dit geldt ook wanneer de gebruiker bij gewijzigde extra tekst, bijvoorbeeld
+`3-jarige kroon, aanbieding`, bevestigt dat het dezelfde uitvoering is.
+Een gewijzigde voorraad of prijs heft de uitsluiting niet op.
+
 ## Keten en herstel
 
 WinTree is de afnemer van de export. Uitsluiten heeft alleen effect op deze
@@ -93,7 +121,8 @@ vrijgegeven. De automatische matchpoging veroorzaakt zelf geen exportvrijgave.
 
 ## Open keuzes
 
-Opnieuw opnemen in de export, geldigheid van uitsluitingen bij een volgend bestand, overige
+Opnieuw opnemen in de export, begininstellingen voor een andere uitvoering, behoud
+bij terugkeer na afwezigheid of een bronwissel, overige
 controlepunten, wijzigingen na controle, gelijktijdige wijzigingen, exportformaat
 en verwerking of herstel in WinTree moeten nog worden bepaald. De eerstvolgende
 keuze staat in [issue #13](https://github.com/MenkehorstKwekerijen/Fresh/issues/13).

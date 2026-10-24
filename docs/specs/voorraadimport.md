@@ -17,6 +17,7 @@ Besluiten en open keuzes: [issue #12](https://github.com/MenkehorstKwekerijen/Fr
 Eerdere basisbesluiten staan in [issue #4](https://github.com/MenkehorstKwekerijen/Fresh/issues/4).
 
 Lees gericht: [voorraadbasis](voorraad.md) · [importstappen](#stappen-van-de-leveranciersimport) · [kolommen](#kolomtoewijzing-in-stap-2) ·
+[productherkenning](#herkenning-bij-volgende-leverancierslijsten) ·
 [uitsluiten en matching](#uitsluiten-vanuit-voor-controle) · [wachtlijst](#wachtlijst-voor-stamcodes) ·
 [keten en open keuzes](#keten-en-open-keuzes).
 
@@ -78,6 +79,81 @@ Gegeven een vastgelegde kolomtoewijzing voor leverancier A, vult Fresh die in st
 een volgend bestand van A met dezelfde kolomstructuur. De gebruiker kan haar controleren en
 aanpassen. Fresh controleert de inhoud van dit nieuwe bestand opnieuw; de toewijzing van A wordt
 niet als instelling voor een andere leverancier gebruikt.
+
+## Herkenning bij volgende leverancierslijsten
+
+Een [productuitvoering](../glossary.md#term-productuitvoering) wordt niet volledig
+onderscheiden door leverancier, naamcode en maatcode. De leverancier heeft geen
+eigen artikelcode beschikbaar; kwaliteitsverschillen staan in de extra tekst,
+die ook gewone opmerkingen kan bevatten en doorgaans gelijk blijft. De gebruiker
+koos daarom beperkte tekstvergelijking, zonder automatische kwaliteitsanalyse
+of slimme gelijkstelling van verschillende omschrijvingen. Besluitbasis:
+[issue #12](https://github.com/MenkehorstKwekerijen/Fresh/issues/12).
+
+Voor opeenvolgende bestanden van dezelfde leverancier binnen dezelfde bron
+vergelijkt Fresh de aangeleverde plantnaam, maat en extra tekst. Alleen
+hoofdletters, spaties aan begin/eind en herhaalde spaties worden genegeerd.
+Getallen, bereiken, leestekens en afkortingen worden niet weggelaten of gelijkgesteld.
+Prijs en voorraadhoeveelheid bepalen niet of het dezelfde uitvoering is.
+De herkenningsregel hieronder betreft een eenduidige voorganger; dubbelzinnige
+gevallen en gegevens buiten deze drie velden vragen nog uitwerking.
+
+| Vergelijking met de vorige lijst | Afhandeling |
+| --- | --- |
+| Plantnaam, maat en extra tekst gelijk na deze beperkte normalisatie | Dezelfde uitvoering herkennen |
+| Een van deze teksten inhoudelijk anders | Vorige uitvoering als voorstel tonen; gebruiker kiest dezelfde of een andere uitvoering |
+| Gebruiker bevestigt dezelfde uitvoering | Bestaande instellingen behouden en de nieuwe brongegevens gebruiken |
+| Gebruiker kiest een andere uitvoering | Afzonderlijk behandelen; begininstellingen blijven een open keuze |
+
+Herkenning en de bestaande naam-/maatcodematch zijn verschillende stappen:
+twee uitvoeringen kunnen dezelfde codes delen zonder hun instellingen te delen.
+Herkenning bewaart een bestaande match, maar maakt geen match voor een wachtende
+regel. De [wachtlijst](#wachtlijst-voor-stamcodes) blijft de actuele lijst volgen.
+[Prijsinstellingen](prijzen.md#prijsinstellingen-bij-volgende-imports) en
+[exportuitsluitingen](wintree-export.md#uitsluiting-per-uitvoering-en-volgende-import)
+hebben hun eigen behoudregels. Geen van deze voorbereidingskeuzes vervangt de
+actuele voorraad vóór stap 5 of geeft automatisch exportvrijgave.
+
+<a id="ac-voorraadimport-020"></a>
+
+### Hoofdletters en overtollige spaties verhinderen herkenning niet
+
+Gegeven één eerdere uitvoering bij leverancier A met plantnaam `Plant P`, maat
+`100-125` en extra tekst `3-jarige kroon`, herkent Fresh de volgende regel van A
+binnen dezelfde bron met `plant p`, ` 100-125 ` en `3-JARIGE  KROON` als dezelfde
+uitvoering. Een gewijzigde hoeveelheid of inkoopprijs verhindert die herkenning niet.
+
+<a id="ac-voorraadimport-021"></a>
+
+### Een gewijzigde omschrijving vraagt een keuze over de uitvoering
+
+Gegeven een eerdere uitvoering met extra tekst `3-jarige kroon`, toont Fresh bij
+dezelfde leverancier en verder gelijke gegevens de vorige uitvoering als voorstel
+wanneer de nieuwe tekst `3-jarige kroon, aanbieding` of `3 jr kroon` is. Fresh
+neemt niet zelf aan dat dit dezelfde uitvoering is. Ook `2-jarige kroon` tegenover
+`3-jarige kroon` en `2-3 tak` tegenover `4-5 tak` worden niet automatisch gelijkgesteld.
+Een gewijzigde plantnaam of maat volgt dezelfde controleroute.
+
+<a id="ac-voorraadimport-022"></a>
+
+### Dezelfde uitvoering behoudt haar bestaande codematch
+
+Gegeven een uitvoering met een bestaande naam-/maatcodematch waarvan de stamcodes
+ongewijzigd beschikbaar zijn, blijft die match bij de volgende import behouden
+wanneer Fresh dezelfde uitvoering volgens de tekstvergelijking herkent of de
+gebruiker dit na een tekstwijziging bevestigt. De gebruiker hoeft diezelfde match
+niet opnieuw in te stellen. Een wachtende regel zonder match krijgt hierdoor
+geen codes; daarvoor blijft de wachtlijstroute gelden.
+
+<a id="ac-voorraadimport-023"></a>
+
+### Een andere uitvoering blijft afzonderlijk
+
+Gegeven een voorgestelde eerdere uitvoering `2-jarige kroon` en een nieuwe regel
+`3-jarige kroon`, behandelt Fresh de nieuwe regel afzonderlijk wanneer de gebruiker
+kiest voor een andere uitvoering, ook bij gelijke naam- en maatcodes. De oude en
+nieuwe uitvoering worden niet samengevoegd. Welke begininstellingen de nieuwe
+uitvoering krijgt, is hiermee niet besloten.
 
 ## Uitsluiten vanuit Voor controle
 
@@ -173,8 +249,9 @@ verwerkt Fresh A niet alsnog vanuit de oude lijst als actueel aanbod.
 Gegeven een wachtende regel met 20 planten en inkoopprijs EUR 10,00, wanneer deze regel terugkomt in
 de nieuwe leverancierslijst met 12 planten en inkoopprijs EUR 11,00 en die lijst definitief is
 verwerkt, gebruikt latere verwerking na een stamupdate de 12 planten en EUR 11,00 uit de nieuwste
-lijst. De oude gegevens worden niet teruggezet of erbij opgeteld. De herkenning van dezelfde regel
-moet afzonderlijk worden gespecificeerd.
+lijst. De oude gegevens worden niet teruggezet of erbij opgeteld. De
+[herkenningsroute](#herkenning-bij-volgende-leverancierslijsten) bepaalt of het dezelfde
+uitvoering is, ook wanneer stamcodes nog ontbreken.
 
 ## Keten en open keuzes
 
@@ -186,12 +263,16 @@ Nog te bepalen in [issue #12](https://github.com/MenkehorstKwekerijen/Fresh/issu
 
 - Bestandsvelden, leveranciers- en bronherkenning, gewijzigde kolommen/volgorde/structuur,
   bestanden met meerdere leveranciers, lege bestanden en overige bestandsfouten.
-- Exacte matchregels, codeproblemen, productidentiteit, herkenning van terugkerende regels,
-  intern gebruik zonder match, verdere wachtlijstbediening en plaats van 'Voor controle'.
+- Nieuwe naam-/maatcodematches, gewijzigde of vervallen stamcodes, intern gebruik zonder
+  match, verdere wachtlijstbediening en plaats van 'Voor controle'.
+- Grenzen van productherkenning: geen of meerdere mogelijke voorgangers, dubbele regels,
+  kenmerken in afzonderlijke velden zoals pot/kluit, terugkeer na een ontbrekende lijst,
+  bronwissels en onthouden van eerder bevestigde tekstvarianten. Begininstellingen voor
+  een andere uitvoering en de afhandeling van een nog open herkenningskeuze zijn ook open.
 - Inhoudsvergelijking, ouder of opnieuw ingelezen bestand binnen dezelfde bron, gedrag bij
   open bronkeuze en bewaren/herbeoordelen van die keuze bij een volgende import.
 - Historische bewaring, herstel, gelijktijdigheid en behoud van menselijke keuzes.
 
-Exportvrijgave en hergebruik van exportuitsluitingen horen bij de
+Exportvrijgave en behoud of opheffen van exportuitsluitingen horen bij de
 [exportspecificatie](wintree-export.md) en
 [issue #13](https://github.com/MenkehorstKwekerijen/Fresh/issues/13).

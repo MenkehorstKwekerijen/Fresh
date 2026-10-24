@@ -109,6 +109,17 @@ fictieve voorraad.
 
 Een code uit de WinTree-basisstam voor een plantnaam.
 
+## Productuitvoering
+
+<a id="term-productuitvoering"></a>
+
+Een onderscheiden uitvoering van het aanbod van een leverancier. Uitvoeringen
+kunnen dezelfde naamcode en maatcode hebben, maar verschillen in kwaliteit,
+zoals 2-jarige tegenover 3-jarige kroon of 2–3 tegenover 4–5 tak. Extra tekst
+kan zowel zulke kenmerken als gewone opmerkingen bevatten; de volledige tekst
+is daarom niet zonder meer de productbetekenis. Herkenning bij volgende lijsten
+staat in [voorraadimport](specs/voorraadimport.md#herkenning-bij-volgende-leverancierslijsten).
+
 ## Maatcode
 
 <a id="term-maatcode"></a>
