@@ -1,7 +1,7 @@
 ---
 id: prijzen
 status: draft
-depends_on: [voorraadimport]
+depends_on: [voorraad]
 ---
 # Prijsinstellingen en margegroepen
 
@@ -476,7 +476,9 @@ Hoe meerdere leveranciersprijzen leiden tot een catalogusprijs en of deze keuze
 samenhangt met de leveranciersvoorkeur moet nog worden besloten.
 
 De selectieroute gebruikt actueel fictief/TCM-aanbod volgens de
-[bronkeuze bij voorraadimport](voorraadimport.md#leveranciers-en-mogelijke-dubbele-aanlevering).
+[bronkeuze voor actuele voorraad](voorraad.md#leveranciers-en-mogelijke-dubbele-aanlevering).
+Deze voorraadbetekenis is de prerequisite; de importwizard is een afnemer van
+de prijsvoorwaarden en bepaalt niet de prijsregels.
 Verkoopgeschiedenis moet aan producten en waar nodig leveranciers gekoppeld
 kunnen worden. De benodigde velden en betrouwbare koppeling zijn nog niet
 bevestigd. Of ook eerder verkochte producten buiten het actuele aanbod kunnen
