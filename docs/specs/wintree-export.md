@@ -13,6 +13,9 @@ besloten in [issue #13](https://github.com/MenkehorstKwekerijen/Fresh/issues/13)
 De volledige exportafspraak is nog niet voldoende bepaald om te bouwen.
 Importwizard en prijsberekening vallen buiten deze scope.
 
+Lees gericht: [gedrag](#gedrag-en-gegevens) · [uitsluitingsbehoud](#uitsluiting-per-uitvoering-en-volgende-import) ·
+[V1-referentie](#eenmalige-v1-referentie) · [open keuzes](#open-keuzes).
+
 ## Gedrag en gegevens
 
 Vóór vrijgave van de WinTree-export krijgt de inkoper een
@@ -118,6 +121,31 @@ blijft wachten op latere verwerking.
 Gegeven een wachtende regel die na een stamupdate succesvol wordt gematcht,
 blijft de inkoperscontrole vereist voordat die regel voor WinTree-export wordt
 vrijgegeven. De automatische matchpoging veroorzaakt zelf geen exportvrijgave.
+
+## Eenmalige V1-referentie
+
+De [vastgezette inspectie](../architecture/overview.md#eenmalige-v1-referentie)
+vond zowel de bestaande directe bulkroute als de nieuwere inkopersreviewroute.
+Hun bestaan bewijst niet dat iedere V1-export dezelfde controles doorloopt.
+Fresh heeft al één route met inkopersvrijgave gekozen. Onderstaande voorstellen
+blijven open bij [issue #13](https://github.com/MenkehorstKwekerijen/Fresh/issues/13).
+
+| Onderwerp | Aangetroffen V1-werking | Nog te kiezen of bewust te behouden in Fresh |
+| --- | --- | --- |
+| Importuitsluitingen | V1 kent deze import overslaan, uitsluiten tot datum en voortaan uitsluiten. Tijdelijk/permanent wordt onthouden via de productsleutel van het matchgeheugen; die bevat geen extra omschrijving. Bij de datumgrens kan een nieuwe lijst weer aanbieden, een oude lijst wordt niet heropend. [Importcontract][v1-exclusions], [toepassing][v1-exclusion-code]. | Zijn eenmalig en tijdelijk uitsluiten nodig naast de reeds gekozen blijvende exportuitsluiting? De V1-importuitsluiting zet ook de importregel uit; zij is niet gelijk aan de Fresh-afspraak dat uitsluitend export vervalt en intern aanbod behouden blijft. |
+| Eenmalig uitsluiten tijdens inkopersreview | Een afzonderlijke exportuitsluiting geldt alleen voor een regel van de huidige import. Nieuwe reviews van die import behouden haar; een nieuwe leveranciersimport neemt haar niet over. Terugzetten/undo is mogelijk. [Contract][v1-review-exclusion], [opslag][v1-review-storage]. | Wijkt af van het gekozen behoud bij volgende Fresh-lijsten. Advies: niet stil omschakelen; alleen als extra bewuste keuze toevoegen wanneer de gebruiker dit nodig heeft. |
+| Controleren en akkoord | In de inkopersroute worden gekozen leveranciers beoordeeld, regels uitgesloten en prijzen gecontroleerd. Gewijzigde invoer maakt een open review verouderd; akkoord vereist een actuele beoordeling. Daarnaast bestaat nog een directe bulkroute. [Review][v1-review], [directe route][v1-direct]. | Inkopersvrijgave is al besloten. Voorstel ter keuze: wijzigingen na controle vereisen opnieuw beoordelen; behoud slechts één dagelijkse Fresh-exportroute. |
+| Bestand en vervolgbatch | De inkopersroute maakt één waardenbestand in XLSX met 32 vaste WinTree-kolommen, leveranciersnummer per regel en de extra omschrijving in Externe tekst. Batchregistratie voorkomt opnieuw uitgeven van dezelfde bronregels. Het V1-contract beschrijft later goedgekeurde regels uit dezelfde lijst als aanvulling, met behoud van eerder geëxporteerde producten. [Writer][v1-xlsx], [uitgifte][v1-publish], [vervolgexportcontract][v1-followup]. | Voorstel ter keuze: hetzelfde ontvangende bestandsformaat en gecombineerde leveranciersselectie. Vervangen van een hele lijst versus een vervolgbatch vereist een expliciete Fresh-afspraak en praktijkbewijs in WinTree. Geen onbewezen upsert-gedrag aannemen. |
+
+[v1-exclusions]: https://github.com/MenkehorstKwekerijen/WinTree-Tools/blob/209846776a450dabbe29dc32322e60a1c986243e/docs/workflows/IMPORTEREN.md#uitsluitingen
+[v1-exclusion-code]: https://github.com/MenkehorstKwekerijen/WinTree-Tools/blob/209846776a450dabbe29dc32322e60a1c986243e/app/workflow.py#L432
+[v1-review-exclusion]: https://github.com/MenkehorstKwekerijen/WinTree-Tools/blob/209846776a450dabbe29dc32322e60a1c986243e/docs/domeinen/WINTREE-EXPORT.md#f11-4-batchspecifieke-uitsluiting
+[v1-review-storage]: https://github.com/MenkehorstKwekerijen/WinTree-Tools/blob/209846776a450dabbe29dc32322e60a1c986243e/app/storage/supplier_imports.py#L889
+[v1-review]: https://github.com/MenkehorstKwekerijen/WinTree-Tools/blob/209846776a450dabbe29dc32322e60a1c986243e/app/wintree_export/review_service.py#L232
+[v1-direct]: https://github.com/MenkehorstKwekerijen/WinTree-Tools/blob/209846776a450dabbe29dc32322e60a1c986243e/app/routes/wintree.py#L318
+[v1-xlsx]: https://github.com/MenkehorstKwekerijen/WinTree-Tools/blob/209846776a450dabbe29dc32322e60a1c986243e/app/wintree_export/xlsx_service.py#L18
+[v1-publish]: https://github.com/MenkehorstKwekerijen/WinTree-Tools/blob/209846776a450dabbe29dc32322e60a1c986243e/app/wintree_export/publication_service.py#L161
+[v1-followup]: https://github.com/MenkehorstKwekerijen/WinTree-Tools/blob/209846776a450dabbe29dc32322e60a1c986243e/docs/domeinen/BESTAANDE-WORKFLOWCONTRACTEN.md#vervolgexport-en-gebruikte-import-uit-de-werklijst--besluiten-27-september-2026
 
 ## Open keuzes
 

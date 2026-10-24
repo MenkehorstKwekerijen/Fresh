@@ -19,7 +19,7 @@ Eerdere basisbesluiten staan in [issue #4](https://github.com/MenkehorstKwekerij
 Lees gericht: [voorraadbasis](voorraad.md) · [importstappen](#stappen-van-de-leveranciersimport) · [kolommen](#kolomtoewijzing-in-stap-2) ·
 [productherkenning](#herkenning-bij-volgende-leverancierslijsten) ·
 [uitsluiten en matching](#uitsluiten-vanuit-voor-controle) · [wachtlijst](#wachtlijst-voor-stamcodes) ·
-[keten en open keuzes](#keten-en-open-keuzes).
+[V1-referentie](#eenmalige-v1-referentie) · [keten en open keuzes](#keten-en-open-keuzes).
 
 ## Stappen van de leveranciersimport
 
@@ -252,6 +252,37 @@ verwerkt, gebruikt latere verwerking na een stamupdate de 12 planten en EUR 11,0
 lijst. De oude gegevens worden niet teruggezet of erbij opgeteld. De
 [herkenningsroute](#herkenning-bij-volgende-leverancierslijsten) bepaalt of het dezelfde
 uitvoering is, ook wanneer stamcodes nog ontbreken.
+
+## Eenmalige V1-referentie
+
+Deze vergelijking volgt de [vastgezette onderzoeksgrens](../architecture/overview.md#eenmalige-v1-referentie).
+De bronnen hieronder zijn V1-waarnemingen, geen aanvullende Fresh-eisen.
+De besloten herkenningsroute hierboven blijft staan; nieuwe keuzes horen bij
+[issue #12](https://github.com/MenkehorstKwekerijen/Fresh/issues/12).
+
+| Onderwerp | Aangetroffen V1-werking | Betekenis voor de keuze in Fresh |
+| --- | --- | --- |
+| Bestandsinrichting | Excel/CSV met werkblad-, kopregel- en kolomkeuze; profiel per leverancier. Bij ontbrekende voorraadkolom kan een expliciet standaardaantal worden gebruikt. Een gemapte voorraadkolom blijft leidend, ook bij een lege cel. [Parser/profiel][v1-parser], [verwerking][v1-process]. | Profielhergebruik is al besloten. Afzonderlijke pot-/kluit- en hoogtevelden, structuurherstel en een standaardaantal zijn nog te kiezen; geen V1-beginwaarde overnemen. |
+| Volledige productmatch onthouden | De sleutel gebruikt leverancier, genormaliseerde plantnaam, bronmaat, potmaat en hoogte exclusief pot. Extra omschrijving, prijs, hoeveelheid en artikelcode zitten niet in die sleutel. De normalisatie is ruimer dan alleen hoofdletters/spaties. [Sleutel][v1-key], [toepassing][v1-prepare]. | Geen geschikte overname als identiteit voor kwaliteitsgebonden instellingen: twee kronen kunnen hetzelfde matchgeheugen delen. Fresh houdt het reeds gekozen onderscheid van uitvoeringen. |
+| Naam en maat apart onthouden | Handmatig bevestigde volledige leveranciersnamen en veilige volledige bronmaten worden apart geleerd. Naamkennis kan over maten en maatkennis over planten worden hergebruikt, binnen dezelfde leverancier. Vorm-/stamhoogtecontext begrenst breed maatleren; een afwijkende bestaande koppeling vraagt bevestiging. [Geheugen][v1-memory]. | Voorstel ter keuze: deze losse codematches hergebruiken, zonder daarmee marges of uitsluitingen van een andere uitvoering over te nemen. |
+| Nieuwe of gewijzigde codematch | V1 maakt naam-/maatvoorstellen, controleert de actuele stam en de dekking van maatkenmerken. Eerder veilig geleerd gedrag kan direct bevestigd terugkomen; nieuwe volledig zekere voorstellen kunnen met een expliciete bulkactie worden goedgekeurd. [Voorbereiding][v1-prepare], [bulkselectie][v1-certain], [gelezen regressietest][v1-reimport-test]. | De Fresh-regel voor uitvoeringherkenning kiest nog geen fuzzy matcher, scores of bulkgoedkeuring. Bepaal die codematchbediening apart; neem geen V1-drempels stil over. |
+| Wachten op codes | Naam en maat kunnen afzonderlijk wachten. Een officiële stamupload start hercontrole; alleen eenduidige volledig zekere matches worden automatisch opgelost. V1 biedt ook handmatig toepassen van een bestaande code of lokale stamkopie. [Hercontrole][v1-wait], [handmatige toepassing][v1-wait-apply]. | Automatische hercontrole is al besloten in Fresh. Groepsbediening en lokale stamkopieën zijn nog te kiezen; een lokale kopie maakt geen code in WinTree. |
+
+De aanbevolen eerstvolgende keuze is het losse naam-/maatgeheugen: bijvoorbeeld
+een bevestigde naamcode voor dezelfde leveranciersnaam ook bij een andere maat
+hergebruiken, terwijl iedere kwaliteitsuitvoering haar eigen instellingen houdt.
+Het vervangingsmoment staat bij [voorraad](voorraad.md#eenmalige-v1-referentie);
+de verschillende soorten uitsluiting staan bij [export](wintree-export.md#eenmalige-v1-referentie).
+
+[v1-parser]: https://github.com/MenkehorstKwekerijen/WinTree-Tools/blob/209846776a450dabbe29dc32322e60a1c986243e/app/supplier_file.py#L364
+[v1-process]: https://github.com/MenkehorstKwekerijen/WinTree-Tools/blob/209846776a450dabbe29dc32322e60a1c986243e/app/main.py#L2160
+[v1-key]: https://github.com/MenkehorstKwekerijen/WinTree-Tools/blob/209846776a450dabbe29dc32322e60a1c986243e/app/importer.py#L1542
+[v1-prepare]: https://github.com/MenkehorstKwekerijen/WinTree-Tools/blob/209846776a450dabbe29dc32322e60a1c986243e/app/workflow.py#L317
+[v1-memory]: https://github.com/MenkehorstKwekerijen/WinTree-Tools/blob/209846776a450dabbe29dc32322e60a1c986243e/app/workflow.py#L863
+[v1-certain]: https://github.com/MenkehorstKwekerijen/WinTree-Tools/blob/209846776a450dabbe29dc32322e60a1c986243e/app/main.py#L2276
+[v1-reimport-test]: https://github.com/MenkehorstKwekerijen/WinTree-Tools/blob/209846776a450dabbe29dc32322e60a1c986243e/tests/test_v225_identical_reimport.py
+[v1-wait]: https://github.com/MenkehorstKwekerijen/WinTree-Tools/blob/209846776a450dabbe29dc32322e60a1c986243e/app/main.py#L185
+[v1-wait-apply]: https://github.com/MenkehorstKwekerijen/WinTree-Tools/blob/209846776a450dabbe29dc32322e60a1c986243e/app/main.py#L2805
 
 ## Keten en open keuzes
 
