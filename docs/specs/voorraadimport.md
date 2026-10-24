@@ -18,6 +18,7 @@ Eerdere basisbesluiten staan in [issue #4](https://github.com/MenkehorstKwekerij
 
 Lees gericht: [voorraadbasis](voorraad.md) · [importstappen](#stappen-van-de-leveranciersimport) · [kolommen](#kolomtoewijzing-in-stap-2) ·
 [productherkenning](#herkenning-bij-volgende-leverancierslijsten) ·
+[naam- en maatkoppelingen](#naam--en-maatkoppelingen-hergebruiken) ·
 [uitsluiten en matching](#uitsluiten-vanuit-voor-controle) · [wachtlijst](#wachtlijst-voor-stamcodes) ·
 [V1-referentie](#eenmalige-v1-referentie) · [keten en open keuzes](#keten-en-open-keuzes).
 
@@ -155,6 +156,60 @@ kiest voor een andere uitvoering, ook bij gelijke naam- en maatcodes. De oude en
 nieuwe uitvoering worden niet samengevoegd. Welke begininstellingen de nieuwe
 uitvoering krijgt, is hiermee niet besloten.
 
+## Naam- en maatkoppelingen hergebruiken
+
+Bevestigde koppelingen naar een [naamcode](../glossary.md#term-naamcode) en een
+[maatcode](../glossary.md#term-maatcode) worden binnen dezelfde leverancier
+afzonderlijk onthouden en hergebruikt. De gebruiker heeft dit bevestigd in
+[issue #12](https://github.com/MenkehorstKwekerijen/Fresh/issues/12).
+Een bevestigde naamkoppeling kan daardoor ook bij een andere maat worden gebruikt;
+een bevestigde maatkoppeling ook bij een andere plantnaam, zolang dezelfde
+maatbetekenis geldt. De andere helft van de match moet afzonderlijk beschikbaar
+zijn; één geleerde koppeling maakt niet vanzelf een volledige productmatch.
+
+Dit hergebruik beslist niet of twee regels dezelfde
+[productuitvoering](#herkenning-bij-volgende-leverancierslijsten) zijn.
+[Prijsinstellingen](prijzen.md#prijsinstellingen-bij-volgende-imports) en
+[exportuitsluitingen](wintree-export.md#uitsluiting-per-uitvoering-en-volgende-import)
+blijven per uitvoering gelden. Een gedeelde codematch is geen reden om die
+instellingen te kopiëren, uitvoeringen samen te voegen of export vrij te geven.
+De bestaande wachtlijstroute voor ontbrekende stamcodes blijft gelden.
+
+De onderstaande criteria betreffen eenduidige, eerder bevestigde koppelingen
+met ongewijzigd beschikbare stamcodes en ongewijzigde naam- of maatbetekenis.
+Welke bronvelden die betekenis bepalen, tekstvarianten, conflicterende koppelingen,
+correcties en gewijzigde stamcodes vragen nog uitwerking. Vooral dezelfde losse
+maataanduiding bewijst nog niet dat pot/kluit, vorm of andere relevante context
+gelijk is. Dit besluit kiest geen V1-normalisatie of technisch geheugenschema.
+
+<a id="ac-voorraadimport-024"></a>
+
+### Een bevestigde naamkoppeling werkt ook bij een andere maat
+
+Gegeven een bevestigde koppeling van leveranciersnaam `Plant P` naar naamcode N
+bij leverancier A, gebruikt Fresh N opnieuw voor dezelfde naam bij A wanneer
+de maat van `100-125` naar `125-150` verschilt. De naam hoeft niet opnieuw te worden
+gekoppeld. De maatcode volgt haar eigen match; hergebruik van N beslist niet over
+de identiteit van de uitvoering of haar begininstellingen.
+
+<a id="ac-voorraadimport-025"></a>
+
+### Een bevestigde maatkoppeling werkt ook bij een andere plantnaam
+
+Gegeven een bevestigde koppeling van maat `100-125` naar maatcode M bij leverancier
+A, gebruikt Fresh M opnieuw bij een andere plantnaam van A met dezelfde volledige
+maatbetekenis en ongewijzigde relevante context. Die maat hoeft niet opnieuw te
+worden gekoppeld; de naamcode wordt afzonderlijk bepaald.
+
+<a id="ac-voorraadimport-026"></a>
+
+### Geleerde koppelingen blijven bij de leverancier
+
+Gegeven alleen een bevestigde naam- of maatkoppeling bij leverancier A, gebruikt
+Fresh die niet als geleerde koppeling bij leverancier B, ook bij dezelfde
+brontekst. B volgt de eigen matchroute; dezelfde uiteindelijke stamcode blijft
+mogelijk zonder de leveranciersgeheugens te delen.
+
 ## Uitsluiten vanuit Voor controle
 
 Vanuit 'Voor controle' kunnen ook gematchte regels bewust van WinTree-export worden
@@ -264,13 +319,13 @@ De besloten herkenningsroute hierboven blijft staan; nieuwe keuzes horen bij
 | --- | --- | --- |
 | Bestandsinrichting | Excel/CSV met werkblad-, kopregel- en kolomkeuze; profiel per leverancier. Bij ontbrekende voorraadkolom kan een expliciet standaardaantal worden gebruikt. Een gemapte voorraadkolom blijft leidend, ook bij een lege cel. [Parser/profiel][v1-parser], [verwerking][v1-process]. | Profielhergebruik is al besloten. Afzonderlijke pot-/kluit- en hoogtevelden, structuurherstel en een standaardaantal zijn nog te kiezen; geen V1-beginwaarde overnemen. |
 | Volledige productmatch onthouden | De sleutel gebruikt leverancier, genormaliseerde plantnaam, bronmaat, potmaat en hoogte exclusief pot. Extra omschrijving, prijs, hoeveelheid en artikelcode zitten niet in die sleutel. De normalisatie is ruimer dan alleen hoofdletters/spaties. [Sleutel][v1-key], [toepassing][v1-prepare]. | Geen geschikte overname als identiteit voor kwaliteitsgebonden instellingen: twee kronen kunnen hetzelfde matchgeheugen delen. Fresh houdt het reeds gekozen onderscheid van uitvoeringen. |
-| Naam en maat apart onthouden | Handmatig bevestigde volledige leveranciersnamen en veilige volledige bronmaten worden apart geleerd. Naamkennis kan over maten en maatkennis over planten worden hergebruikt, binnen dezelfde leverancier. Vorm-/stamhoogtecontext begrenst breed maatleren; een afwijkende bestaande koppeling vraagt bevestiging. [Geheugen][v1-memory]. | Voorstel ter keuze: deze losse codematches hergebruiken, zonder daarmee marges of uitsluitingen van een andere uitvoering over te nemen. |
+| Naam en maat apart onthouden | Handmatig bevestigde volledige leveranciersnamen en veilige volledige bronmaten worden apart geleerd. Naamkennis kan over maten en maatkennis over planten worden hergebruikt, binnen dezelfde leverancier. Vorm-/stamhoogtecontext begrenst breed maatleren; een afwijkende bestaande koppeling vraagt bevestiging. [Geheugen][v1-memory]. | Afzonderlijk hergebruik is expliciet gekozen; de Fresh-afspraak en nog open grenzen staan bij [naam- en maatkoppelingen](#naam--en-maatkoppelingen-hergebruiken). De overige V1-geheugenregels zijn hiermee niet overgenomen. |
 | Nieuwe of gewijzigde codematch | V1 maakt naam-/maatvoorstellen, controleert de actuele stam en de dekking van maatkenmerken. Eerder veilig geleerd gedrag kan direct bevestigd terugkomen; nieuwe volledig zekere voorstellen kunnen met een expliciete bulkactie worden goedgekeurd. [Voorbereiding][v1-prepare], [bulkselectie][v1-certain], [gelezen regressietest][v1-reimport-test]. | De Fresh-regel voor uitvoeringherkenning kiest nog geen fuzzy matcher, scores of bulkgoedkeuring. Bepaal die codematchbediening apart; neem geen V1-drempels stil over. |
 | Wachten op codes | Naam en maat kunnen afzonderlijk wachten. Een officiële stamupload start hercontrole; alleen eenduidige volledig zekere matches worden automatisch opgelost. V1 biedt ook handmatig toepassen van een bestaande code of lokale stamkopie. [Hercontrole][v1-wait], [handmatige toepassing][v1-wait-apply]. | Automatische hercontrole is al besloten in Fresh. Groepsbediening en lokale stamkopieën zijn nog te kiezen; een lokale kopie maakt geen code in WinTree. |
 
-De aanbevolen eerstvolgende keuze is het losse naam-/maatgeheugen: bijvoorbeeld
-een bevestigde naamcode voor dezelfde leveranciersnaam ook bij een andere maat
-hergebruiken, terwijl iedere kwaliteitsuitvoering haar eigen instellingen houdt.
+De eerstvolgende keuze betreft de relevante context voor maatkoppelingen:
+welke aanvullende kenmerken bepalen of dezelfde maataanduiding dezelfde maatcode
+mag hergebruiken? Het afzonderlijke hergebruik zelf is hierboven vastgelegd.
 Het vervangingsmoment staat bij [voorraad](voorraad.md#eenmalige-v1-referentie);
 de verschillende soorten uitsluiting staan bij [export](wintree-export.md#eenmalige-v1-referentie).
 
@@ -294,8 +349,10 @@ Nog te bepalen in [issue #12](https://github.com/MenkehorstKwekerijen/Fresh/issu
 
 - Bestandsvelden, leveranciers- en bronherkenning, gewijzigde kolommen/volgorde/structuur,
   bestanden met meerdere leveranciers, lege bestanden en overige bestandsfouten.
-- Nieuwe naam-/maatcodematches, gewijzigde of vervallen stamcodes, intern gebruik zonder
-  match, verdere wachtlijstbediening en plaats van 'Voor controle'.
+- Nieuwe naam-/maatcodematches; bronvelden en tekstvergelijking voor afzonderlijk
+  naam-/maatgeheugen, maatcontext, conflicten en correcties; gewijzigde of vervallen
+  stamcodes, intern gebruik zonder match, verdere wachtlijstbediening en plaats
+  van 'Voor controle'.
 - Grenzen van productherkenning: geen of meerdere mogelijke voorgangers, dubbele regels,
   kenmerken in afzonderlijke velden zoals pot/kluit, terugkeer na een ontbrekende lijst,
   bronwissels en onthouden van eerder bevestigde tekstvarianten. Begininstellingen voor
