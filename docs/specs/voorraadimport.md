@@ -177,10 +177,19 @@ De bestaande wachtlijstroute voor ontbrekende stamcodes blijft gelden.
 
 De onderstaande criteria betreffen eenduidige, eerder bevestigde koppelingen
 met ongewijzigd beschikbare stamcodes en ongewijzigde naam- of maatbetekenis.
-Welke bronvelden die betekenis bepalen, tekstvarianten, conflicterende koppelingen,
-correcties en gewijzigde stamcodes vragen nog uitwerking. Vooral dezelfde losse
-maataanduiding bewijst nog niet dat pot/kluit, vorm of andere relevante context
-gelijk is. Dit besluit kiest geen V1-normalisatie of technisch geheugenschema.
+Exact dezelfde gegevens voor de betreffende naam- of maatkoppeling hergebruiken
+de vorige match, ongeacht de kolom waarin ze zijn aangeleverd. De inhoud is
+leidend, niet de kolomnaam of kolompositie. Dit geldt ook voor aanvullende
+kenmerken zoals pot/kluit, potmaat of vorm: die mogen niet buiten de vergelijking
+vallen omdat ze in extra tekst in plaats van een aparte kolom staan.
+Alleen dezelfde losse maataanduiding is dus geen bewijs dat alle maatgegevens
+gelijk zijn. Het afzonderlijke naam-/maatgeheugen blijft gelden; prijs en
+voorraadhoeveelheid zijn geen gegevens voor deze codematch.
+
+Het uitlezen van gegevens uit verschillende kolommen, de afbakening van
+naam-/maatkenmerken tegenover overige opmerkingen, tekstvarianten, conflicterende
+koppelingen, correcties en gewijzigde stamcodes vragen nog uitwerking.
+Dit besluit kiest geen V1-normalisatie of technisch geheugenschema.
 
 <a id="ac-voorraadimport-024"></a>
 
@@ -209,6 +218,18 @@ Gegeven alleen een bevestigde naam- of maatkoppeling bij leverancier A, gebruikt
 Fresh die niet als geleerde koppeling bij leverancier B, ook bij dezelfde
 brontekst. B volgt de eigen matchroute; dezelfde uiteindelijke stamcode blijft
 mogelijk zonder de leveranciersgeheugens te delen.
+
+<a id="ac-voorraadimport-027"></a>
+
+### Dezelfde matchgegevens mogen in andere kolommen staan
+
+Gegeven leverancier A met een bevestigde maatmatch voor `100-125` en `kluit`,
+waarbij `kluit` eerst in een aparte pot/kluitkolom staat, gebruikt Fresh dezelfde
+maatmatch opnieuw wanneer `kluit` in de volgende lijst in de extra tekst staat
+en de overige maatgegevens exact gelijk zijn. Ook verplaatsen of hernoemen van
+de bronkolommen verandert de match niet. De kolomtoewijzing en inhoud blijven
+onderworpen aan de bestaande importcontrole. Verandering van `kluit` naar `pot`
+valt niet onder dit hergebruik op basis van exact dezelfde gegevens.
 
 ## Uitsluiten vanuit Voor controle
 
@@ -323,9 +344,8 @@ De besloten herkenningsroute hierboven blijft staan; nieuwe keuzes horen bij
 | Nieuwe of gewijzigde codematch | V1 maakt naam-/maatvoorstellen, controleert de actuele stam en de dekking van maatkenmerken. Eerder veilig geleerd gedrag kan direct bevestigd terugkomen; nieuwe volledig zekere voorstellen kunnen met een expliciete bulkactie worden goedgekeurd. [Voorbereiding][v1-prepare], [bulkselectie][v1-certain], [gelezen regressietest][v1-reimport-test]. | De Fresh-regel voor uitvoeringherkenning kiest nog geen fuzzy matcher, scores of bulkgoedkeuring. Bepaal die codematchbediening apart; neem geen V1-drempels stil over. |
 | Wachten op codes | Naam en maat kunnen afzonderlijk wachten. Een officiële stamupload start hercontrole; alleen eenduidige volledig zekere matches worden automatisch opgelost. V1 biedt ook handmatig toepassen van een bestaande code of lokale stamkopie. [Hercontrole][v1-wait], [handmatige toepassing][v1-wait-apply]. | Automatische hercontrole is al besloten in Fresh. Groepsbediening en lokale stamkopieën zijn nog te kiezen; een lokale kopie maakt geen code in WinTree. |
 
-De eerstvolgende keuze betreft de relevante context voor maatkoppelingen:
-welke aanvullende kenmerken bepalen of dezelfde maataanduiding dezelfde maatcode
-mag hergebruiken? Het afzonderlijke hergebruik zelf is hierboven vastgelegd.
+De Fresh-afspraak voor dezelfde matchgegevens ongeacht hun bronkolom staat bij
+[naam- en maatkoppelingen](#naam--en-maatkoppelingen-hergebruiken).
 Het vervangingsmoment staat bij [voorraad](voorraad.md#eenmalige-v1-referentie);
 de verschillende soorten uitsluiting staan bij [export](wintree-export.md#eenmalige-v1-referentie).
 
@@ -349,8 +369,8 @@ Nog te bepalen in [issue #12](https://github.com/MenkehorstKwekerijen/Fresh/issu
 
 - Bestandsvelden, leveranciers- en bronherkenning, gewijzigde kolommen/volgorde/structuur,
   bestanden met meerdere leveranciers, lege bestanden en overige bestandsfouten.
-- Nieuwe naam-/maatcodematches; bronvelden en tekstvergelijking voor afzonderlijk
-  naam-/maatgeheugen, maatcontext, conflicten en correcties; gewijzigde of vervallen
+- Nieuwe naam-/maatcodematches; uitlezen en afbakenen van naam-/maatkenmerken
+  tegenover opmerkingen, tekstvarianten, conflicten en correcties; gewijzigde of vervallen
   stamcodes, intern gebruik zonder match, verdere wachtlijstbediening en plaats
   van 'Voor controle'.
 - Grenzen van productherkenning: geen of meerdere mogelijke voorgangers, dubbele regels,
