@@ -15,6 +15,7 @@ Besluiten en vervolgvraag: [issue #6](https://github.com/MenkehorstKwekerijen/Fr
 Lees gericht: [rekenbasis](#rekenbasis) · [prijskeuze](#prijswijzen) ·
 [groepstoewijzing](#groepstoewijzing) · [afronden](#instelbare-afrondingsstaffel) ·
 [herberekenen en aandacht](#herberekening-en-aandacht) ·
+[instellingen bij volgende imports](#prijsinstellingen-bij-volgende-imports) ·
 [importvoorwaarden](#prijsvoorwaarden-bij-import) · [keten en open keuzes](#keten-en-open-keuzes).
 De criteria staan bij hun onderwerp; bestaande ID's blijven behouden.
 
@@ -247,6 +248,37 @@ productkoppeling naar H vereist expliciete herbeoordeling.
 Gegeven een handmatig gekozen leveranciersselectie die aan groep G is toegewezen, wordt een later
 geïmporteerd nieuw product niet uitsluitend doordat het aan dezelfde filters voldoet onderdeel van
 die selectie of aan G gekoppeld.
+
+## Prijsinstellingen bij volgende imports
+
+Een [productuitvoering](../glossary.md#term-productuitvoering) kan bij dezelfde
+leverancier een eigen margegroep en vaste verkoopprijs hebben. Gelijke naam-
+en maatcodes verplichten verschillende uitvoeringen niet tot gelijke instellingen.
+De [herkenningsroute](voorraadimport.md#herkenning-bij-volgende-leverancierslijsten)
+bepaalt of een regel bij een volgende lijst dezelfde uitvoering betreft; deze
+sectie bezit het behoud van de prijsinstellingen. Dit is geen nieuwe prerequisite
+van prijsberekening: de import gebruikt de prijsinstellingen van de herkende uitvoering.
+
+<a id="ac-prijzen-052"></a>
+
+### Kwaliteitsuitvoeringen kunnen verschillende marges hebben
+
+Gegeven twee uitvoeringen bij leverancier A met dezelfde naam- en maatcode,
+`2-jarige kroon` en `3-jarige kroon`, kan de gebruiker de eerste aan margegroep
+G van 30 procent en de tweede aan H van 40 procent koppelen. Bij beide EUR 10,00
+inkoop en zonder vaste prijs zijn hun verkoopprijzen respectievelijk EUR 13,00
+en EUR 14,00. Een wijziging van de toewijzing van de ene uitvoering verandert de andere niet.
+
+<a id="ac-prijzen-053"></a>
+
+### Herkende uitvoeringen behouden hun prijsinstellingen
+
+Gegeven een uitvoering bij A met toegewezen margegroep G en eventueel een vaste
+verkoopprijs, blijven deze instellingen behouden na definitieve verwerking van
+de volgende lijst wanneer de herkenningsroute dezelfde uitvoering vaststelt.
+Dit geldt ook na bevestiging door de gebruiker bij gewijzigde tekst. De nieuwste
+inkoopprijs vervangt de vorige bronprijs; behoud van instellingen zet de oude
+inkoopprijs niet terug. Hergebruik van handmatige prijscorrecties blijft een open keuze.
 
 ## Instelbare afrondingsstaffel
 
@@ -482,9 +514,10 @@ de prijsvoorwaarden en bepaalt niet de prijsregels.
 Verkoopgeschiedenis moet aan producten en waar nodig leveranciers gekoppeld
 kunnen worden. De benodigde velden en betrouwbare koppeling zijn nog niet
 bevestigd. Of ook eerder verkochte producten buiten het actuele aanbod kunnen
-worden geselecteerd, is open. De margegroeptoewijzing geldt per product en
-leverancier; de precieze productidentiteit en herkenning over opeenvolgende
-bestanden zijn nog niet bepaald. Bij een hoofdstukactie moet duidelijk zijn
+worden geselecteerd, is open. De margegroeptoewijzing geldt per productuitvoering en
+leverancier; behoud bij opeenvolgende lijsten staat bij
+[prijsinstellingen bij volgende imports](#prijsinstellingen-bij-volgende-imports).
+De herkenningsgrenzen staan bij voorraadimport. Bij een hoofdstukactie moet duidelijk zijn
 welke leveranciersaanbiedingen worden geraakt; de bediening hiervan is nog open.
 
 WinTree-export en catalogus/website zijn relevante afnemers binnen het
@@ -502,8 +535,9 @@ leveranciers moet nog worden bepaald. Concrete
 verkoopfilters, combinatie met actueel aanbod en leveranciersbereik van een
 hoofdstukactie blijven open. Automatische uitbreiding van een handmatige
 selectie is niet gekozen; voorraad zonder individuele regel valt onder de
-leveranciersstandaard. Herkenning van bestaande productinstellingen bij nieuwe
-imports vraagt nog uitwerking.
+leveranciersstandaard. Voor een als andere uitvoering beoordeelde regel is nog
+niet besloten of de gebruiker instellingen van een voorganger kan overnemen;
+zonder individuele regel geldt de bestaande leveranciersstandaard.
 Gedrag bij geen
 kandidaat of een nog open keuze, behoudkeuzes na wijzigingen van vaste prijs of prijswijze,
 bronbestanden met bedragen inclusief btw, hergebruik van prijscorrecties bij

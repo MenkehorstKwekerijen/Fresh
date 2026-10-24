@@ -42,9 +42,11 @@ Een [wachtlijst voor stamcodes](../specs/voorraadimport.md#wachtlijst-voor-stamc
 verbindt leveranciersregels met latere basisstamupdates. De voorraadimportspecificatie
 bezit matching, vervanging en behoud van de actuele wachtlijst.
 
-Het gebruik van naamcodes en maatcodes bepaalt nog niet of hun combinatie een
-volledige productidentiteit vormt. De precieze rol van pot-/kluitgegevens en het
-gebruik van codes in historische verkopen moeten nog worden bevestigd.
+Naamcode en maatcode onderscheiden niet alle kwaliteitsuitvoeringen bij een
+leverancier. [Productherkenning bij volgende leverancierslijsten](../specs/voorraadimport.md#herkenning-bij-volgende-leverancierslijsten)
+gebruikt aangeleverde tekst en gebruikerskeuzes; een codematch is niet hetzelfde
+als herkenning van de uitvoering. De rol van afzonderlijke pot-/kluitvelden,
+bronwissels en het gebruik van codes in historische verkopen blijven open.
 
 ## Verwerking en afnemers
 
@@ -57,8 +59,9 @@ verwerking in WinTree zijn nog te bepalen; exportuitsluiting is geen interne aan
 De [prijsspecificatie](../specs/prijzen.md) bezit berekening, groepstoewijzing en
 prijsvalidatie. De berekening gebruikt leverancier, productkoppeling en inkoopprijs.
 Groepstoewijzing gebruikt daarnaast aanbod uit fictief/TCM en gekoppelde
-verkoopgeschiedenis. Productidentiteit, verkoopkoppeling, uiteindelijke catalogusprijs
-en de prijsvelden voor elke afnemer zijn nog te bepalen.
+verkoopgeschiedenis. Instellingen volgen de herkende productuitvoering bij een
+leverancier. De verdere herkenningsgrenzen, verkoopkoppeling, uiteindelijke
+catalogusprijs en prijsvelden voor elke afnemer zijn nog te bepalen.
 
 De commerciële route gebruikt voorraadbronnen en historische verkoopgegevens
 voor leveranciersvoorkeuren en assortimentskeuzes. Catalogusbeheer omvat de
