@@ -16,7 +16,8 @@ Lees gericht: [rekenbasis](#rekenbasis) · [prijskeuze](#prijswijzen) ·
 [groepstoewijzing](#groepstoewijzing) · [afronden](#instelbare-afrondingsstaffel) ·
 [herberekenen en aandacht](#herberekening-en-aandacht) ·
 [instellingen bij volgende imports](#prijsinstellingen-bij-volgende-imports) ·
-[importvoorwaarden](#prijsvoorwaarden-bij-import) · [keten en open keuzes](#keten-en-open-keuzes).
+[importvoorwaarden](#prijsvoorwaarden-bij-import) · [V1-referentie](#eenmalige-v1-referentie) ·
+[keten en open keuzes](#keten-en-open-keuzes).
 De criteria staan bij hun onderwerp; bestaande ID's blijven behouden.
 
 ## Rekenbasis
@@ -499,6 +500,27 @@ te uploaden. Fresh controleert de import opnieuw en gebruikt EUR 10,00 als inkoo
 procent opslag is de berekende verkoopprijs EUR 13,00 exclusief btw. De oorspronkelijke bronwaarde
 blijft zichtbaar. Zolang andere blokkerende fouten bestaan, blijft de volledige import geblokkeerd
 en de vorige voorraad behouden.
+
+## Eenmalige V1-referentie
+
+Deze [eenmalige inspectie](../architecture/overview.md#eenmalige-v1-referentie)
+betreft alleen prijsinstellingen en prijsvalidatie die de import-/exportroute raken,
+niet het overnemen van de volledige V1-prijsmodule. Keuzes blijven bij
+[issue #6](https://github.com/MenkehorstKwekerijen/Fresh/issues/6).
+
+| Onderwerp | Aangetroffen V1-werking | Betekenis voor Fresh |
+| --- | --- | --- |
+| Instellingen per product | Margegroeptoewijzing en individuele prijsregels gebruiken leverancier + naamcode + maatcode. Extra tekst is geen deel van deze sleutel. Losse voorraadwaarnemingen kunnen dus dezelfde prijsinstelling gebruiken, ook bij verschillende kroonkwaliteit. [Opslag][v1-price-key], [berekening][v1-price-read]. | Wijkt af van het expliciete Fresh-besluit voor instellingen per uitvoering. Advies: die Fresh-afspraak behouden; de V1-sleutel niet overnemen. |
+| Nieuwe leverancierslijst | Centrale prijsinstellingen blijven bestaan en worden bij dezelfde codes opnieuw gevonden. [Gelezen vervangingstest][v1-price-test]. | Behoud is ook in Fresh gekozen, maar gebonden aan de herkende uitvoering. Begininstellingen voor een andere uitvoering blijven open; V1 bewijst geen afzonderlijk kwaliteitsbehoud. |
+| Vaste prijs na gewijzigde inkoopbasis | Een gewijzigde of verdwenen referentiebasis kan verplichte herbeoordeling geven. De vaste prijs blijft opgeslagen, maar er is dan geen effectieve verkoopprijs; een opgenomen regel blokkeert de inkopersreview-export tot dit is opgelost. [Prijsbeleid][v1-fixed-review], [exportblokkades][v1-fixed-export], [vervangingstest][v1-price-test]. | Dit is meer dan een aandachtssignaal. Fresh behoudt de vaste prijs en heeft aandacht bij een hogere vergelijkingsprijs gekozen; een vergelijkbare exportblokkade is niet besloten. Eerst expliciet kiezen of signaleren volstaat of herbeoordeling de export moet tegenhouden. |
+| Ontbrekende of niet-positieve inkoopprijs | De V1-export houdt goedgekeurde regels zonder positieve inkoopprijs buiten het bestand en telt ze apart. De importregel blijft bestaan; de overige export kan doorgaan. [Exportselectie][v1-price-skip]. | Fresh blokkeert een ontbrekende of ongeldige prijs vóór definitieve verwerking. Nulprijzen zijn nog open. Advies: de besloten blokkade behouden tenzij de gebruiker bewust voor gedeeltelijke verwerking kiest. |
+
+[v1-price-key]: https://github.com/MenkehorstKwekerijen/WinTree-Tools/blob/209846776a450dabbe29dc32322e60a1c986243e/app/storage/commercial_pricing.py#L32
+[v1-price-read]: https://github.com/MenkehorstKwekerijen/WinTree-Tools/blob/209846776a450dabbe29dc32322e60a1c986243e/app/commercial_pricing/read_service.py#L1352
+[v1-price-test]: https://github.com/MenkehorstKwekerijen/WinTree-Tools/blob/209846776a450dabbe29dc32322e60a1c986243e/tests/test_pricing_supplier_import_stock.py#L81
+[v1-fixed-review]: https://github.com/MenkehorstKwekerijen/WinTree-Tools/blob/209846776a450dabbe29dc32322e60a1c986243e/app/commercial_pricing/policy.py#L170
+[v1-fixed-export]: https://github.com/MenkehorstKwekerijen/WinTree-Tools/blob/209846776a450dabbe29dc32322e60a1c986243e/app/wintree_export/preview_service.py#L365
+[v1-price-skip]: https://github.com/MenkehorstKwekerijen/WinTree-Tools/blob/209846776a450dabbe29dc32322e60a1c986243e/app/wintree_export/preview_service.py#L262
 
 ## Keten en open keuzes
 

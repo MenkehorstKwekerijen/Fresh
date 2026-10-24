@@ -18,7 +18,7 @@ hun criterium-ID's en betekenis. De specificatie blijft draft; open keuzes staan
 in [issue #12](https://github.com/MenkehorstKwekerijen/Fresh/issues/12).
 Lees gericht: [vervangen](#voorraad-vervangen) ·
 [bronvoorrang](#leveranciers-en-mogelijke-dubbele-aanlevering) ·
-[keten en open keuzes](#keten-en-open-keuzes).
+[V1-referentie](#eenmalige-v1-referentie) · [keten en open keuzes](#keten-en-open-keuzes).
 
 <a id="gedrag-en-gegevens"></a>
 
@@ -121,6 +121,23 @@ bron kiest.
 Gegeven samenloop van fictief en TCM voor dezelfde leverancier, waarbij een benodigde datum
 ontbreekt of ongeldig is, toont Fresh één aandachtspunt waarin de gebruiker de te gebruiken bron
 kiest.
+
+## Eenmalige V1-referentie
+
+Onder de [onderzoeksgrens](../architecture/overview.md#eenmalige-v1-referentie)
+zijn drie verschillen vastgesteld. Ze wijzigen de Fresh-vervangingsregel niet.
+
+| Onderwerp | Aangetroffen V1-werking | Nog aan de gebruiker voor te leggen |
+| --- | --- | --- |
+| Activeringsmoment | Na succesvolle bestandsverwerking kan V1 de oude lijst vervangen terwijl de nieuwe lijst nog open matchregels bevat. Die onopgeloste regels worden voorraadproblemen; de oude voorraad blijft niet als aanvulling staan. [Verwerken][v1-activation], [activeren][v1-stock]. | Fresh wacht tot stap 5 en blokkeert op ongematchte regels zonder uitzondering. Advies: deze expliciete Fresh-afspraak behouden; eerder vervangen kan tijdelijk minder bruikbare voorraad geven. |
+| Vervangen of aanvullen | V1 kent volledige vervanging en een expliciet gekozen aanvullende lijst. Bij aanvulling blijven niet-genoemde producten staan; overlap vraagt een keuze, zonder aantallen automatisch op te tellen. [Lifecycle][v1-stock], [overlap][v1-overlap]. | Fresh heeft volledige vervanging gekozen. Is een aparte aanvullende lijst werkelijk nodig? Voorstel: niet toevoegen zonder concrete behoefte. |
+| Kwaliteitsvarianten | Binnen leverancier + naamcode + maatcode onderscheidt de voorraadlaag bewezen externe tekst na normalisatie van hoofdletters en witruimte. Andere tekst, ook alleen een ander leesteken, vormt een andere variant; onbekende tekst is niet hetzelfde als bewezen leeg. Gelijke of onzekere dubbele regels worden als probleem behandeld. [Variantvergelijking][v1-variant], [gelezen tests][v1-variant-test]. | Dit is geen herkenningsgeheugen dat tekstwijzigingen aan dezelfde uitvoering koppelt. Fresh heeft daarvoor al controle gekozen; het omgaan met bewezen leeg, onbekend en echte dubbele regels is nog te bepalen. |
+
+[v1-activation]: https://github.com/MenkehorstKwekerijen/WinTree-Tools/blob/209846776a450dabbe29dc32322e60a1c986243e/app/main.py#L2209
+[v1-stock]: https://github.com/MenkehorstKwekerijen/WinTree-Tools/blob/209846776a450dabbe29dc32322e60a1c986243e/app/storage/supplier_imports.py#L413
+[v1-overlap]: https://github.com/MenkehorstKwekerijen/WinTree-Tools/blob/209846776a450dabbe29dc32322e60a1c986243e/app/storage/supplier_imports.py#L666
+[v1-variant]: https://github.com/MenkehorstKwekerijen/WinTree-Tools/blob/209846776a450dabbe29dc32322e60a1c986243e/app/storage/supplier_imports.py#L12
+[v1-variant-test]: https://github.com/MenkehorstKwekerijen/WinTree-Tools/blob/209846776a450dabbe29dc32322e60a1c986243e/tests/test_supplier_import_variant_overlap.py#L43
 
 ## Keten en open keuzes
 

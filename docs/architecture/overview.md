@@ -79,6 +79,27 @@ De bronvoorrang voor deze samenloop staat bij het
 Uitzonderingen op de datumvergelijking staan in dezelfde specificatie. De
 technische bestandsvalidatie en overige combinatieregels zijn nog uit te werken.
 
+## Eenmalige V1-referentie
+
+Op expliciet verzoek van de gebruiker is op 24 oktober 2026 WinTree-Tools V1
+eenmalig alleen-lezen onderzocht op main
+[`209846776a450dabbe29dc32322e60a1c986243e`](https://github.com/MenkehorstKwekerijen/WinTree-Tools/commit/209846776a450dabbe29dc32322e60a1c986243e).
+De opdracht en afbakening staan in [issue #20](https://github.com/MenkehorstKwekerijen/Fresh/issues/20).
+Dit is een vastgezette referentie, geen blijvende bronafhankelijkheid van Fresh.
+Er is geen V1-code overgenomen of gewijzigd. Documentatie, code en aanwezige tests
+zijn statisch gelezen; de applicatie en praktijkbestanden zijn niet uitgevoerd.
+
+De waarnemingen en nog voor te leggen keuzes staan bij
+[import en herkenning](../specs/voorraadimport.md#eenmalige-v1-referentie),
+[voorraadvervanging](../specs/voorraad.md#eenmalige-v1-referentie),
+[prijsinstellingen](../specs/prijzen.md#eenmalige-v1-referentie) en
+[export](../specs/wintree-export.md#eenmalige-v1-referentie).
+V1 heeft verschillende sleutels voor matchgeheugen, voorraadvarianten en prijzen;
+die vormen niet gezamenlijk één reeds gekozen Fresh-identiteit. Ook bestaan in
+V1 zowel een directe bulkexportroute als een inkopersreviewroute. De vergelijking
+benoemt daarom welke route is onderzocht. Alleen een expliciet gebruikersbesluit
+verandert de Fresh-afspraken; referentiegedrag en aanbevelingen zijn geen acceptatie.
+
 ## Technische richting
 
 De gebruiker stelt PostgreSQL voor als database. Dit is een technische
