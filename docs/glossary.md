@@ -45,7 +45,7 @@ Voorraad die automatisch via WinTree wordt ontvangen met TreeCommerce Messenger
 
 De datum waarmee Fresh de actualiteit van een voorraadbron vergelijkt. De
 herkomst verschilt tussen fictief en TCM en is vastgelegd in de
-[specificatie voorraadimport](specs/voorraadimport.md#leveranciers-en-mogelijke-dubbele-aanlevering).
+[specificatie actuele voorraad](specs/voorraad.md#leveranciers-en-mogelijke-dubbele-aanlevering).
 
 ## Importdatum
 

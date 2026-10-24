@@ -22,7 +22,7 @@ van WinTree naar Fresh gebruikt periodieke bestanden, net als de andere hierbove
 genoemde WinTree-bronnen. Frequentie en handmatige of automatische bediening van
 die bestandsoverdracht zijn nog niet bepaald. De besloten vervangingsregel voor
 de vier voorraadsoorten staat in de
-[conceptspecificatie voorraadimport](../specs/voorraadimport.md#gedrag-en-gegevens).
+[conceptspecificatie actuele voorraad](../specs/voorraad.md#gedrag-en-gegevens).
 
 ## Omzetting naar WinTree-codes
 
@@ -70,9 +70,9 @@ deze is niet nodig voor de eerste CSV-route.
 
 Deze routes delen gegevens. De bekende samenloop tussen leveranciersbestanden
 en TCM en het onderscheid met dezelfde soort en maat bij verschillende leveranciers
-staan in de [conceptspecificatie voorraadimport](../specs/voorraadimport.md#leveranciers-en-mogelijke-dubbele-aanlevering).
+staan in de [conceptspecificatie actuele voorraad](../specs/voorraad.md#leveranciers-en-mogelijke-dubbele-aanlevering).
 De bronvoorrang voor deze samenloop staat bij het
-[criterium over de voorraaddatum](../specs/voorraadimport.md#ac-voorraadimport-003).
+[criterium over de voorraaddatum](../specs/voorraad.md#ac-voorraadimport-003).
 Uitzonderingen op de datumvergelijking staan in dezelfde specificatie. De
 technische bestandsvalidatie en overige combinatieregels zijn nog uit te werken.
 
